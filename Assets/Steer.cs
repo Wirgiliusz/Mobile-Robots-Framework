@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Drive : MonoBehaviour
+public class Steer : MonoBehaviour
 {
     public WheelCollider WC;
-    public float torque = 200;
+    public float maxSteerAngle = 30;
 
     // Start is called before the first frame update
     void Start()
@@ -13,17 +13,15 @@ public class Drive : MonoBehaviour
         WC = this.GetComponent<WheelCollider>();
     }
 
-
-    void go(float accel) {
-        accel = Mathf.Clamp(accel, -1, 1);
-        float thrustTorque = accel * torque;
-        WC.motorTorque = thrustTorque;
+    void steering(float steer) {
+        steer = Mathf.Clamp(steer, -1, 1) * maxSteerAngle;
+        WC.steerAngle = steer;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float acceleration = Input.GetAxis("Vertical");
-        go(acceleration);
+        float steer = Input.GetAxis("Horizontal");
+        steering(steer);
     }
 }
