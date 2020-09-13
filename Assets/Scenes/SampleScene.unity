@@ -1175,7 +1175,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WC: {fileID: 0}
-  torque: 200
 --- !u!146 &1277696412
 WheelCollider:
   m_ObjectHideFlags: 0
@@ -1268,7 +1267,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WC: {fileID: 0}
-  torque: 50
 --- !u!146 &1639894980
 WheelCollider:
   m_ObjectHideFlags: 0
@@ -1360,7 +1358,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WC: {fileID: 0}
-  torque: 200
 --- !u!146 &1680378306
 WheelCollider:
   m_ObjectHideFlags: 0
@@ -1598,7 +1595,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WC: {fileID: 0}
-  torque: 50
 --- !u!146 &1833363825
 WheelCollider:
   m_ObjectHideFlags: 0
