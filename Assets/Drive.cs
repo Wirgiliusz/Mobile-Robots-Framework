@@ -27,10 +27,14 @@ public class Drive : MonoBehaviour
             speed = 0;
             speedR = 0;
             speedL = 0;
-        } else if (Input.GetKeyDown(KeyCode.RightArrow)) {
+        } else if (Input.GetKeyDown(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftShift)) {
             speedR += 1;
-        } else if (Input.GetKeyDown(KeyCode.LeftArrow)) {
+        } else if (Input.GetKeyDown(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.LeftShift)) {
             speedL += 1;
+        } else if (Input.GetKeyDown(KeyCode.RightArrow) && Input.GetKey(KeyCode.LeftShift)) {
+            speedR -= 1;
+        } else if (Input.GetKeyDown(KeyCode.LeftArrow) && Input.GetKey(KeyCode.LeftShift)) {
+            speedL -= 1;
         }
 
         if (this.name == "WheelR") {

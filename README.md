@@ -2,11 +2,11 @@
  
 ## To-Do
 ### New
-- [ ] Basic shape with 2 working wheels:
-    - [ ] Acceleration/Deceleration
-    - [ ] Speed control
-    - [ ] Steering
-    - [ ] Keyboard shortcuts
+- [x] Basic shape with 2 working wheels:
+    - [x] Acceleration/Deceleration
+    - [x] Speed control
+    - [x] Steering
+    - [x] Keyboard shortcuts
 - [ ] Sensors:
     - [ ] Measuring distance
     - [ ] Using sensors measurments to control velocity
