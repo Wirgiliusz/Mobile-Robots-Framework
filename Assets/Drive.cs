@@ -43,6 +43,7 @@ public class Drive : MonoBehaviour
             speed = 0;
             speedR = 0;
             speedL = 0;
+            WC.brakeTorque = Mathf.Infinity;
         } else if (Input.GetKeyDown(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftShift)) {
             speedR += speedR_change;
         } else if (Input.GetKeyDown(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.LeftShift)) {
@@ -51,6 +52,10 @@ public class Drive : MonoBehaviour
             speedR -= speedR_change;
         } else if (Input.GetKeyDown(KeyCode.LeftArrow) && Input.GetKey(KeyCode.LeftShift)) {
             speedL -= speedL_change;
+        }
+        
+        if (!Input.GetKey(KeyCode.Space)) {
+            WC.brakeTorque = 0;
         }
     }
 
