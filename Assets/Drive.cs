@@ -6,6 +6,7 @@ using System;
 public class Drive : MonoBehaviour
 {
     public WheelCollider WC;
+    public GameObject Wheel;
 
     // Speeds of different wheels
     private float speed = 0;    // speed of both wheels
@@ -59,6 +60,13 @@ public class Drive : MonoBehaviour
         } else if (this.name == "WheelL") {
             WC.motorTorque = speed + speedL;
         }
+
+        Quaternion quat;
+        Vector3 position;
+        WC.GetWorldPose(out position, out quat);
+        quat = quat * Quaternion.Euler(new Vector3(0, 0, 90));
+        Wheel.transform.position = position;
+        Wheel.transform.rotation = quat;
 
         // Log different speeds
         Debug.Log("Speed: "+ speed + " SpeedR: "+ speedR + " SpeedL: "+ speedL + " Velocity: " + String.Format("{0:0.00}", this.GetComponentInParent<Rigidbody>().velocity.magnitude) + " m/s");
