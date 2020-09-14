@@ -6,7 +6,7 @@ using System;
 public class Drive : MonoBehaviour
 {
     public WheelCollider WC;
-    public GameObject Wheel;
+    public GameObject WheelModel;
 
     // Speeds of different wheels
     private float speed = 0;    // speed of both wheels
@@ -24,9 +24,8 @@ public class Drive : MonoBehaviour
         WC = this.GetComponent<WheelCollider>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+
+    void checkForKeyPresses() {
         /*  Wheels control keybinds
         *   Up arrow:               + speed_change for both wheels  [/\]
         *   Down arrow:             - speed_change for both wheels  [\/]
@@ -53,20 +52,32 @@ public class Drive : MonoBehaviour
         } else if (Input.GetKeyDown(KeyCode.LeftArrow) && Input.GetKey(KeyCode.LeftShift)) {
             speedL -= speedL_change;
         }
+    }
 
+    void addSpeedToWheels() {
         // Distinguish which wheel should get which speed change
         if (this.name == "WheelR") {
             WC.motorTorque = speed + speedR;
         } else if (this.name == "WheelL") {
             WC.motorTorque = speed + speedL;
         }
+    }
 
-        Quaternion quat;
+    void updateWheelsModelsRotation() {
+        Quaternion rotation;
         Vector3 position;
-        WC.GetWorldPose(out position, out quat);
-        quat = quat * Quaternion.Euler(new Vector3(0, 0, 90));
-        Wheel.transform.position = position;
-        Wheel.transform.rotation = quat;
+        WC.GetWorldPose(out position, out rotation);
+        rotation = rotation * Quaternion.Euler(new Vector3(0, 0, 90));
+        WheelModel.transform.position = position;
+        WheelModel.transform.rotation = rotation;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        checkForKeyPresses();        
+        addSpeedToWheels();
+        updateWheelsModelsRotation();
 
         // Log different speeds
         Debug.Log("Speed: "+ speed + " SpeedR: "+ speedR + " SpeedL: "+ speedL + " Velocity: " + String.Format("{0:0.00}", this.GetComponentInParent<Rigidbody>().velocity.magnitude) + " m/s");
