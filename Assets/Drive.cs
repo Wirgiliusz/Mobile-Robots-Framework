@@ -33,7 +33,7 @@ public class Drive : MonoBehaviour
         *   Shift + Left arrow:     - speedL_change for left wheel  [S + <-]
         *   Right arrow:            + speedR_change for right wheel [->]
         *   Shift + Right arrow:    - speedR_change for right wheel [S + ->]
-        *   Space:                  Reset all speeds to 0           [_]
+        *   Space:                  Reset all speeds to 0 and brake [_]
         */
         if (Input.GetKeyDown(KeyCode.UpArrow)) {
             speed += speed_change;
@@ -53,7 +53,6 @@ public class Drive : MonoBehaviour
         } else if (Input.GetKeyDown(KeyCode.LeftArrow) && Input.GetKey(KeyCode.LeftShift)) {
             speedL -= speedL_change;
         }
-        
         if (!Input.GetKey(KeyCode.Space)) {
             WC.brakeTorque = 0;
         }
