@@ -7,6 +7,7 @@ public class Drive : MonoBehaviour
 {
     public WheelCollider WC;
     public GameObject WheelModel;
+    public SensorController SC;
 
     // Speeds of different wheels
     private float speed = 0;    // speed of both wheels
@@ -84,6 +85,6 @@ public class Drive : MonoBehaviour
         updateWheelsModelsRotation();
 
         // Log different speeds
-        //Debug.Log("Speed: "+ speed + " SpeedR: "+ speedR + " SpeedL: "+ speedL + " Velocity: " + String.Format("{0:0.00}", this.GetComponentInParent<Rigidbody>().velocity.magnitude) + " m/s");
+        Debug.Log("Speed: "+ speed + " | SpeedR: "+ speedR + " SpeedL: "+ speedL + " | Velocity: " + String.Format("{0:0.00}", this.GetComponentInParent<Rigidbody>().velocity.magnitude) + " m/s" + string.Format(" | Sensor:  {0:0.00} ", SC.getHitDistance()));
     }
 }

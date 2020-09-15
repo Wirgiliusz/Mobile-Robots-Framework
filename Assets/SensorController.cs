@@ -23,6 +23,10 @@ public class SensorController : MonoBehaviour
             hitDistance = -1f;
         }
 
-        Debug.Log(string.Format("Sensor:  {0:0.00} ", hitDistance));
+        //Debug.Log(string.Format("Sensor:  {0:0.00} ", hitDistance));
+    }
+
+    public float getHitDistance() {
+        return hitDistance;
     }
 }
