@@ -1013,6 +1013,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WC: {fileID: 0}
   WheelModel: {fileID: 469260907}
+  SC: {fileID: 1222706434}
   speed_change: 1
   speedR_change: 0.25
   speedL_change: 0.25
@@ -1187,6 +1188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WC: {fileID: 0}
   WheelModel: {fileID: 743885602}
+  SC: {fileID: 1222706434}
   speed_change: 1
   speedR_change: 0.25
   speedL_change: 0.25
