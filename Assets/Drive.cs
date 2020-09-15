@@ -84,6 +84,6 @@ public class Drive : MonoBehaviour
         updateWheelsModelsRotation();
 
         // Log different speeds
-        Debug.Log("Speed: "+ speed + " SpeedR: "+ speedR + " SpeedL: "+ speedL + " Velocity: " + String.Format("{0:0.00}", this.GetComponentInParent<Rigidbody>().velocity.magnitude) + " m/s");
+        //Debug.Log("Speed: "+ speed + " SpeedR: "+ speedR + " SpeedL: "+ speedL + " Velocity: " + String.Format("{0:0.00}", this.GetComponentInParent<Rigidbody>().velocity.magnitude) + " m/s");
     }
 }
