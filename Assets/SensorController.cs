@@ -22,9 +22,6 @@ public class SensorController : MonoBehaviour
         } else {
             hitDistance = -1f;
         }
-
-        Debug.DrawRay(transform.position, transform.forward * 10);
-        //Debug.Log(string.Format("Sensor:  {0:0.00} ", hitDistance));
     }
 
     public float getHitDistance() {
