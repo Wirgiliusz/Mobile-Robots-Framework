@@ -10,7 +10,6 @@ public class Drive : MonoBehaviour
     public SensorController SC;
 
     // Speeds of different wheels
-    private float speed = 0;    // speed of both wheels
     private float speedR = 0;   // speed of right wheel
     private float speedL = 0;   // speed of left wheel
 
@@ -37,11 +36,12 @@ public class Drive : MonoBehaviour
         *   Space:                  Reset all speeds to 0 and brake [_]
         */
         if (Input.GetKeyDown(KeyCode.UpArrow)) {
-            speed += speed_change;
+            speedR += speed_change;
+            speedL += speed_change;
         } else if (Input.GetKeyDown(KeyCode.DownArrow)) {
-            speed -= speed_change;
+            speedR -= speed_change;
+            speedL -= speed_change;
         } else if (Input.GetKeyDown(KeyCode.Space)) {
-            speed = 0;
             speedR = 0;
             speedL = 0;
             WC.brakeTorque = Mathf.Infinity;
@@ -62,9 +62,9 @@ public class Drive : MonoBehaviour
     void addSpeedToWheels() {
         // Distinguish which wheel should get which speed change
         if (this.name == "WheelR") {
-            WC.motorTorque = speed + speedR;
+            WC.motorTorque = speedR;
         } else if (this.name == "WheelL") {
-            WC.motorTorque = speed + speedL;
+            WC.motorTorque = speedL;
         }
     }
 
@@ -85,6 +85,6 @@ public class Drive : MonoBehaviour
         updateWheelsModelsRotation();
 
         // Log different speeds
-        Debug.Log("Speed: "+ speed + " | SpeedR: "+ speedR + " SpeedL: "+ speedL + " | Velocity: " + String.Format("{0:0.00}", this.GetComponentInParent<Rigidbody>().velocity.magnitude) + " m/s" + string.Format(" | Sensor:  {0:0.00} ", SC.getHitDistance()));
+        Debug.Log("SpeedL: "+ speedL + " SpeedR: "+ speedR + " | Velocity: " + String.Format("{0:0.00}", this.GetComponentInParent<Rigidbody>().velocity.magnitude) + " m/s" + string.Format(" | Sensor:  {0:0.00} ", SC.getHitDistance()));
     }
 }
