@@ -8,7 +8,7 @@
     - [x] Steering
     - [x] Keyboard shortcuts
 - [ ] Sensors:
-    - [ ] Measuring distance
+    - [x] Measuring distance
     - [ ] Using sensors measurments to control velocity
     - [ ] (?) Wheels encoders
 - [ ] Obstacles
@@ -19,5 +19,9 @@
 - [ ] Environments:
     - [ ] Different obstacles
 - [ ] UI:
+    - [ ] Informations about robot:
+        - [ ] Wheel speed
+        - [ ] Velocity
+        - [ ] Sensors readings
     - [ ] Switching between robots models
     - [ ] Switching between environments
