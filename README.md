@@ -25,3 +25,9 @@
         - [ ] Sensors readings
     - [ ] Switching between robots models
     - [ ] Switching between environments
+- [ ] Program structure:
+  - [ ] Main robot script that controls smaller components:
+    - Sensors scripts
+    - Motors (wheels) scripts
+  - [ ] Main script has acces to smaller components readings
+  - [ ] Main script can send signals to smaller components scripts 
