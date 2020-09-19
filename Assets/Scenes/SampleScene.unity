@@ -476,9 +476,9 @@ MonoBehaviour:
   MC_R: {fileID: 1639894979}
   MC_L: {fileID: 1833363824}
   SC: {fileID: 1222706434}
-  speed_change: 0.2
-  speedR_change: 0.05
-  speedL_change: 0.05
+  speed_change: 0.5
+  speedR_change: 0.1
+  speedL_change: 0.1
 --- !u!1 &506573554
 GameObject:
   m_ObjectHideFlags: 0

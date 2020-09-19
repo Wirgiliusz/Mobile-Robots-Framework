@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class MotorsController : MonoBehaviour
 {
-    public WheelCollider WC;
-    public GameObject WheelModel;
+    public WheelCollider WC;        // Collider of the wheel
+    public GameObject WheelModel;   // Visual model of the wheel
 
-    private float speed = 0;   
+    private float speed = 0;        // Wheel speed
 
     // Start is called before the first frame update
     void Start()
@@ -24,12 +24,12 @@ public class MotorsController : MonoBehaviour
 
     public void addSpeed(float new_speed) {
         speed += new_speed;
-        addSpeedToWheel();
+        WC.motorTorque = speed;
     }
 
     public void setSpeed(float new_speed) {
         speed = new_speed;
-        addSpeedToWheel();
+        WC.motorTorque = speed;
     }
 
     public void setBrake(bool state) {
@@ -42,11 +42,6 @@ public class MotorsController : MonoBehaviour
 
     public float getSpeed() {
         return speed;
-    }
-
-    void addSpeedToWheel() {
-        WC.motorTorque = speed;
-
     }
 
     void updateWheelModelRotation() {
