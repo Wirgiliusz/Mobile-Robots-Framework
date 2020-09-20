@@ -8,7 +8,11 @@ public class RobotController : MonoBehaviour
     public MotorsController MC_R;
     public MotorsController MC_L;
     public SensorController SC;
+
     public UIController UI;
+
+    public Camera robotCamera;
+    public Camera overheadCamera;
 
     public float speed_change;
     public float speedR_change;
@@ -17,7 +21,7 @@ public class RobotController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        overheadCamera.enabled = false;
     }
 
     // Update is called once per frame
@@ -41,6 +45,7 @@ public class RobotController : MonoBehaviour
         *   Right arrow:            + speedR_change for right wheel [->]
         *   Shift + Right arrow:    - speedR_change for right wheel [S + ->]
         *   Space:                  Reset all speeds to 0 and brake [_]
+        *   C:                      Change camera view              [C]
         */
         if (Input.GetKeyDown(KeyCode.UpArrow)) {
             MC_R.addSpeed(speed_change);
@@ -65,6 +70,20 @@ public class RobotController : MonoBehaviour
         if (!Input.GetKey(KeyCode.Space)) {
             MC_R.setBrake(false);
             MC_L.setBrake(false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.C)) {
+            switchCamera();
+        }
+    }
+
+    void switchCamera() {
+        if (robotCamera.enabled == true) {
+            overheadCamera.enabled = true;
+            robotCamera.enabled = false;
+        } else if (overheadCamera.enabled == true) {
+            robotCamera.enabled = true;
+            overheadCamera.enabled = false;
         }
     }
 }
