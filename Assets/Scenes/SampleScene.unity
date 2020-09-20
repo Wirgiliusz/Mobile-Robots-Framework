@@ -1036,7 +1036,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a8dc5b64aaf784eaf42c7705c41c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHitDistance: 2
+  maxHitDistance: 3
   sensorLine: {fileID: 391335860}
 --- !u!136 &1222706435
 CapsuleCollider:
