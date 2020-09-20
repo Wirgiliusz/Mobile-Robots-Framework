@@ -9,6 +9,7 @@ public class UIController : MonoBehaviour
     public Text velocity;
     public Text motorL;
     public Text motorR;
+    public Text sensor;
 
     // Start is called before the first frame update
     void Start()
@@ -32,5 +33,9 @@ public class UIController : MonoBehaviour
 
     public void setMotorRText(float s) {
         motorR.text = "Motor R\n" + String.Format("{0:0.00}", s);
+    }
+
+    public void setSensorText(float d) {
+        sensor.text = "Sensor\n" + String.Format("{0:0.00}", d) + " m";
     }
 }
