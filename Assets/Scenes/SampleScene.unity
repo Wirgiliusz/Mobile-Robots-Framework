@@ -216,7 +216,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &391335858
 GameObject:
@@ -437,6 +437,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 503711560}
+  - component: {fileID: 503711561}
   m_Layer: 0
   m_Name: Robot
   m_TagString: Untagged
@@ -458,8 +459,26 @@ Transform:
   - {fileID: 2098584672}
   - {fileID: 935310524}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &503711561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503711559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64d056592a7764442b4b363d8147855f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MC_R: {fileID: 1639894979}
+  MC_L: {fileID: 1833363824}
+  SC: {fileID: 1222706434}
+  speed_change: 0.5
+  speedR_change: 0.1
+  speedL_change: 0.1
 --- !u!1 &506573554
 GameObject:
   m_ObjectHideFlags: 0
@@ -1017,6 +1036,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a8dc5b64aaf784eaf42c7705c41c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHitDistance: 3
+  sensorLine: {fileID: 391335860}
 --- !u!136 &1222706435
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1080,37 +1101,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1222706432}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1285427214
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1285427215}
-  m_Layer: 0
-  m_Name: Ground
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1285427215
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1285427214}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.223324, y: 0.35302258, z: 5.6409626}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1976089397}
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1639894978
 GameObject:
   m_ObjectHideFlags: 0
@@ -1143,10 +1133,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WC: {fileID: 0}
   WheelModel: {fileID: 469260907}
-  SC: {fileID: 1222706434}
-  speed_change: 1
-  speedR_change: 0.25
-  speedL_change: 0.25
 --- !u!146 &1639894980
 WheelCollider:
   m_ObjectHideFlags: 0
@@ -1318,10 +1304,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WC: {fileID: 0}
   WheelModel: {fileID: 743885602}
-  SC: {fileID: 1222706434}
-  speed_change: 1
-  speedR_change: 0.25
-  speedL_change: 0.25
 --- !u!146 &1833363825
 WheelCollider:
   m_ObjectHideFlags: 0
@@ -1474,7 +1456,7 @@ GameObject:
   - component: {fileID: 1976089395}
   - component: {fileID: 1976089394}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1551,11 +1533,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1976089393}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.223324, y: -0.35302258, z: -5.6409626}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 10, y: 1, z: 10}
   m_Children: []
-  m_Father: {fileID: 1285427215}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2067922722
 GameObject:
