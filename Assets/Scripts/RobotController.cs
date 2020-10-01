@@ -11,8 +11,10 @@ public class RobotController : MonoBehaviour
 
     public UIController UI;
 
+    private int cameraIterator = 0;
     public Camera robotCamera;
     public Camera overheadCamera;
+    public Camera freeCamera;
 
     public TrailRenderer path;
 
@@ -24,6 +26,7 @@ public class RobotController : MonoBehaviour
     void Start()
     {
         overheadCamera.enabled = false;
+        freeCamera.enabled = false;
     }
 
     // Update is called once per frame
@@ -85,13 +88,35 @@ public class RobotController : MonoBehaviour
     }
 
     void switchCamera() {
+        cameraIterator = cameraIterator == 2 ? 0 : ++cameraIterator;
+
+        switch(cameraIterator) {
+            case 0:
+                robotCamera.enabled = true; 
+                overheadCamera.enabled = false;
+                freeCamera.enabled = false;
+                break;
+            case 1:
+                overheadCamera.enabled = true;
+                robotCamera.enabled = false; 
+                freeCamera.enabled = false;
+                break;
+            case 2:
+                freeCamera.enabled = true;
+                overheadCamera.enabled = true;
+                robotCamera.enabled = false; 
+                break;
+
+        }
+        /*
         if (robotCamera.enabled == true) {
             overheadCamera.enabled = true;
             robotCamera.enabled = false;
         } else if (overheadCamera.enabled == true) {
             robotCamera.enabled = true;
             overheadCamera.enabled = false;
-        }
+        } 
+        */
     }
 
     void togglePath() {
