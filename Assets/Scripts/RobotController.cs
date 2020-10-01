@@ -14,6 +14,8 @@ public class RobotController : MonoBehaviour
     public Camera robotCamera;
     public Camera overheadCamera;
 
+    public TrailRenderer path;
+
     public float speed_change;
     public float speedR_change;
     public float speedL_change;
@@ -46,6 +48,7 @@ public class RobotController : MonoBehaviour
         *   Shift + Right arrow:    - speedR_change for right wheel [S + ->]
         *   Space:                  Reset all speeds to 0 and brake [_]
         *   C:                      Change camera view              [C]
+        *   T:                      Show/Hide travel path           [T]
         */
         if (Input.GetKeyDown(KeyCode.UpArrow)) {
             MC_R.addSpeed(speed_change);
@@ -75,6 +78,10 @@ public class RobotController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C)) {
             switchCamera();
         }
+
+        if (Input.GetKeyDown(KeyCode.T)) {
+            togglePath();
+        }
     }
 
     void switchCamera() {
@@ -84,6 +91,14 @@ public class RobotController : MonoBehaviour
         } else if (overheadCamera.enabled == true) {
             robotCamera.enabled = true;
             overheadCamera.enabled = false;
+        }
+    }
+
+    void togglePath() {
+        if (path.enabled == true) {
+            path.enabled = false;
+        } else if (path.enabled == false) {
+            path.enabled = true;
         }
     }
 }

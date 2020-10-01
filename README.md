@@ -19,14 +19,16 @@
 - [ ] 7. Environments:
     - [ ] a. Different obstacles
 - [ ] 8. UI:
-    - [ ] a. Informations about robot:
-        - [ ] Wheel speed
-        - [ ] Velocity
-        - [ ] Sensors readings
+    - [x] a. Informations about robot:
+        - [x] Wheel speed
+        - [x] Velocity
+        - [x] Sensors readings
+        - [x] Travel path (trail)
     - [ ] b. Switching between robots models
     - [ ] c. Switching between environments
     - [ ] d. Camera settings:
-      - [ ] Follow the robot
+      - [x] Follow the robot
+      - [x] Overhead
       - [ ] Free view
 - [x] 9. Program structure:
   - [x] a. Main robot script that controls smaller components:
