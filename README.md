@@ -29,10 +29,15 @@
     - [ ] d. Camera settings:
       - [x] Follow the robot
       - [x] Overhead
-      - [ ] Free view
+      - [x] Free view
 - [x] 9. Program structure:
   - [x] a. Main robot script that controls smaller components:
     - Sensors scripts
     - Motors (wheels) scripts
   - [x] b. Main script has acces to smaller components readings
   - [x] c. Main script can send signals to smaller components scripts 
+
+### Improvements
+- [ ] 1. UI:
+  - [ ] a. Better free view camera
+    - [ ] rotation
