@@ -108,15 +108,6 @@ public class RobotController : MonoBehaviour
                 break;
 
         }
-        /*
-        if (robotCamera.enabled == true) {
-            overheadCamera.enabled = true;
-            robotCamera.enabled = false;
-        } else if (overheadCamera.enabled == true) {
-            robotCamera.enabled = true;
-            overheadCamera.enabled = false;
-        } 
-        */
     }
 
     void togglePath() {
