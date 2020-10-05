@@ -17,6 +17,12 @@ public class FreeCameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /* Free camera control keybinds
+        *   W/A/S/D:    move forward/left/back/right    [WASD]
+        *   Q/E:        move down/up                    [QE]
+        *   Shift:      move faster                     [Shift]
+        *   Control:    move slower                     [Ctrl]
+        */
         if (Input.GetKeyDown(KeyCode.LeftShift)) {
             flySpeed *= fastMultiplier;
         } 

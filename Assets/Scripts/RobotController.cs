@@ -42,7 +42,7 @@ public class RobotController : MonoBehaviour
     }
 
     void checkForKeyPresses() {
-        /*  Wheels control keybinds
+        /*  Robot control keybinds
         *   Up arrow:               + speed_change for both wheels  [/\]
         *   Down arrow:             - speed_change for both wheels  [\/]
         *   Left arrow:             + speedL_change for left wheel  [<-]
