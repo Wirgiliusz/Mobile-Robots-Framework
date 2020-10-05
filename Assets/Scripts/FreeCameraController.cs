@@ -31,10 +31,10 @@ public class FreeCameraController : MonoBehaviour
             flySpeed /= slowMultiplier;
         }
 
-        if (Input.GetAxis("Horizontal") != 0) {
+        if (Input.GetAxis("Horizontal") != 0 && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))) {
             transform.Translate(Vector3.right * flySpeed * Input.GetAxis("Horizontal"));
         }
-        if (Input.GetAxis("Vertical") != 0) {
+        if (Input.GetAxis("Vertical") != 0 && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))) {
             transform.Translate(Vector3.forward * flySpeed * Input.GetAxis("Vertical"));
         }
 
