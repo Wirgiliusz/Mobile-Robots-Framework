@@ -9,36 +9,29 @@ public class RobotController : MonoBehaviour
     public MotorsController MC_L;
     public SensorController SC;
 
-    public UIController UI;
-
-    private int cameraIterator = 0;
-    public Camera robotCamera;
-    public Camera overheadCamera;
-    public Camera freeCamera;
-
     public TrailRenderer path;
 
     public float speed_change;
     public float speedR_change;
     public float speedL_change;
 
+    private float leftMotorSpeed = -1f;
+    private float rightMotorSpeed = -1f;
+    private float robotVelocity = -1f;
+    private float sensorReading = -1f;
+
     // Start is called before the first frame update
     void Start()
     {
-        overheadCamera.enabled = false;
-        freeCamera.enabled = false;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         checkForKeyPresses();
+        readInputs();
         Debug.Log("SpeedL: "+ MC_L.getSpeed() + " SpeedR: "+ MC_R.getSpeed() + " | Velocity: " + String.Format("{0:0.00}", this.GetComponentInChildren<Rigidbody>().velocity.magnitude) + " m/s" + string.Format(" | Sensor:  {0:0.00} ", SC.getHitDistance()));
-        
-        UI.setVelocityText(this.GetComponentInChildren<Rigidbody>().velocity.magnitude);
-        UI.setMotorLText(MC_L.getSpeed());
-        UI.setMotorRText(MC_R.getSpeed());
-        UI.setSensorText(SC.getHitDistance());
     }
 
     void checkForKeyPresses() {
@@ -50,7 +43,6 @@ public class RobotController : MonoBehaviour
         *   Right arrow:            + speedR_change for right wheel [->]
         *   Shift + Right arrow:    - speedR_change for right wheel [S + ->]
         *   Space:                  Reset all speeds to 0 and brake [_]
-        *   C:                      Change camera view              [C]
         *   T:                      Show/Hide travel path           [T]
         */
         if (Input.GetKeyDown(KeyCode.UpArrow)) {
@@ -78,36 +70,31 @@ public class RobotController : MonoBehaviour
             MC_L.setBrake(false);
         }
 
-        if (Input.GetKeyDown(KeyCode.C)) {
-            switchCamera();
-        }
+
 
         if (Input.GetKeyDown(KeyCode.T)) {
             togglePath();
         }
     }
 
-    void switchCamera() {
-        cameraIterator = cameraIterator == 2 ? 0 : ++cameraIterator;
+    void readInputs() {
+        leftMotorSpeed = MC_L.getSpeed();
+        rightMotorSpeed = MC_R.getSpeed();
+        robotVelocity = this.GetComponentInChildren<Rigidbody>().velocity.magnitude;
+        sensorReading = SC.getHitDistance();
+    }
 
-        switch(cameraIterator) {
-            case 0:
-                robotCamera.enabled = true; 
-                overheadCamera.enabled = false;
-                freeCamera.enabled = false;
-                break;
-            case 1:
-                overheadCamera.enabled = true;
-                robotCamera.enabled = false; 
-                freeCamera.enabled = false;
-                break;
-            case 2:
-                freeCamera.enabled = true;
-                overheadCamera.enabled = true;
-                robotCamera.enabled = false; 
-                break;
-
-        }
+    public float getLeftMotorSpeed() {
+        return leftMotorSpeed;
+    }
+    public float getRightMotorSpeed() {
+        return rightMotorSpeed;
+    }
+    public float getRobotVelocity() {
+        return robotVelocity;
+    }
+    public float getSensorReading() {
+        return sensorReading;
     }
 
     void togglePath() {
