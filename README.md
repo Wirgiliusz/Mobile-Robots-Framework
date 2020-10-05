@@ -42,5 +42,5 @@
 - [ ] 1. UI:
   - [ ] a. Better free view camera
     - [ ] rotation
-  - [ ] b. Better overhead camera
-    - [ ] zoom level change
+  - [x] b. Better overhead camera
+    - [x] zoom level change
