@@ -19,18 +19,28 @@
 - [ ] 7. Environments:
     - [ ] a. Different obstacles
 - [ ] 8. UI:
-    - [ ] a. Informations about robot:
-        - [ ] Wheel speed
-        - [ ] Velocity
-        - [ ] Sensors readings
+    - [x] a. Informations about robot:
+        - [x] Wheel speed
+        - [x] Velocity
+        - [x] Sensors readings
+        - [x] Travel path (trail)
     - [ ] b. Switching between robots models
     - [ ] c. Switching between environments
     - [ ] d. Camera settings:
-      - [ ] Follow the robot
-      - [ ] Free view
+      - [x] Follow the robot
+      - [x] Overhead
+      - [x] Free view
 - [x] 9. Program structure:
   - [x] a. Main robot script that controls smaller components:
     - Sensors scripts
     - Motors (wheels) scripts
   - [x] b. Main script has acces to smaller components readings
   - [x] c. Main script can send signals to smaller components scripts 
+  - [x] d. Move UI/Camera control elements from RobotController.cs to different script (ProgramController.cs?)
+
+### Improvements
+- [ ] 1. UI:
+  - [ ] a. Better free view camera
+    - [ ] rotation
+  - [x] b. Better overhead camera
+    - [x] zoom level change
