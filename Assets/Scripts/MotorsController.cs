@@ -55,7 +55,11 @@ public class MotorsController : MonoBehaviour
         if (speedPercent < 0) {
             speedPercent = 0;
         }
-
+        /*
+        if (speedPercent > 0 && speedPercent <= 1) {
+            speedPercent = 1f;
+        }
+        */
         speedPercent /= 100;
         speed = maxSpeed * speedPercent;
         if (speed > maxSpeed) {
@@ -68,8 +72,8 @@ public class MotorsController : MonoBehaviour
         WC.motorTorque = speed;
     }
 
-    public void setBrake(bool state) {
-        if (state) {
+    public void setBrake(bool brake_set) {
+        if (brake_set) {
             WC.brakeTorque = Mathf.Infinity;
         } else {
             WC.brakeTorque = 0;
