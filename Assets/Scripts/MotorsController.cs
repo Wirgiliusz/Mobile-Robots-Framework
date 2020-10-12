@@ -7,7 +7,9 @@ public class MotorsController : MonoBehaviour
     public WheelCollider WC;        // Collider of the wheel
     public GameObject WheelModel;   // Visual model of the wheel
 
+    public float maxSpeed;
     private float speed = 0;        // Wheel speed
+    
 
     // Start is called before the first frame update
     void Start()
@@ -24,11 +26,25 @@ public class MotorsController : MonoBehaviour
 
     public void addSpeed(float new_speed) {
         speed += new_speed;
+        if (speed > maxSpeed) {
+            speed = maxSpeed;
+        }
+        if (speed < -maxSpeed) {
+            speed = -maxSpeed;
+        }
+
         WC.motorTorque = speed;
     }
 
     public void setSpeed(float new_speed) {
         speed = new_speed;
+        if (speed > maxSpeed) {
+            speed = maxSpeed;
+        }
+        if (speed < -maxSpeed) {
+            speed = -maxSpeed;
+        }
+
         WC.motorTorque = speed;
     }
 
