@@ -70,8 +70,6 @@ public class RobotController : MonoBehaviour
             MC_L.setBrake(false);
         }
 
-
-
         if (Input.GetKeyDown(KeyCode.T)) {
             togglePath();
         }

@@ -24,8 +24,8 @@ public class MotorsController : MonoBehaviour
     }
 
 
-    public void addSpeed(float new_speed) {
-        speed += new_speed;
+    public void addSpeed(float newSpeed) {
+        speed += newSpeed;
         if (speed > maxSpeed) {
             speed = maxSpeed;
         }
@@ -36,8 +36,28 @@ public class MotorsController : MonoBehaviour
         WC.motorTorque = speed;
     }
 
-    public void setSpeed(float new_speed) {
-        speed = new_speed;
+    public void setSpeed(float newSpeed) {
+        speed = newSpeed;
+        if (speed > maxSpeed) {
+            speed = maxSpeed;
+        }
+        if (speed < -maxSpeed) {
+            speed = -maxSpeed;
+        }
+
+        WC.motorTorque = speed;
+    }
+
+    public void setSpeedPercent(float speedPercent) {
+        if (speedPercent > 100) {
+            speedPercent = 100;
+        }
+        if (speedPercent < 0) {
+            speedPercent = 0;
+        }
+
+        speedPercent /= 100;
+        speed = maxSpeed * speedPercent;
         if (speed > maxSpeed) {
             speed = maxSpeed;
         }
