@@ -32,6 +32,7 @@ public class SensorController : MonoBehaviour
             sensorLine.startColor = Color.yellow;
             sensorLine.endColor = Color.yellow;
         }
+        
         sensorReady = true;
     }
 
