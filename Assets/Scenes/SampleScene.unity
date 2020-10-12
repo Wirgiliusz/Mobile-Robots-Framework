@@ -212,7 +212,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 75380844}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -438,6 +438,7 @@ GameObject:
   m_Component:
   - component: {fileID: 503711560}
   - component: {fileID: 503711561}
+  - component: {fileID: 503711562}
   m_Layer: 0
   m_Name: Robot
   m_TagString: Untagged
@@ -480,6 +481,24 @@ MonoBehaviour:
   speed_change: 0.5
   speedR_change: 0.1
   speedL_change: 0.1
+--- !u!114 &503711562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503711559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56a6c6bfaae0c84db158ddc082e9ec7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  motorRight: {fileID: 1639894979}
+  motorLeft: {fileID: 1833363824}
+  sensorFront: {fileID: 1222706434}
+  Kp: 50
+  Kd: 300
+  distance_wanted: 1.75
 --- !u!1 &506573554
 GameObject:
   m_ObjectHideFlags: 0
@@ -1378,7 +1397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a8dc5b64aaf784eaf42c7705c41c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHitDistance: 3
+  maxHitDistance: 10
   sensorLine: {fileID: 391335860}
 --- !u!136 &1222706435
 CapsuleCollider:
@@ -1673,6 +1692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WC: {fileID: 0}
   WheelModel: {fileID: 469260907}
+  maxSpeed: 10
 --- !u!146 &1639894980
 WheelCollider:
   m_ObjectHideFlags: 0
@@ -1971,6 +1991,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WC: {fileID: 0}
   WheelModel: {fileID: 743885602}
+  maxSpeed: 10
 --- !u!146 &1833363825
 WheelCollider:
   m_ObjectHideFlags: 0
