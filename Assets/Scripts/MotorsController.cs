@@ -10,9 +10,12 @@ public class MotorsController : MonoBehaviour
     public float maxSpeed;
     private float speed = 0;        // Wheel speed
 
-    private float wheelCircumference;
-    private float rotation = 0;
-    private float distance = 0;
+    private float wheelCircumference;   // Wheel circumference in meters
+    private float rotation = 0;         // Wheel rotation in degrees
+    private int rotationTicks = 0;      // Wheel rotation in "ticks" based on motor encoder resolution
+    //private float distance = 0;
+
+    public float encoderResolution;     // Resolution of the motor encoder. Number of ticks per 1 full rotation.
 
     // Start is called before the first frame update
     void Start()
@@ -25,18 +28,10 @@ public class MotorsController : MonoBehaviour
     void Update()
     {
         updateWheelModelRotation();
-        /*
-        rotation += ((wheelCircumference * WC.rpm)/360f)/0.75f;
-        distance = (rotation * wheelCircumference)/2000f;
-        Debug.Log(distance);
-        */
-
-        //distance = WC.rpm/Time.deltaTime;
-        //rotation += (distance/wheelCircumference) / 360f;
-
         rotation += (WC.rpm * (Time.deltaTime/60f)) * 360f;
-        distance = (rotation/360f) * wheelCircumference;
-        Debug.Log("Dist:" + distance + " | Rot: " + rotation);
+        //distance = (rotation/360f) * wheelCircumference;
+
+        Debug.Log(/*"Dist: " + distance + */" | Rot: " + rotation + " | RotTicks: " + rotationTicks);
     }
 
 
@@ -94,6 +89,11 @@ public class MotorsController : MonoBehaviour
 
     public float getSpeed() {
         return speed;
+    }
+
+    public int getRotation() {
+        
+        return (int)((rotation/360f) * encoderResolution);
     }
 
     void updateWheelModelRotation() {
