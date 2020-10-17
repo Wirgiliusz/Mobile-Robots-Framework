@@ -477,7 +477,7 @@ MonoBehaviour:
   MC_R: {fileID: 1639894979}
   MC_L: {fileID: 1833363824}
   SC: {fileID: 1222706434}
-  path: {fileID: 2098584674}
+  travelPath: {fileID: 2098584674}
   speed_change: 0.5
   speedR_change: 0.1
   speedL_change: 0.1
@@ -1693,6 +1693,7 @@ MonoBehaviour:
   WC: {fileID: 0}
   WheelModel: {fileID: 469260907}
   maxSpeed: 10
+  encoderResolution: 360
 --- !u!146 &1639894980
 WheelCollider:
   m_ObjectHideFlags: 0
@@ -1701,7 +1702,7 @@ WheelCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1639894978}
   m_Center: {x: 0, y: 0, z: 0}
-  m_Radius: 0.5
+  m_Radius: 0.1
   m_SuspensionSpring:
     spring: 35000
     damper: 4500
@@ -1732,7 +1733,7 @@ Transform:
   m_GameObject: {fileID: 1639894978}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -7.1418757, y: 5.4298005, z: 11.792599}
-  m_LocalScale: {x: 0.10000001, y: 0.20000002, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 964082953}
   m_RootOrder: 0
@@ -1992,6 +1993,7 @@ MonoBehaviour:
   WC: {fileID: 0}
   WheelModel: {fileID: 743885602}
   maxSpeed: 10
+  encoderResolution: 360
 --- !u!146 &1833363825
 WheelCollider:
   m_ObjectHideFlags: 0
@@ -2000,7 +2002,7 @@ WheelCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1833363823}
   m_Center: {x: 0, y: 0, z: 0}
-  m_Radius: 0.5
+  m_Radius: 0.1
   m_SuspensionSpring:
     spring: 35000
     damper: 4500
@@ -2031,7 +2033,7 @@ Transform:
   m_GameObject: {fileID: 1833363823}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -7.3218765, y: 5.4298005, z: 11.792599}
-  m_LocalScale: {x: 0.10000001, y: 0.20000002, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 964082953}
   m_RootOrder: 1
