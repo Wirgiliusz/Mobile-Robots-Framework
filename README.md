@@ -9,7 +9,7 @@
     - [x] d. Keyboard shortcuts
 - [ ] 2. Sensors:
     - [x] a. Measuring distance
-    - [ ] b. Using sensors measurments to control velocity
+    - [x] b. Using sensors measurments to control velocity
     - [ ] c. (?) Wheels encoders
 - [x] 3. Obstacles
 - [ ] 4. Robot model based on implemented features

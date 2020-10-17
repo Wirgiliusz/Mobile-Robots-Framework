@@ -55,11 +55,7 @@ public class MotorsController : MonoBehaviour
         if (speedPercent < 0) {
             speedPercent = 0;
         }
-        /*
-        if (speedPercent > 0 && speedPercent <= 1) {
-            speedPercent = 1f;
-        }
-        */
+
         speedPercent /= 100;
         speed = maxSpeed * speedPercent;
         if (speed > maxSpeed) {
