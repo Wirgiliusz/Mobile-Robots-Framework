@@ -30,7 +30,7 @@ public class PIDController : MonoBehaviour
     void FixedUpdate()
     {
         if (sensorFront.getSensorReady()) {
-            Debug.Log("Arrived: " + arrived + " | u = " + u + " | e = " + e);
+            //Debug.Log("Arrived: " + arrived + " | u = " + u + " | e = " + e);
 
             if (!arrived) {
                 distance = sensorFront.getHitDistance();

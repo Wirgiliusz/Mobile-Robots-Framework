@@ -9,18 +9,34 @@ public class MotorsController : MonoBehaviour
 
     public float maxSpeed;
     private float speed = 0;        // Wheel speed
-    
+
+    private float wheelCircumference;
+    private float rotation = 0;
+    private float distance = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         WC = this.GetComponent<WheelCollider>();
+        wheelCircumference = 2 * Mathf.PI * WC.radius;
     }
 
     // Update is called once per frame
     void Update()
     {
         updateWheelModelRotation();
+        /*
+        rotation += ((wheelCircumference * WC.rpm)/360f)/0.75f;
+        distance = (rotation * wheelCircumference)/2000f;
+        Debug.Log(distance);
+        */
+
+        //distance = WC.rpm/Time.deltaTime;
+        //rotation += (distance/wheelCircumference) / 360f;
+
+        rotation += (WC.rpm * (Time.deltaTime/60f)) * 360f;
+        distance = (rotation/360f) * wheelCircumference;
+        Debug.Log("Dist:" + distance + " | Rot: " + rotation);
     }
 
 
