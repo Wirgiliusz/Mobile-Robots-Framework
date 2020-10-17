@@ -7,13 +7,12 @@ public class MotorsController : MonoBehaviour
     public WheelCollider WC;        // Collider of the wheel
     public GameObject WheelModel;   // Visual model of the wheel
 
-    public float maxSpeed;
-    private float speed = 0;        // Wheel speed
+    public float maxSpeed;          // Maximum speed allowed for motor
+    private float speed = 0;        // Motor speed
 
     private float wheelCircumference;   // Wheel circumference in meters
     private float rotation = 0;         // Wheel rotation in degrees
-    private int rotationTicks = 0;      // Wheel rotation in "ticks" based on motor encoder resolution
-    //private float distance = 0;
+    //private float distance = 0;       // Distance traveled by wheel caloculated based on its circumference and rotation
 
     public float encoderResolution;     // Resolution of the motor encoder. Number of ticks per 1 full rotation.
 
@@ -30,8 +29,6 @@ public class MotorsController : MonoBehaviour
         updateWheelModelRotation();
         rotation += (WC.rpm * (Time.deltaTime/60f)) * 360f;
         //distance = (rotation/360f) * wheelCircumference;
-
-        Debug.Log(/*"Dist: " + distance + */" | Rot: " + rotation + " | RotTicks: " + rotationTicks);
     }
 
 
@@ -91,6 +88,7 @@ public class MotorsController : MonoBehaviour
         return speed;
     }
 
+    // Returns number of encoder ticks based on rotation and resolution
     public int getRotation() {
         
         return (int)((rotation/360f) * encoderResolution);

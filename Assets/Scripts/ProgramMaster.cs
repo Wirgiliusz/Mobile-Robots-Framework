@@ -6,7 +6,7 @@ public class ProgramMaster : MonoBehaviour
 {
     public UIController UI;
 
-    private int cameraIterator = 0;
+    private int cameraIterator = 0; // Index of currently used camera
     public Camera robotCamera;
     public Camera overheadCamera;
     public Camera freeCamera;
@@ -23,8 +23,16 @@ public class ProgramMaster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /* Global program keybinds
+        * C:    Switch camera       [C]
+        * T:    Toggle travel path  [T]
+        */
         if (Input.GetKeyDown(KeyCode.C)) {
             switchCamera();
+        }
+
+        if (Input.GetKeyDown(KeyCode.T)) {
+            RC.togglePath();
         }
 
         updateUI();

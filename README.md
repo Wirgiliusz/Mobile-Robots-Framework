@@ -7,10 +7,10 @@
     - [x] b. Speed control
     - [x] c. Steering
     - [x] d. Keyboard shortcuts
-- [ ] 2. Sensors:
+- [x] 2. Sensors:
     - [x] a. Measuring distance
     - [x] b. Using sensors measurments to control velocity
-    - [ ] c. (?) Wheels encoders
+    - [x] c. Wheels encoders
 - [x] 3. Obstacles
 - [ ] 4. Robot model based on implemented features
 - [ ] 5. PID controller:
