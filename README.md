@@ -38,6 +38,11 @@
   - [x] c. Main script can send signals to smaller components scripts 
   - [x] d. Move UI/Camera control elements from RobotController.cs to different script (ProgramController.cs?)
 
+### Bugfixes
+- [ ] 1. Micromouse robot model:
+  - [ ] - Fix model shaking
+    - Cause is probably wheels / weight
+
 ### Improvements
 - [ ] 1. UI:
   - [ ] a. Better free view camera
