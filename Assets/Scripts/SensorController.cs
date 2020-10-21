@@ -6,12 +6,15 @@ public class SensorController : MonoBehaviour
 {
     public float maxHitDistance;
     public LineRenderer sensorLine;
-    private float hitDistance = -1f;   
+    private float hitDistance;  
+    bool sensorReady;
 
     // Start is called before the first frame update
     void Start()
     {
         sensorLine.SetPosition(1, transform.forward * maxHitDistance);
+        sensorReady = false;
+        hitDistance = 0;
     }
 
     // Update is called once per frame
@@ -25,13 +28,19 @@ public class SensorController : MonoBehaviour
             sensorLine.startColor = Color.red;
             sensorLine.endColor = Color.red;
         } else {
-            hitDistance = -1f;
+            hitDistance = maxHitDistance;
             sensorLine.startColor = Color.yellow;
             sensorLine.endColor = Color.yellow;
         }
+        
+        sensorReady = true;
     }
 
     public float getHitDistance() {
         return hitDistance;
+    }
+
+    public bool getSensorReady() {
+        return sensorReady;
     }
 }

@@ -9,21 +9,23 @@ public class RobotController : MonoBehaviour
     public MotorsController MC_L;
     public SensorController SC;
 
-    public TrailRenderer path;
+    public TrailRenderer travelPath;
 
     public float speed_change;
     public float speedR_change;
     public float speedL_change;
 
-    private float leftMotorSpeed = -1f;
-    private float rightMotorSpeed = -1f;
-    private float robotVelocity = -1f;
-    private float sensorReading = -1f;
+    private float leftMotorSpeed = 0;
+    private float rightMotorSpeed = 0;
+    private float robotVelocity = 0;
+    private float sensorReading = 0;
+
+    private Rigidbody robotRb;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        robotRb = this.GetComponentInChildren<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -31,7 +33,7 @@ public class RobotController : MonoBehaviour
     {
         checkForKeyPresses();
         readInputs();
-        Debug.Log("SpeedL: "+ MC_L.getSpeed() + " SpeedR: "+ MC_R.getSpeed() + " | Velocity: " + String.Format("{0:0.00}", this.GetComponentInChildren<Rigidbody>().velocity.magnitude) + " m/s" + string.Format(" | Sensor:  {0:0.00} ", SC.getHitDistance()));
+        //Debug.Log("SpeedL: "+ MC_L.getSpeed() + " SpeedR: "+ MC_R.getSpeed() + " | Velocity: " + String.Format("{0:0.00}", this.GetComponentInChildren<Rigidbody>().velocity.magnitude) + " m/s" + string.Format(" | Sensor:  {0:0.00} ", SC.getHitDistance()));
     }
 
     void checkForKeyPresses() {
@@ -43,7 +45,6 @@ public class RobotController : MonoBehaviour
         *   Right arrow:            + speedR_change for right wheel [->]
         *   Shift + Right arrow:    - speedR_change for right wheel [S + ->]
         *   Space:                  Reset all speeds to 0 and brake [_]
-        *   T:                      Show/Hide travel path           [T]
         */
         if (Input.GetKeyDown(KeyCode.UpArrow)) {
             MC_R.addSpeed(speed_change);
@@ -69,18 +70,12 @@ public class RobotController : MonoBehaviour
             MC_R.setBrake(false);
             MC_L.setBrake(false);
         }
-
-
-
-        if (Input.GetKeyDown(KeyCode.T)) {
-            togglePath();
-        }
     }
 
     void readInputs() {
         leftMotorSpeed = MC_L.getSpeed();
         rightMotorSpeed = MC_R.getSpeed();
-        robotVelocity = this.GetComponentInChildren<Rigidbody>().velocity.magnitude;
+        robotVelocity = robotRb.velocity.magnitude;
         sensorReading = SC.getHitDistance();
     }
 
@@ -97,11 +92,11 @@ public class RobotController : MonoBehaviour
         return sensorReading;
     }
 
-    void togglePath() {
-        if (path.enabled == true) {
-            path.enabled = false;
-        } else if (path.enabled == false) {
-            path.enabled = true;
+    public void togglePath() {
+        if (travelPath.enabled == true) {
+            travelPath.enabled = false;
+        } else if (travelPath.enabled == false) {
+            travelPath.enabled = true;
         }
     }
 }

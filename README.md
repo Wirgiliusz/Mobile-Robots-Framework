@@ -7,14 +7,14 @@
     - [x] b. Speed control
     - [x] c. Steering
     - [x] d. Keyboard shortcuts
-- [ ] 2. Sensors:
+- [x] 2. Sensors:
     - [x] a. Measuring distance
-    - [ ] b. Using sensors measurments to control velocity
-    - [ ] c. (?) Wheels encoders
+    - [x] b. Using sensors measurments to control velocity
+    - [x] c. Wheels encoders
 - [x] 3. Obstacles
 - [ ] 4. Robot model based on implemented features
 - [ ] 5. PID controller:
-    - [ ] a. Automatic acceleration and deceleration before obstacle
+    - [x] a. Automatic acceleration and deceleration before obstacle
 - [ ] 6. Second robot model
 - [ ] 7. Environments:
     - [ ] a. Different obstacles
@@ -44,3 +44,9 @@
     - [ ] rotation
   - [x] b. Better overhead camera
     - [x] zoom level change
+
+- [ ] 2. PID controller:
+  - [ ] a. Add I
+  - [ ] b. Decide what to do with negative 'u':
+    - using 'arrived' bool makes robot stop before destination
+    - not using 'arrived' makes it do weird moves close to destination 
