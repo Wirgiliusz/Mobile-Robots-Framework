@@ -13,7 +13,7 @@ public class SensorController : MonoBehaviour
     void Start()
     {
         sensorLine = this.GetComponent<LineRenderer>();
-        sensorLine.SetPosition(1, transform.forward * maxHitDistance * 66.666f);
+        sensorLine.SetPosition(1, Vector3.forward * maxHitDistance * 66.666f); //TODO Fix sensors ray visualisation
         sensorReady = false;
         hitDistance = 0;
     }
