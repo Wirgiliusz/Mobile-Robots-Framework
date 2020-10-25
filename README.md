@@ -39,9 +39,10 @@
   - [x] d. Move UI/Camera control elements from RobotController.cs to different script (ProgramController.cs?)
 
 ### Bugfixes
-- [ ] 1. Micromouse robot model:
-  - [ ] - Fix model shaking
+- [x] 1. Micromouse robot model:
+  - [x] - Fix model shaking
     - Cause is probably wheels / weight
+  - [x] Overhead camera weird models
 
 ### Improvements
 - [ ] 1. UI:
