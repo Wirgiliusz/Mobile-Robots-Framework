@@ -5,14 +5,15 @@ using UnityEngine;
 public class SensorController : MonoBehaviour
 {
     public float maxHitDistance;
-    public LineRenderer sensorLine;
+    private LineRenderer sensorLine;
     private float hitDistance;  
     bool sensorReady;
 
     // Start is called before the first frame update
     void Start()
     {
-        sensorLine.SetPosition(1, transform.forward * maxHitDistance);
+        sensorLine = this.GetComponent<LineRenderer>();
+        sensorLine.SetPosition(1, transform.forward * maxHitDistance * 66.666f);
         sensorReady = false;
         hitDistance = 0;
     }
