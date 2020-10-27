@@ -70,6 +70,11 @@ public class RobotController : MonoBehaviour
             MC_R.setBrake(false);
             MC_L.setBrake(false);
         }
+
+        if (Input.GetKey(KeyCode.P)) {
+            MC_R.setSpeedPercent(100);
+            MC_L.setSpeedPercent(-100);
+        }
     }
 
     void readInputs() {

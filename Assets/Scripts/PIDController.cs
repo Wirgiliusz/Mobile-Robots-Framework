@@ -17,6 +17,12 @@ public class PIDController : MonoBehaviour
     public float distance_wanted;
     bool arrived;
 
+    enum Side
+    {
+        right,
+        left,
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,5 +62,11 @@ public class PIDController : MonoBehaviour
             e_prev = e;
         }
         
+    }
+
+    void rotate(Side side) {
+        if (side == Side.left) {
+            
+        }
     }
 }

@@ -60,8 +60,8 @@ public class MotorsController : MonoBehaviour
         if (speedPercent > 100) {
             speedPercent = 100;
         }
-        if (speedPercent < 0) {
-            speedPercent = 0;
+        if (speedPercent < -100) {
+            speedPercent = -100;
         }
 
         speedPercent /= 100;
