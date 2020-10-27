@@ -15,7 +15,9 @@
 - [ ] 4. Robot model based on implemented features
 - [ ] 5. PID controller:
     - [x] a. Automatic acceleration and deceleration before obstacle
-- [ ] 6. Second robot model
+- [ ] 6. Second robot model (Micromouse)
+  - [x] a. Add model
+  - [ ] b. Write driver
 - [ ] 7. Environments:
     - [ ] a. Different obstacles
 - [ ] 8. UI:
