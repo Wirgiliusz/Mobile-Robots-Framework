@@ -52,10 +52,14 @@ public class PIDController : MonoBehaviour
     void FixedUpdate()
     {
         timer += Time.deltaTime;
-        /*
-        if (sensorFront.getSensorReady()) {
-            //Debug.Log("Arrived: " + arrived + " | u = " + u + " | e = " + e);
+        if (timer > 1.0f) {
+            rotate(Side.left);
+        }
 
+    }
+
+    void drive() {
+        if (sensorFront.getSensorReady()) {
             if (!arrived) {
                 distance = sensorFront.getHitDistance();
 
@@ -79,38 +83,39 @@ public class PIDController : MonoBehaviour
         
             e_prev = e;
         }
-        */
-
-        if (timer > 1.0f) {
-            if (!arrived_r) {
-            Debug.Log(distance_r);
-            distance_r = motorLeft.getRotation();
+    }
+    
+    void rotate(Side side) {
+        if (!arrived_r) {
+            if (side == Side.right) {
+                distance_r = motorLeft.getRotation();
+            } else {
+                distance_r = motorRight.getRotation();
+            }
 
             e_r = distance_wanted_r - distance_r;
-            Debug.Log("e: " + e_r);
             u_r = Kp_r*e_r + Kd_r*(e_r - e_prev_r);
-            Debug.Log("u: " + u_r);
+        } else {
+            u_r = 0;
+        }
 
-            } else {
-                u_r = 0;
-            }
+        if (u_r <= 0) {
+            motorLeft.setBrake(true);
+            motorRight.setBrake(true);
+            arrived_r = true;
+        }
 
-            if (u_r <= 0) {
-                Debug.Log("how");
-                motorLeft.setBrake(true);
-                motorRight.setBrake(true);
-                arrived_r = true;
-            }
-
+        if (side == Side.right) {
             motorLeft.setSpeedPercent((float)u_r);
             motorRight.setSpeedPercent(-(float)u_r);
-        
-            e_prev = e;
+        } else if (side == Side.left) {
+            motorLeft.setSpeedPercent(-(float)u_r);
+            motorRight.setSpeedPercent((float)u_r);
         }
         
+        e_prev = e;   
     }
 
-    // TODO 
     /*
     void rotate() {
         double Kp_r = 0.05f;
