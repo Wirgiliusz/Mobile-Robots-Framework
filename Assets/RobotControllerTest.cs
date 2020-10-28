@@ -66,7 +66,7 @@ public class RobotControllerTest : MonoBehaviour
         } else if (Input.GetKeyDown(KeyCode.LeftArrow) && Input.GetKey(KeyCode.LeftShift)) {
             MC_L.addSpeed(-speedL_change);
         }
-        if (!Input.GetKey(KeyCode.Space)) {
+        if (Input.GetKeyUp(KeyCode.Space)) {
             MC_R.setBrake(false);
             MC_L.setBrake(false);
         }

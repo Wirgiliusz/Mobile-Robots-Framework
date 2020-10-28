@@ -94,6 +94,10 @@ public class MotorsController : MonoBehaviour
         return (int)((rotation/360f) * encoderResolution);
     }
 
+    public float getDistance() {
+        return (rotation/360f) * wheelCircumference;
+    }
+
     void updateWheelModelRotation() {
         Quaternion rotation;
         Vector3 position;

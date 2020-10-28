@@ -8,6 +8,7 @@ public class PIDController : MonoBehaviour
     public MotorsController motorLeft;
     public SensorController sensorFront;
 
+    [Header("PD variables for driving stright")]
     public double Kp;
     public double Kd;
     private double u;
@@ -17,14 +18,17 @@ public class PIDController : MonoBehaviour
     public float distance_wanted;
     bool arrived;
 
-    double Kp_r = 0.005f;
-    double Kd_r = 0.03f;
-    double u_r = 0;
-    int e_r = 0;
-    int e_prev_r = 0;
-    int distance_r = 0;
-    int distance_wanted_r;
-    bool arrived_r = false;
+    [Header("PD variables for rotating")]
+    public double Kp_r;
+    public double Kd_r;
+    private double u_r;
+    private double e_r;
+    private double e_prev_r;
+    private double distance_r;
+    [Range(0, 360)]
+    public float rotation_wanted;
+    private float distance_wanted_r;
+    bool arrived_r;
 
     float timer = 0;
 
@@ -41,16 +45,25 @@ public class PIDController : MonoBehaviour
         e = 0;
         e_prev = 0;
         arrived = false;
-        //rotate();
-
-        distance_wanted_r = (int)(90f * (0.0525f/motorLeft.WC.radius));
-        Debug.Log("wanted: " + distance_wanted_r);
-
+        
+        e_r = 0;
+        e_prev_r = 0;
+        distance_r = 0;
+        //distance_wanted_r = (int)(rotation_wanted * (0.0525f/motorLeft.WC.radius));
+        distance_wanted_r = (float)(2f * (rotation_wanted/360f) * Mathf.PI * 0.0525f);
+        Debug.Log("-> Wanted: " + distance_wanted_r);
+        arrived_r = false;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        Debug.Log("Arrived?: " + arrived_r);
+        Debug.Log("e: " + e_r);
+        Debug.Log("u: " + u_r);
+        Debug.Log("Dist L: " + motorLeft.getDistance());
+        Debug.Log("Dist R: " + motorRight.getDistance());
+
         timer += Time.deltaTime;
         if (timer > 1.0f) {
             rotate(Side.left);
@@ -84,19 +97,27 @@ public class PIDController : MonoBehaviour
             e_prev = e;
         }
     }
-    
+
     void rotate(Side side) {
         if (!arrived_r) {
             if (side == Side.right) {
-                distance_r = motorLeft.getRotation();
+                distance_r = motorLeft.getDistance();
             } else {
-                distance_r = motorRight.getRotation();
+                distance_r = motorRight.getDistance();
             }
+            //Debug.Log("Distance: " + distance_r);
 
             e_r = distance_wanted_r - distance_r;
             u_r = Kp_r*e_r + Kd_r*(e_r - e_prev_r);
+            if (u_r > 15f) {
+                u_r = 15f;
+            }
         } else {
             u_r = 0;
+        }
+
+        if (e_r <= 0.001f) {
+            arrived_r = true;
         }
 
         if (u_r <= 0) {
@@ -112,7 +133,7 @@ public class PIDController : MonoBehaviour
             motorLeft.setSpeedPercent(-(float)u_r);
             motorRight.setSpeedPercent((float)u_r);
         }
-        
+   
         e_prev = e;   
     }
 

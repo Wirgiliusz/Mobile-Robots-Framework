@@ -34,7 +34,7 @@ public class RobotController : MonoBehaviour
         checkForKeyPresses();
         readInputs();
         //Debug.Log("SpeedL: "+ MC_L.getSpeed() + " SpeedR: "+ MC_R.getSpeed() + " | Velocity: " + String.Format("{0:0.00}", this.GetComponentInChildren<Rigidbody>().velocity.magnitude) + " m/s" + string.Format(" | Sensor:  {0:0.00} ", SC.getHitDistance()));
-        Debug.Log(MC_L.getRotation());
+        //Debug.Log(MC_L.getRotation());
     }
 
     void checkForKeyPresses() {
