@@ -55,6 +55,13 @@ public class PIDController : MonoBehaviour
         arrived_r = false;
     }
 
+    // ! ------------ 
+    // TODO
+    // - Zdecydowac czy uzywac impulsow (zmienic czujnik na impulsy) czy dystansu (zmienic kola na dystans)
+    // - Sprawdzic dokladniej dzialanie PD 
+    // - Zrobic aby robot przejechal labirynt
+    // ! ------------ 
+
     // Update is called once per frame
     void FixedUpdate()
     {
