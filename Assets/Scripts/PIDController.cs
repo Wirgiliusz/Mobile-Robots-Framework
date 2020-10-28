@@ -66,7 +66,8 @@ public class PIDController : MonoBehaviour
 
         timer += Time.deltaTime;
         if (timer > 1.0f) {
-            rotate(Side.left);
+            //rotate(Side.left);
+            drive();
         }
 
     }

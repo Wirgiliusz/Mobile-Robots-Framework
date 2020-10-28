@@ -509,11 +509,11 @@ WheelCollider:
   m_Mass: 0.1
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
-    m_ExtremumSlip: 0.2
-    m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.2
-    m_AsymptoteValue: 1
-    m_Stiffness: 1
+    m_ExtremumSlip: 1
+    m_ExtremumValue: 3
+    m_AsymptoteSlip: 1
+    m_AsymptoteValue: 3
+    m_Stiffness: 1.1
   m_SidewaysFriction:
     m_ExtremumSlip: 0.4
     m_ExtremumValue: 1
@@ -2053,11 +2053,11 @@ WheelCollider:
   m_Mass: 0.1
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
-    m_ExtremumSlip: 0.2
-    m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.2
-    m_AsymptoteValue: 1
-    m_Stiffness: 1
+    m_ExtremumSlip: 1
+    m_ExtremumValue: 3
+    m_AsymptoteSlip: 1
+    m_AsymptoteValue: 3
+    m_Stiffness: 1.1
   m_SidewaysFriction:
     m_ExtremumSlip: 0.4
     m_ExtremumValue: 1
@@ -2702,6 +2702,9 @@ MonoBehaviour:
   Kp: 50
   Kd: 300
   distance_wanted: 0.05
+  Kp_r: 30
+  Kd_r: 150
+  rotation_wanted: 360
 --- !u!114 &1693205949
 MonoBehaviour:
   m_ObjectHideFlags: 0
