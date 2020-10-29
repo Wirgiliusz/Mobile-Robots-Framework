@@ -49,8 +49,8 @@ public class PIDController : MonoBehaviour
         e_r = 0;
         e_prev_r = 0;
         distance_r = 0;
-        distance_wanted_r = (int)(rotation_wanted * (0.0525f/motorLeft.WC.radius)) * (motorLeft.encoderResolution/360);
-        //distance_wanted_r = (float)(2f * (rotation_wanted/360f) * Mathf.PI * 0.0525f);
+        //distance_wanted_r = (int)(rotation_wanted * (0.0525f/motorLeft.WC.radius)) * (motorLeft.encoderResolution/360);
+        distance_wanted_r = (float)(2f * (rotation_wanted/360f) * Mathf.PI * 0.0525f);
         Debug.Log("-> Wanted: " + distance_wanted_r);
         arrived_r = false;
     }
@@ -110,10 +110,12 @@ public class PIDController : MonoBehaviour
         if (!arrived_r) {
             if (side == Side.right) {
                 //distance_r = motorLeft.getDistance();
-                distance_r = motorLeft.getRotation();
+                //distance_r = motorLeft.getRotation();
+                distance_r = impulseToDistance(motorLeft.getRotation());
             } else {
                 //distance_r = motorRight.getDistance();
-                distance_r = motorRight.getRotation();
+                //distance_r = motorRight.getRotation();
+                distance_r = impulseToDistance(motorRight.getRotation());
             }
             //Debug.Log("Distance: " + distance_r);
 
@@ -147,42 +149,7 @@ public class PIDController : MonoBehaviour
         e_prev = e;   
     }
 
-    /*
-    void rotate() {
-        double Kp_r = 0.05f;
-        double Kd_r = 0.3f;
-        double u_r = 0;
-        double e_r = 0;
-        double e_prev_r = 0;
-        float distance_r = 0;
-        float distance_wanted_r = 90 * (0.1f/motorLeft.WC.radius);
-        Debug.Log(distance_wanted_r);
-        bool arrived_r = false;
-
-        while(!arrived_r) {
-            Debug.Log(distance_r);
-
-            if (!arrived_r) {
-                distance_r = motorLeft.getRotation();
-
-                e_r = distance_wanted_r - distance_r;
-                u_r = Kp_r*e_r + Kd_r*(e_r - e_prev_r);
-            } else {
-                u_r = 0;
-            }
-
-            if (u <= 0) {
-                motorLeft.setBrake(true);
-                motorRight.setBrake(true);
-                arrived_r = true;
-            }
-
-            motorLeft.setSpeedPercent((float)u_r);
-            motorRight.setSpeedPercent(-(float)u_r);
-        
-            e_prev = e;
-        }
- 
+    double impulseToDistance(int impulseCount) {
+        return 2 * Mathf.PI * motorLeft.WC.radius * (impulseCount/motorLeft.encoderResolution);
     }
-    */
 }

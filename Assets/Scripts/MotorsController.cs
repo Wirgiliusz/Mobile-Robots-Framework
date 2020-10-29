@@ -90,7 +90,6 @@ public class MotorsController : MonoBehaviour
 
     // Returns number of encoder ticks based on rotation and resolution
     public int getRotation() {
-        
         return (int)((rotation/360f) * encoderResolution);
     }
 
