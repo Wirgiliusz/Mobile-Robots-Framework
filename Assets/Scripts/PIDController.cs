@@ -58,7 +58,7 @@ public class PIDController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //movNumber = 1;
+        //movNumber = 0;
         Debug.Log(movNumber);
         timer += Time.deltaTime;
         if (timer > 1.0f) {
@@ -90,9 +90,10 @@ public class PIDController : MonoBehaviour
                 resetDrive();
                 resetRotate();
 
-                if (movNumber < movList.Length) {
+                if (movNumber < movList.Length - 1) {
                     ++movNumber;
                 }
+
                 movFinished = false;
             }
 
@@ -112,7 +113,11 @@ public class PIDController : MonoBehaviour
                 movFinished = true;
             }
             
-            if (u <= 0) {
+            if (e <= 0.001f) {
+                arrived = true;
+            }
+
+            if (u == 0) {
                 motorLeft.setBrake(true);
                 motorRight.setBrake(true);
                 arrived = true;
