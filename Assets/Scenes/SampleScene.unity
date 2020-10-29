@@ -536,7 +536,7 @@ MonoBehaviour:
   WC: {fileID: 417021946}
   WheelModel: {fileID: 909761642}
   maxSpeed: 30
-  encoderResolution: 360
+  encoderResolution: 3600
 --- !u!1001 &452053121
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2080,7 +2080,7 @@ MonoBehaviour:
   WC: {fileID: 1115152436}
   WheelModel: {fileID: 1012569417}
   maxSpeed: 30
-  encoderResolution: 360
+  encoderResolution: 3600
 --- !u!1 &1242927142
 GameObject:
   m_ObjectHideFlags: 0
@@ -2704,7 +2704,7 @@ MonoBehaviour:
   distance_wanted: 0.05
   Kp_r: 30
   Kd_r: 150
-  rotation_wanted: 360
+  rotation_wanted: 90
 --- !u!114 &1693205949
 MonoBehaviour:
   m_ObjectHideFlags: 0
