@@ -49,8 +49,8 @@ public class PIDController : MonoBehaviour
         e_r = 0;
         e_prev_r = 0;
         distance_r = 0;
-        //distance_wanted_r = (int)(rotation_wanted * (0.0525f/motorLeft.WC.radius));
-        distance_wanted_r = (float)(2f * (rotation_wanted/360f) * Mathf.PI * 0.0525f);
+        distance_wanted_r = (int)(rotation_wanted * (0.0525f/motorLeft.WC.radius)) * (motorLeft.encoderResolution/360);
+        //distance_wanted_r = (float)(2f * (rotation_wanted/360f) * Mathf.PI * 0.0525f);
         Debug.Log("-> Wanted: " + distance_wanted_r);
         arrived_r = false;
     }
@@ -73,8 +73,8 @@ public class PIDController : MonoBehaviour
 
         timer += Time.deltaTime;
         if (timer > 1.0f) {
-            //rotate(Side.left);
-            drive();
+            rotate(Side.right);
+            //drive();
         }
 
     }
@@ -109,9 +109,11 @@ public class PIDController : MonoBehaviour
     void rotate(Side side) {
         if (!arrived_r) {
             if (side == Side.right) {
-                distance_r = motorLeft.getDistance();
+                //distance_r = motorLeft.getDistance();
+                distance_r = motorLeft.getRotation();
             } else {
-                distance_r = motorRight.getDistance();
+                //distance_r = motorRight.getDistance();
+                distance_r = motorRight.getRotation();
             }
             //Debug.Log("Distance: " + distance_r);
 
