@@ -26,17 +26,19 @@ public class PIDController : MonoBehaviour
     private double e_prev_r;
     private double distance_r;
     [Range(0, 360)]
-    public float rotation_wanted;
-    private float distance_wanted_r;
+    public double rotation_wanted;
+    private double distance_wanted_r;
     bool arrived_r;
 
     float timer = 0;
 
-    enum Side
-    {
-        right,
-        left,
-    }
+    enum Side {right, left, }
+
+    enum Direction {driveStright, rotateRight, rotateLeft, stop}
+
+    Direction[] movList = new Direction[] {Direction.driveStright, Direction.rotateRight, Direction.driveStright, Direction.rotateRight, Direction.driveStright, Direction.rotateLeft, Direction.driveStright, Direction.rotateLeft, Direction.driveStright, Direction.stop, };
+    int movNumber = 0;
+    bool movFinished = false;
 
     // Start is called before the first frame update
     void Start()
@@ -56,10 +58,44 @@ public class PIDController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        //movNumber = 1;
+        Debug.Log(movNumber);
         timer += Time.deltaTime;
         if (timer > 1.0f) {
             //rotate(Side.left);
-            drive();
+            //drive();
+
+            switch(movList[movNumber]) {
+                case Direction.driveStright:
+                drive();
+                break;
+
+                case Direction.rotateLeft:
+                rotate(Side.left);
+                break;
+
+                case Direction.rotateRight:
+                rotate(Side.right);
+                break;
+
+                case Direction.stop:
+                break;
+
+                default:
+                Debug.Log("Switch out of bounds!");
+                break;
+            }
+
+            if (movFinished) {
+                resetDrive();
+                resetRotate();
+
+                if (movNumber < movList.Length) {
+                    ++movNumber;
+                }
+                movFinished = false;
+            }
+
         }
 
     }
@@ -73,6 +109,7 @@ public class PIDController : MonoBehaviour
                 u = Kp*e + Kd*(e - e_prev);
             } else {
                 u = 0;
+                movFinished = true;
             }
             
             if (u <= 0) {
@@ -91,6 +128,15 @@ public class PIDController : MonoBehaviour
         }
     }
 
+    void resetDrive() {
+        u = 0;
+        e = 0;
+        e_prev = 0;
+        arrived = false;
+        motorLeft.resetTicks();
+        motorRight.resetTicks();
+    }
+
     void rotate(Side side) {
         if (!arrived_r) {
             if (side == Side.right) {
@@ -106,16 +152,20 @@ public class PIDController : MonoBehaviour
             }
         } else {
             u_r = 0;
+            movFinished = true;
         }
 
-        if (e_r <= 0.001f) {
+        if (e_r <= 0.0001f) {
             arrived_r = true;
         }
 
-        if (u_r <= 0) {
+        if (u_r == 0) {
             motorLeft.setBrake(true);
             motorRight.setBrake(true);
             arrived_r = true;
+        } else {
+            motorLeft.setBrake(false);
+            motorRight.setBrake(false);
         }
 
         if (side == Side.right) {
@@ -127,6 +177,14 @@ public class PIDController : MonoBehaviour
         }
    
         e_prev = e;   
+    }
+
+    void resetRotate() {
+        e_r = 0;
+        e_prev_r = 0;
+        distance_r = 0;
+        distance_wanted_r = (float)(2f * (rotation_wanted/360f) * Mathf.PI * 0.0525f);
+        arrived_r = false;
     }
 
     double motorImpulseToDistance(int impulseCount) {

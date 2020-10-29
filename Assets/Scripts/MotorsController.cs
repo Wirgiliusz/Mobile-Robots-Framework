@@ -95,6 +95,10 @@ public class MotorsController : MonoBehaviour
         return (rotation/360f) * wheelCircumference;
     }
 
+    public void resetTicks() {
+        rotation = 0;
+    }
+
     void updateWheelModelRotation() {
         Quaternion rotation;
         Vector3 position;
