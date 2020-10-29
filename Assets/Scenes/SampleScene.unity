@@ -293,6 +293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHitDistance: 0.3
+  sensorResolution: 1000
 --- !u!4 &329577785
 Transform:
   m_ObjectHideFlags: 0
@@ -829,6 +830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHitDistance: 0.3
+  sensorResolution: 1000
 --- !u!120 &607182332
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -2699,12 +2701,12 @@ MonoBehaviour:
   motorRight: {fileID: 1115152437}
   motorLeft: {fileID: 417021947}
   sensorFront: {fileID: 329577784}
-  Kp: 50
-  Kd: 300
+  Kp: 300
+  Kd: 900
   distance_wanted: 0.05
   Kp_r: 30
   Kd_r: 150
-  rotation_wanted: 90
+  rotation_wanted: 180
 --- !u!114 &1693205949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2999,6 +3001,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHitDistance: 0.3
+  sensorResolution: 1000
 --- !u!120 &1969756420
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -3368,6 +3371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHitDistance: 0.3
+  sensorResolution: 1000
 --- !u!120 &2063836366
 LineRenderer:
   m_ObjectHideFlags: 0
