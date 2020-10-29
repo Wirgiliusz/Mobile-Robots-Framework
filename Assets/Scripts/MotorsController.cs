@@ -14,7 +14,7 @@ public class MotorsController : MonoBehaviour
     private float rotation = 0;         // Wheel rotation in degrees
     //private float distance = 0;       // Distance traveled by wheel caloculated based on its circumference and rotation
 
-    public float encoderResolution;     // Resolution of the motor encoder. Number of ticks per 1 full rotation.
+    public int encoderResolution;     // Resolution of the motor encoder. Number of ticks per 1 full rotation.
 
     // Start is called before the first frame update
     void Start()

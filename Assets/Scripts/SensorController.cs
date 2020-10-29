@@ -9,6 +9,8 @@ public class SensorController : MonoBehaviour
     private float hitDistance;  
     bool sensorReady;
 
+    public float sensorResolution; // Resolution of the sensor. Number of ticks at maxHitDistance
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +41,10 @@ public class SensorController : MonoBehaviour
 
     public float getHitDistance() {
         return hitDistance;
+    }
+
+    public int getHitTicks() {
+        return (int)((hitDistance/maxHitDistance) * sensorResolution);
     }
 
     public bool getSensorReady() {

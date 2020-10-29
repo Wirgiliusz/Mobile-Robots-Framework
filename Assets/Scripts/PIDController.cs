@@ -14,8 +14,8 @@ public class PIDController : MonoBehaviour
     private double u;
     private double e;
     private double e_prev;
-    private float distance;
-    public float distance_wanted;
+    private double distance;
+    public double distance_wanted;
     bool arrived;
 
     [Header("PD variables for rotating")]
@@ -73,8 +73,8 @@ public class PIDController : MonoBehaviour
 
         timer += Time.deltaTime;
         if (timer > 1.0f) {
-            rotate(Side.right);
-            //drive();
+            //rotate(Side.right);
+            drive();
         }
 
     }
@@ -82,7 +82,8 @@ public class PIDController : MonoBehaviour
     void drive() {
         if (sensorFront.getSensorReady()) {
             if (!arrived) {
-                distance = sensorFront.getHitDistance();
+                //distance = sensorFront.getHitDistance();
+                distance = sensorImpulseToDistance(sensorFront.getHitTicks());
 
                 e = distance - distance_wanted;
                 u = Kp*e + Kd*(e - e_prev);
@@ -111,11 +112,11 @@ public class PIDController : MonoBehaviour
             if (side == Side.right) {
                 //distance_r = motorLeft.getDistance();
                 //distance_r = motorLeft.getRotation();
-                distance_r = impulseToDistance(motorLeft.getRotation());
+                distance_r = motorImpulseToDistance(motorLeft.getRotation());
             } else {
                 //distance_r = motorRight.getDistance();
                 //distance_r = motorRight.getRotation();
-                distance_r = impulseToDistance(motorRight.getRotation());
+                distance_r = motorImpulseToDistance(motorRight.getRotation());
             }
             //Debug.Log("Distance: " + distance_r);
 
@@ -149,7 +150,11 @@ public class PIDController : MonoBehaviour
         e_prev = e;   
     }
 
-    double impulseToDistance(int impulseCount) {
+    double motorImpulseToDistance(int impulseCount) {
         return 2 * Mathf.PI * motorLeft.WC.radius * (impulseCount/motorLeft.encoderResolution);
+    }
+
+    double sensorImpulseToDistance(int impulseCount) {
+        return sensorFront.maxHitDistance * (impulseCount/sensorFront.sensorResolution); 
     }
 }
