@@ -2701,12 +2701,12 @@ MonoBehaviour:
   motorRight: {fileID: 1115152437}
   motorLeft: {fileID: 417021947}
   sensorFront: {fileID: 329577784}
-  Kp: 300
-  Kd: 900
-  distance_wanted: 0.05
-  Kp_r: 30
-  Kd_r: 150
-  rotation_wanted: 180
+  Kp: 400
+  Kd: 400
+  distance_wanted: 0.09
+  Kp_r: 300
+  Kd_r: 1500
+  rotation_wanted: 92
 --- !u!114 &1693205949
 MonoBehaviour:
   m_ObjectHideFlags: 0
