@@ -49,32 +49,17 @@ public class PIDController : MonoBehaviour
         e_r = 0;
         e_prev_r = 0;
         distance_r = 0;
-        //distance_wanted_r = (int)(rotation_wanted * (0.0525f/motorLeft.WC.radius)) * (motorLeft.encoderResolution/360);
         distance_wanted_r = (float)(2f * (rotation_wanted/360f) * Mathf.PI * 0.0525f);
-        Debug.Log("-> Wanted: " + distance_wanted_r);
         arrived_r = false;
     }
-
-    // ! ------------ 
-    // TODO
-    // - Zdecydowac czy uzywac impulsow (zmienic czujnik na impulsy) czy dystansu (zmienic kola na dystans)
-    // - Sprawdzic dokladniej dzialanie PD 
-    // - Zrobic aby robot przejechal labirynt
-    // ! ------------ 
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        Debug.Log("Arrived?: " + arrived_r);
-        Debug.Log("e: " + e_r);
-        Debug.Log("u: " + u_r);
-        Debug.Log("Dist L: " + motorLeft.getDistance());
-        Debug.Log("Dist R: " + motorRight.getDistance());
-
         timer += Time.deltaTime;
         if (timer > 1.0f) {
-            //rotate(Side.right);
-            drive();
+            rotate(Side.right);
+            //drive();
         }
 
     }
@@ -82,7 +67,6 @@ public class PIDController : MonoBehaviour
     void drive() {
         if (sensorFront.getSensorReady()) {
             if (!arrived) {
-                //distance = sensorFront.getHitDistance();
                 distance = sensorImpulseToDistance(sensorFront.getHitTicks());
 
                 e = distance - distance_wanted;
@@ -110,15 +94,10 @@ public class PIDController : MonoBehaviour
     void rotate(Side side) {
         if (!arrived_r) {
             if (side == Side.right) {
-                //distance_r = motorLeft.getDistance();
-                //distance_r = motorLeft.getRotation();
-                distance_r = motorImpulseToDistance(motorLeft.getRotation());
+                distance_r = motorImpulseToDistance(motorLeft.getRotationTicks());
             } else {
-                //distance_r = motorRight.getDistance();
-                //distance_r = motorRight.getRotation();
-                distance_r = motorImpulseToDistance(motorRight.getRotation());
+                distance_r = motorImpulseToDistance(motorRight.getRotationTicks());
             }
-            //Debug.Log("Distance: " + distance_r);
 
             e_r = distance_wanted_r - distance_r;
             u_r = Kp_r*e_r + Kd_r*(e_r - e_prev_r);
@@ -151,7 +130,7 @@ public class PIDController : MonoBehaviour
     }
 
     double motorImpulseToDistance(int impulseCount) {
-        return 2 * Mathf.PI * motorLeft.WC.radius * (impulseCount/motorLeft.encoderResolution);
+        return 2 * Mathf.PI * motorLeft.WC.radius * (impulseCount/(double)motorLeft.encoderResolution);
     }
 
     double sensorImpulseToDistance(int impulseCount) {

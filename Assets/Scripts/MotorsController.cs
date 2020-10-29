@@ -12,7 +12,6 @@ public class MotorsController : MonoBehaviour
 
     private float wheelCircumference;   // Wheel circumference in meters
     private float rotation = 0;         // Wheel rotation in degrees
-    //private float distance = 0;       // Distance traveled by wheel caloculated based on its circumference and rotation
 
     public int encoderResolution;     // Resolution of the motor encoder. Number of ticks per 1 full rotation.
 
@@ -28,7 +27,6 @@ public class MotorsController : MonoBehaviour
     {
         updateWheelModelRotation();
         rotation += (WC.rpm * (Time.deltaTime/60f)) * 360f;
-        //distance = (rotation/360f) * wheelCircumference;
     }
 
 
@@ -89,11 +87,11 @@ public class MotorsController : MonoBehaviour
     }
 
     // Returns number of encoder ticks based on rotation and resolution
-    public int getRotation() {
+    public int getRotationTicks() {
         return (int)((rotation/360f) * encoderResolution);
     }
 
-    public float getDistance() {
+    private float getDistance() {
         return (rotation/360f) * wheelCircumference;
     }
 
