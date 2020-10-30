@@ -30,7 +30,7 @@ public class PIDController : MonoBehaviour
     private double distance_wanted_r;
     bool arrived_r;
 
-    float timer = 0;
+    bool play = false;
 
     enum Side {right, left, }
 
@@ -58,13 +58,7 @@ public class PIDController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //movNumber = 0;
-        Debug.Log(movNumber);
-        timer += Time.deltaTime;
-        if (timer > 1.0f) {
-            //rotate(Side.left);
-            //drive();
-
+        if (play) {
             switch(movList[movNumber]) {
                 case Direction.driveStright:
                 drive();
@@ -96,9 +90,7 @@ public class PIDController : MonoBehaviour
 
                 movFinished = false;
             }
-
         }
-
     }
 
     void drive() {
@@ -131,15 +123,6 @@ public class PIDController : MonoBehaviour
         
             e_prev = e;
         }
-    }
-
-    void resetDrive() {
-        u = 0;
-        e = 0;
-        e_prev = 0;
-        arrived = false;
-        motorLeft.resetTicks();
-        motorRight.resetTicks();
     }
 
     void rotate(Side side) {
@@ -184,6 +167,15 @@ public class PIDController : MonoBehaviour
         e_prev = e;   
     }
 
+    void resetDrive() {
+        u = 0;
+        e = 0;
+        e_prev = 0;
+        arrived = false;
+        motorLeft.resetTicks();
+        motorRight.resetTicks();
+    }
+
     void resetRotate() {
         e_r = 0;
         e_prev_r = 0;
@@ -198,5 +190,9 @@ public class PIDController : MonoBehaviour
 
     double sensorImpulseToDistance(int impulseCount) {
         return sensorFront.maxHitDistance * (impulseCount/sensorFront.sensorResolution); 
+    }
+
+    public void setPlay(bool state) {
+        play = state;
     }
 }

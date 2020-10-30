@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ProgramMaster : MonoBehaviour
 {
@@ -11,11 +12,15 @@ public class ProgramMaster : MonoBehaviour
     public Camera overheadCamera;
     public Camera freeCamera;
 
-    public RobotController RC;
+    public GameObject Robot;
+    private RobotController RC;
+    private PIDController PC;
 
     // Start is called before the first frame update
     void Start()
     {
+        RC = Robot.GetComponent<RobotController>();
+        PC = Robot.GetComponent<PIDController>();
         overheadCamera.enabled = false;
         freeCamera.enabled = false;  
     }
@@ -26,6 +31,8 @@ public class ProgramMaster : MonoBehaviour
         /* Global program keybinds
         * C:    Switch camera       [C]
         * T:    Toggle travel path  [T]
+        * P:    Play simulation     [P]
+        * R:    Restart simulation  [R]
         */
         if (Input.GetKeyDown(KeyCode.C)) {
             switchCamera();
@@ -33,6 +40,14 @@ public class ProgramMaster : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.T)) {
             RC.togglePath();
+        }
+
+        if (Input.GetKeyDown(KeyCode.P)) {
+            PC.setPlay(true);
+        }
+
+        if (Input.GetKeyDown(KeyCode.R)) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         updateUI();
