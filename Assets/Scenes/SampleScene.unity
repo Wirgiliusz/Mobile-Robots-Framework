@@ -2592,7 +2592,7 @@ MonoBehaviour:
   robotCamera: {fileID: 1452214043}
   overheadCamera: {fileID: 1781745683}
   freeCamera: {fileID: 783492652}
-  RC: {fileID: 1693205949}
+  Robot: {fileID: 1693205947}
 --- !u!4 &1665392041
 Transform:
   m_ObjectHideFlags: 0
@@ -2706,7 +2706,7 @@ MonoBehaviour:
   distance_wanted: 0.09
   Kp_r: 300
   Kd_r: 1500
-  rotation_wanted: 92
+  rotation_wanted: 93
 --- !u!114 &1693205949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2942,7 +2942,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1928568685}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.29441226, y: -0.14897084, z: 0.38300312}
+  m_LocalPosition: {x: 0.29441226, y: -0.35, z: 0.38300312}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1592914831}
@@ -3656,7 +3656,7 @@ TrailRenderer:
     textureMode: 0
     shadowBias: 0.5
     generateLightingData: 0
-  m_MinVertexDistance: 0.1
+  m_MinVertexDistance: 0.001
   m_Autodestruct: 0
   m_Emitting: 1
 --- !u!54 &2089064502
