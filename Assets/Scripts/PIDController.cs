@@ -105,7 +105,7 @@ public class PIDController : MonoBehaviour
                 movFinished = true;
             }
             
-            if (e <= 0.001f) {
+            if (e <= 0.001d && e >= -0.001d) {
                 arrived = true;
             }
 
@@ -143,7 +143,7 @@ public class PIDController : MonoBehaviour
             movFinished = true;
         }
 
-        if (e_r <= 0.0001f) {
+        if (e_r <= 0.00001d && e_r >= -0.00001d) {
             arrived_r = true;
         }
 
