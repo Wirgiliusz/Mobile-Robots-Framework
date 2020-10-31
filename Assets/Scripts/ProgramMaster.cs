@@ -60,15 +60,13 @@ public class ProgramMaster : MonoBehaviour
 
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit)) {
                 if (hit.transform.parent != null && hit.transform.parent.gameObject.tag == "Robot") {
-                    Debug.Log("Clicked on robot");
+                    Debug.Log("Selected");
                     selectedRobot = hit.transform.parent.gameObject;
                 } else {
-                    Debug.Log("Missed robot");
+                    Debug.Log("Unselected robot");
                     selectedRobot = null;
                 }
-            } else {
-                Debug.Log("No raycast hit");
-            }
+            } 
 
         }
 

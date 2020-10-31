@@ -28,10 +28,11 @@
         - [x] Travel path (trail)
     - [ ] b. Switching between robots models
     - [ ] c. Switching between environments
-    - [ ] d. Camera settings:
+    - [x] d. Camera settings:
       - [x] Follow the robot
       - [x] Overhead
       - [x] Free view
+      - [x] Possibility to toggle robot following by clicking
 - [x] 9. Program structure:
   - [x] a. Main robot script that controls smaller components:
     - Sensors scripts
@@ -55,6 +56,6 @@
 
 - [ ] 2. PID controller:
   - [ ] a. Add I
-  - [ ] b. Decide what to do with negative 'u':
+  - [x] b. Decide what to do with negative 'u':
     - using 'arrived' bool makes robot stop before destination
     - not using 'arrived' makes it do weird moves close to destination 
