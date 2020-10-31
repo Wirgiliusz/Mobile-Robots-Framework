@@ -13,6 +13,7 @@ public class ProgramMaster : MonoBehaviour
     public Camera freeCamera;
     public Vector3 robotCameraPositionOffset;
     public Vector3 robotCameraRotationOffset;
+    public Vector3 freeCameraOffset;
 
     private GameObject selectedRobot = null;
 
@@ -63,6 +64,7 @@ public class ProgramMaster : MonoBehaviour
                     selectedRobot = hit.transform.parent.gameObject;
                 } else {
                     Debug.Log("Missed robot");
+                    selectedRobot = null;
                 }
             } else {
                 Debug.Log("No raycast hit");
@@ -108,6 +110,8 @@ public class ProgramMaster : MonoBehaviour
         
             overheadCamera.transform.position = robotPos + new Vector3(0,10,0);
             overheadCamera.transform.rotation = Quaternion.Euler(robotRot + new Vector3(90,0,0));
+
+            freeCamera.transform.position = robotPos + freeCameraOffset;
         }
     }
 

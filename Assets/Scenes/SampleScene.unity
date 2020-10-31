@@ -2868,7 +2868,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5aac135e25423d47abc6508bb8b2aad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoomSpeed: 0.01
+  flySpeed: 0.01
+  fastMultiplier: 3
+  slowMultiplier: 0.25
 --- !u!81 &1781745682
 AudioListener:
   m_ObjectHideFlags: 0
