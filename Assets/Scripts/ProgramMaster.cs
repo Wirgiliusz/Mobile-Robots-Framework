@@ -50,6 +50,21 @@ public class ProgramMaster : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
+        if (Input.GetMouseButtonDown(0)) {
+            RaycastHit hit = new RaycastHit();
+
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit)) {
+                if (hit.transform.parent != null && hit.transform.parent.gameObject.tag == "Robot") {
+                    Debug.Log("Clicked on robot");
+                } else {
+                    Debug.Log("Missed robot");
+                }
+            } else {
+                Debug.Log("No raycast hit");
+            }
+
+        }
+
         updateUI();
     }
 
