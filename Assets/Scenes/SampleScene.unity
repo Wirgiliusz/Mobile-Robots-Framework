@@ -221,7 +221,7 @@ Transform:
   - {fileID: 1431023194}
   - {fileID: 977345615}
   m_Father: {fileID: 2089064500}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &238204551
 GameObject:
@@ -639,7 +639,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.49, z: 1.3333334}
   m_Children: []
   m_Father: {fileID: 2089064500}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &543438357
 MeshCollider:
@@ -1010,7 +1010,7 @@ Transform:
   - {fileID: 2063836364}
   - {fileID: 1969756418}
   m_Father: {fileID: 2089064500}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
@@ -1243,7 +1243,7 @@ GameObject:
   - component: {fileID: 783492651}
   - component: {fileID: 783492654}
   m_Layer: 0
-  m_Name: Free Camera
+  m_Name: FreeCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2003,7 +2003,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1115152434
 GameObject:
@@ -2269,7 +2269,7 @@ GameObject:
   - component: {fileID: 1452214043}
   - component: {fileID: 1452214042}
   m_Layer: 0
-  m_Name: Follow Camera
+  m_Name: RobotCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2283,11 +2283,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1452214040}
   m_LocalRotation: {x: 0.25435913, y: -0, z: -0, w: 0.96710986}
-  m_LocalPosition: {x: 0, y: 103.12, z: -9.5}
-  m_LocalScale: {x: 6.6666665, y: 5.367467, z: 3.7922971}
+  m_LocalPosition: {x: 0.125, y: 1, z: -0.7}
+  m_LocalScale: {x: 0.6666667, y: 0.13812259, z: 0.22475697}
   m_Children: []
-  m_Father: {fileID: 2089064500}
-  m_RootOrder: 1
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 29.471, y: 0, z: 0}
 --- !u!81 &1452214042
 AudioListener:
@@ -2436,7 +2436,7 @@ RectTransform:
   - {fileID: 586986176}
   - {fileID: 1744287271}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2472,7 +2472,7 @@ GameObject:
   - component: {fileID: 1522965964}
   - component: {fileID: 1522965963}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: BodyMiddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2490,7 +2490,7 @@ Transform:
   m_LocalScale: {x: 1, y: 2, z: 0.33333334}
   m_Children: []
   m_Father: {fileID: 2089064500}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1522965963
 BoxCollider:
@@ -2592,6 +2592,8 @@ MonoBehaviour:
   robotCamera: {fileID: 1452214043}
   overheadCamera: {fileID: 1781745683}
   freeCamera: {fileID: 783492652}
+  robotCameraPositionOffset: {x: 0, y: 0.5, z: -1}
+  robotCameraRotationOffset: {x: 30, y: 0, z: 0}
   Robot: {fileID: 1693205947}
 --- !u!4 &1665392041
 Transform:
@@ -2605,7 +2607,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1678175119
 PrefabInstance:
@@ -2681,7 +2683,7 @@ GameObject:
   - component: {fileID: 1693205948}
   m_Layer: 0
   m_Name: RobotMicromouse
-  m_TagString: Untagged
+  m_TagString: Robot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2706,7 +2708,7 @@ MonoBehaviour:
   distance_wanted: 0.09
   Kp_r: 300
   Kd_r: 1500
-  rotation_wanted: 93
+  rotation_wanted: 92
 --- !u!114 &1693205949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2740,7 +2742,7 @@ Transform:
   - {fileID: 2089064500}
   - {fileID: 238204552}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1744287270
 GameObject:
@@ -2834,8 +2836,8 @@ GameObject:
   - component: {fileID: 1781745682}
   - component: {fileID: 1781745681}
   m_Layer: 0
-  m_Name: Overhead Camera
-  m_TagString: Untagged
+  m_Name: OverheadCamera
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2848,11 +2850,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1781745679}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1000, z: 0}
-  m_LocalScale: {x: 6.6666665, y: 3.333333, z: 6.666666}
+  m_LocalPosition: {x: 0.125, y: 10.009, z: 0}
+  m_LocalScale: {x: 0.6666667, y: 0.25000006, z: 0.06666668}
   m_Children: []
-  m_Father: {fileID: 2089064500}
-  m_RootOrder: 2
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &1781745681
 MonoBehaviour:
@@ -2952,7 +2954,7 @@ Transform:
   - {fileID: 844210699}
   - {fileID: 488726783}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1969756417
 GameObject:
@@ -3552,8 +3554,6 @@ Transform:
   m_LocalScale: {x: 0.1, y: 0.01, z: 0.075}
   m_Children:
   - {fileID: 866411766}
-  - {fileID: 1452214041}
-  - {fileID: 1781745680}
   - {fileID: 543438356}
   - {fileID: 1522965962}
   - {fileID: 128223056}
