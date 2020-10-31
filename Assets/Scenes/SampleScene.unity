@@ -2594,6 +2594,7 @@ MonoBehaviour:
   freeCamera: {fileID: 783492652}
   robotCameraPositionOffset: {x: 0, y: 0.5, z: -1}
   robotCameraRotationOffset: {x: 30, y: 0, z: 0}
+  freeCameraOffset: {x: 0.75, y: 0.75, z: -0.75}
   Robot: {fileID: 1693205947}
 --- !u!4 &1665392041
 Transform:
