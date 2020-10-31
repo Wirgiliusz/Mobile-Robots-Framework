@@ -11,6 +11,10 @@ public class ProgramMaster : MonoBehaviour
     public Camera robotCamera;
     public Camera overheadCamera;
     public Camera freeCamera;
+    public Vector3 robotCameraPositionOffset;
+    public Vector3 robotCameraRotationOffset;
+
+    private GameObject selectedRobot = null;
 
     public GameObject Robot;
     private RobotController RC;
@@ -56,6 +60,7 @@ public class ProgramMaster : MonoBehaviour
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit)) {
                 if (hit.transform.parent != null && hit.transform.parent.gameObject.tag == "Robot") {
                     Debug.Log("Clicked on robot");
+                    selectedRobot = hit.transform.parent.gameObject;
                 } else {
                     Debug.Log("Missed robot");
                 }
@@ -65,6 +70,7 @@ public class ProgramMaster : MonoBehaviour
 
         }
 
+        updateCameraPosition();
         updateUI();
     }
 
@@ -88,6 +94,20 @@ public class ProgramMaster : MonoBehaviour
                 overheadCamera.enabled = true;
                 robotCamera.enabled = false; 
                 break;
+        }
+    }
+
+    void updateCameraPosition() {
+        if (selectedRobot != null) {
+            Vector3 robotPos = selectedRobot.transform.GetChild(0).transform.position;
+            Vector3 robotRot = selectedRobot.transform.GetChild(0).transform.rotation.eulerAngles;
+            
+            Vector3 rot = robotRot + robotCameraRotationOffset;
+            robotCamera.transform.position = selectedRobot.transform.GetChild(0).transform.position + Quaternion.Euler(rot)*robotCameraPositionOffset;
+            robotCamera.transform.rotation = Quaternion.Euler(rot);
+        
+            overheadCamera.transform.position = robotPos + new Vector3(0,10,0);
+            overheadCamera.transform.rotation = Quaternion.Euler(robotRot + new Vector3(90,0,0));
         }
     }
 
