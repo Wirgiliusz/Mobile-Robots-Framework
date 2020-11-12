@@ -115,8 +115,8 @@ public class ProgramMaster : MonoBehaviour
 
     void updateUI() {
         UI.setVelocityText(RC.getRobotVelocity());
-        UI.setMotorLText(RC.getLeftMotorSpeed());
-        UI.setMotorRText(RC.getRightMotorSpeed());
+        UI.setMotorLText(RC.getLeftMotorSpeedPercent());
+        UI.setMotorRText(RC.getRightMotorSpeedPercent());
         UI.setSensorText(RC.getSensorReading());
     }
 }

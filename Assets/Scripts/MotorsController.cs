@@ -86,6 +86,10 @@ public class MotorsController : MonoBehaviour
         return speed;
     }
 
+    public float getSpeedPercent() {
+        return (speed/maxSpeed) * 100f;
+    }
+
     // Returns number of encoder ticks based on rotation and resolution
     public int getRotationTicks() {
         return (int)((rotation/360f) * encoderResolution);
