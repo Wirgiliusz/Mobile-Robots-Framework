@@ -15,7 +15,9 @@
 - [ ] 4. Robot model based on implemented features
 - [ ] 5. PID controller:
     - [x] a. Automatic acceleration and deceleration before obstacle
-- [ ] 6. Second robot model
+- [x] 6. Second robot model (Micromouse)
+  - [x] a. Add model
+  - [x] b. Write driver
 - [ ] 7. Environments:
     - [ ] a. Different obstacles
 - [ ] 8. UI:
@@ -26,10 +28,11 @@
         - [x] Travel path (trail)
     - [ ] b. Switching between robots models
     - [ ] c. Switching between environments
-    - [ ] d. Camera settings:
+    - [x] d. Camera settings:
       - [x] Follow the robot
       - [x] Overhead
       - [x] Free view
+      - [x] Possibility to toggle robot following by clicking
 - [x] 9. Program structure:
   - [x] a. Main robot script that controls smaller components:
     - Sensors scripts
@@ -37,6 +40,12 @@
   - [x] b. Main script has acces to smaller components readings
   - [x] c. Main script can send signals to smaller components scripts 
   - [x] d. Move UI/Camera control elements from RobotController.cs to different script (ProgramController.cs?)
+
+### Bugfixes
+- [x] 1. Micromouse robot model:
+  - [x] - Fix model shaking
+    - Cause is probably wheels / weight
+  - [x] Overhead camera weird models
 
 ### Improvements
 - [ ] 1. UI:
@@ -47,6 +56,6 @@
 
 - [ ] 2. PID controller:
   - [ ] a. Add I
-  - [ ] b. Decide what to do with negative 'u':
+  - [x] b. Decide what to do with negative 'u':
     - using 'arrived' bool makes robot stop before destination
     - not using 'arrived' makes it do weird moves close to destination 

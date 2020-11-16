@@ -28,11 +28,11 @@ public class UIController : MonoBehaviour
     }
 
     public void setMotorLText(float s) {
-        motorL.text = "Motor L\n" + String.Format("{0:0.00}", s);
+        motorL.text = "Motor L\n" + String.Format("{0:0.00}", s) + "%";
     }
 
     public void setMotorRText(float s) {
-        motorR.text = "Motor R\n" + String.Format("{0:0.00}", s);
+        motorR.text = "Motor R\n" + String.Format("{0:0.00}", s) + "%";
     }
 
     public void setSensorText(float d) {

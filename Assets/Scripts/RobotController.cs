@@ -16,7 +16,9 @@ public class RobotController : MonoBehaviour
     public float speedL_change;
 
     private float leftMotorSpeed = 0;
+    private float leftMotorSpeedPercent = 0;
     private float rightMotorSpeed = 0;
+    private float rightMotorSpeedPercent = 0;
     private float robotVelocity = 0;
     private float sensorReading = 0;
 
@@ -33,7 +35,6 @@ public class RobotController : MonoBehaviour
     {
         checkForKeyPresses();
         readInputs();
-        //Debug.Log("SpeedL: "+ MC_L.getSpeed() + " SpeedR: "+ MC_R.getSpeed() + " | Velocity: " + String.Format("{0:0.00}", this.GetComponentInChildren<Rigidbody>().velocity.magnitude) + " m/s" + string.Format(" | Sensor:  {0:0.00} ", SC.getHitDistance()));
     }
 
     void checkForKeyPresses() {
@@ -74,7 +75,9 @@ public class RobotController : MonoBehaviour
 
     void readInputs() {
         leftMotorSpeed = MC_L.getSpeed();
+        leftMotorSpeedPercent = MC_L.getSpeedPercent();
         rightMotorSpeed = MC_R.getSpeed();
+        rightMotorSpeedPercent = MC_R.getSpeedPercent();
         robotVelocity = robotRb.velocity.magnitude;
         sensorReading = SC.getHitDistance();
     }
@@ -82,8 +85,14 @@ public class RobotController : MonoBehaviour
     public float getLeftMotorSpeed() {
         return leftMotorSpeed;
     }
+    public float getLeftMotorSpeedPercent() {
+        return leftMotorSpeedPercent;
+    }
     public float getRightMotorSpeed() {
         return rightMotorSpeed;
+    }
+    public float getRightMotorSpeedPercent() {
+        return rightMotorSpeedPercent;
     }
     public float getRobotVelocity() {
         return robotVelocity;

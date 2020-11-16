@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ProgramMaster : MonoBehaviour
 {
@@ -10,12 +11,21 @@ public class ProgramMaster : MonoBehaviour
     public Camera robotCamera;
     public Camera overheadCamera;
     public Camera freeCamera;
+    public Vector3 robotCameraPositionOffset;
+    public Vector3 robotCameraRotationOffset;
+    public Vector3 freeCameraOffset;
 
-    public RobotController RC;
+    private GameObject selectedRobot = null;
+
+    public GameObject Robot;
+    private RobotController RC;
+    private PIDController PC;
 
     // Start is called before the first frame update
     void Start()
     {
+        RC = Robot.GetComponent<RobotController>();
+        PC = Robot.GetComponent<PIDController>();
         overheadCamera.enabled = false;
         freeCamera.enabled = false;  
     }
@@ -26,6 +36,8 @@ public class ProgramMaster : MonoBehaviour
         /* Global program keybinds
         * C:    Switch camera       [C]
         * T:    Toggle travel path  [T]
+        * P:    Play simulation     [P]
+        * R:    Restart simulation  [R]
         */
         if (Input.GetKeyDown(KeyCode.C)) {
             switchCamera();
@@ -35,6 +47,30 @@ public class ProgramMaster : MonoBehaviour
             RC.togglePath();
         }
 
+        if (Input.GetKeyDown(KeyCode.P)) {
+            PC.setPlay(true);
+        }
+
+        if (Input.GetKeyDown(KeyCode.R)) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        if (Input.GetMouseButtonDown(0)) {
+            RaycastHit hit = new RaycastHit();
+
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit)) {
+                if (hit.transform.parent != null && hit.transform.parent.gameObject.tag == "Robot") {
+                    Debug.Log("Selected");
+                    selectedRobot = hit.transform.parent.gameObject;
+                } else {
+                    Debug.Log("Unselected robot");
+                    selectedRobot = null;
+                }
+            } 
+
+        }
+
+        updateCameraPosition();
         updateUI();
     }
 
@@ -61,10 +97,26 @@ public class ProgramMaster : MonoBehaviour
         }
     }
 
+    void updateCameraPosition() {
+        if (selectedRobot != null) {
+            Vector3 robotPos = selectedRobot.transform.GetChild(0).transform.position;
+            Vector3 robotRot = selectedRobot.transform.GetChild(0).transform.rotation.eulerAngles;
+            
+            Vector3 rot = robotRot + robotCameraRotationOffset;
+            robotCamera.transform.position = selectedRobot.transform.GetChild(0).transform.position + Quaternion.Euler(rot)*robotCameraPositionOffset;
+            robotCamera.transform.rotation = Quaternion.Euler(rot);
+        
+            overheadCamera.transform.position = robotPos + new Vector3(0,10,0);
+            overheadCamera.transform.rotation = Quaternion.Euler(robotRot + new Vector3(90,0,0));
+
+            freeCamera.transform.position = robotPos + freeCameraOffset;
+        }
+    }
+
     void updateUI() {
         UI.setVelocityText(RC.getRobotVelocity());
-        UI.setMotorLText(RC.getLeftMotorSpeed());
-        UI.setMotorRText(RC.getRightMotorSpeed());
+        UI.setMotorLText(RC.getLeftMotorSpeedPercent());
+        UI.setMotorRText(RC.getRightMotorSpeedPercent());
         UI.setSensorText(RC.getSensorReading());
     }
 }

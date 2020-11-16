@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class OverheadCameraController : MonoBehaviour
 {
-    public float zoomSpeed;
+    public float flySpeed;
+    public float fastMultiplier;
+    public float slowMultiplier;
     
     private Camera cam;
 
@@ -21,11 +23,32 @@ public class OverheadCameraController : MonoBehaviour
             /* Overhead camera control keybinds
             *   Q/E:    move down/up    [QE]
             */
+            if (Input.GetKeyDown(KeyCode.LeftShift)) {
+                flySpeed *= fastMultiplier;
+            } 
+            if (Input.GetKeyUp(KeyCode.LeftShift)) {
+                flySpeed /= fastMultiplier;
+            }
+            
+            if (Input.GetKeyDown(KeyCode.LeftControl)) {
+                flySpeed *= slowMultiplier;
+            }
+            if (Input.GetKeyUp(KeyCode.LeftControl)) {
+                flySpeed /= slowMultiplier;
+            }
+
+            if (Input.GetAxis("Horizontal") != 0 && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))) {
+                transform.Translate(Vector3.right * flySpeed * Input.GetAxis("Horizontal"));
+            }
+            if (Input.GetAxis("Vertical") != 0 && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))) {
+                transform.Translate(Vector3.up * flySpeed * Input.GetAxis("Vertical"));
+            }
+
             if (Input.GetKey(KeyCode.Q)) {
-                cam.orthographicSize -= zoomSpeed;
+                cam.orthographicSize -= flySpeed;
             }
             if (Input.GetKey(KeyCode.E)) {
-                cam.orthographicSize += zoomSpeed;
+                cam.orthographicSize += flySpeed;
             }
         }
     }

@@ -5,14 +5,17 @@ using UnityEngine;
 public class SensorController : MonoBehaviour
 {
     public float maxHitDistance;
-    public LineRenderer sensorLine;
+    private LineRenderer sensorLine;
     private float hitDistance;  
     bool sensorReady;
+
+    public float sensorResolution; // Resolution of the sensor. Number of ticks at maxHitDistance
 
     // Start is called before the first frame update
     void Start()
     {
-        sensorLine.SetPosition(1, transform.forward * maxHitDistance);
+        sensorLine = this.GetComponent<LineRenderer>();
+        sensorLine.SetPosition(1, Vector3.forward * maxHitDistance * 66.666f);
         sensorReady = false;
         hitDistance = 0;
     }
@@ -38,6 +41,10 @@ public class SensorController : MonoBehaviour
 
     public float getHitDistance() {
         return hitDistance;
+    }
+
+    public int getHitTicks() {
+        return (int)((hitDistance/maxHitDistance) * sensorResolution);
     }
 
     public bool getSensorReady() {
