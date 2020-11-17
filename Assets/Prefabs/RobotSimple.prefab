@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2185484442855211106}
   m_Layer: 0
   m_Name: Sensor
-  m_TagString: Untagged
+  m_TagString: Sensor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,11 +29,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2185484442855211104}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.51, z: 0.3333334}
-  m_LocalScale: {x: 0.33333334, y: 0.15, z: 0.16666667}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2185484443608930560}
-  m_RootOrder: 2
+  m_Father: {fileID: 2189781102241707623}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2185484442855211109
 MeshFilter:
@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 2185484443335060496}
   m_Layer: 0
   m_Name: WheelL
-  m_TagString: Untagged
+  m_TagString: Motor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -430,7 +430,7 @@ GameObject:
   - component: {fileID: 2185484443548437155}
   m_Layer: 0
   m_Name: WheelR
-  m_TagString: Untagged
+  m_TagString: Motor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -529,7 +529,7 @@ Transform:
   m_Children:
   - {fileID: 2185484444743284841}
   - {fileID: 2185484443008001197}
-  - {fileID: 2185484442855211105}
+  - {fileID: 2189781102241707623}
   m_Father: {fileID: 2185484444094169640}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1006,7 +1006,7 @@ GameObject:
   - component: {fileID: 2185484444094169641}
   - component: {fileID: 2185484444094169642}
   m_Layer: 0
-  m_Name: Robot
+  m_Name: RobotSimple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1293,4 +1293,35 @@ Transform:
   - {fileID: 2185484444182142732}
   m_Father: {fileID: 2185484444094169640}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5963092221221206213
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2189781102241707623}
+  m_Layer: 0
+  m_Name: Sensors
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2189781102241707623
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5963092221221206213}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.50999993, z: 0.3333334}
+  m_LocalScale: {x: 0.33333334, y: 0.15, z: 0.16666667}
+  m_Children:
+  - {fileID: 2185484442855211105}
+  m_Father: {fileID: 2185484443608930560}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

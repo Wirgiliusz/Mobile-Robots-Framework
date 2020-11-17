@@ -7,8 +7,6 @@ using UnityEngine.EventSystems;
 public class ProgramMaster : MonoBehaviour
 {
     public UIController UI;
-    public GameObject uiObj;
-    public GameObject textObj;
     private List<GameObject> robotsList;
     private List<GameObject> motorsList;
     private List<GameObject> sensorsList;
@@ -40,7 +38,7 @@ public class ProgramMaster : MonoBehaviour
         motorsList = new List<GameObject>(GameObject.FindGameObjectsWithTag("Motor"));
         sensorsList = new List<GameObject>(GameObject.FindGameObjectsWithTag("Sensor"));
 
-        createUiElements();
+        UI.createUiElements(robotsList, motorsList, sensorsList);
     }
 
     // Update is called once per frame
@@ -116,10 +114,10 @@ public class ProgramMaster : MonoBehaviour
     }
 
     void updateUI() {
-        UI.setVelocityText(RC.getRobotVelocity());
-        UI.setMotorLText(RC.getLeftMotorSpeedPercent());
+        //UI.setVelocityText(RC.getRobotVelocity());
+        //UI.setMotorLText(RC.getLeftMotorSpeedPercent());
         //UI.setMotorRText(RC.getRightMotorSpeedPercent());
-        UI.setSensorText(RC.getSensorReading());
+        //UI.setSensorText(RC.getSensorReading());
     }
 
     public void turnOnController() {
@@ -146,44 +144,4 @@ public class ProgramMaster : MonoBehaviour
         } 
     }
 
-    void createUiElements() {
-        float posRobotLabel = -70f;
-        float posMotorLabel = -190f;
-        float posSensorLabel = 0f;
-        int createdTexts = 0;
-
-        foreach (GameObject robotObj in robotsList) {
-            // Check which elements corespond to which robot
-            GameObject robotText = Instantiate(textObj, uiObj.transform);
-            robotText.GetComponent<RectTransform>().anchoredPosition = new Vector3(150f, posRobotLabel, 0f);
-            createdTexts++;
-
-            foreach (GameObject motorObj in motorsList) {
-                if (motorObj.transform.parent.parent.parent.tag == robotObj.tag) {
-                    // Create UI element for motor readings for current robot
-                    GameObject motorText = Instantiate(textObj, uiObj.transform);
-                    motorText.GetComponent<RectTransform>().anchoredPosition = new Vector3(150f, posMotorLabel, 0f);
-
-                    createdTexts++;
-
-                    posMotorLabel -= 30f;
-                }
-            }
-
-            posSensorLabel = posMotorLabel - 30f;
-            foreach (GameObject sensorObj in sensorsList) {
-                if (sensorObj.transform.parent.parent.parent.tag == robotObj.tag) {
-                    // Create UI element for sensor readings for current robot
-                    GameObject sensorText = Instantiate(textObj, uiObj.transform);
-                    sensorText.GetComponent<RectTransform>().anchoredPosition = new Vector3(150f, posSensorLabel, 0f);
-                    createdTexts++;
-
-                    posSensorLabel -= 30f;
-                }
-            }
-
-            posRobotLabel -= 30f*createdTexts - 60f;
-        }
-        
-    }
 }
