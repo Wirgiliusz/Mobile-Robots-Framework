@@ -633,7 +633,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &783492651
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1427,7 +1427,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1781745680
 Transform:
   m_ObjectHideFlags: 0
@@ -1820,6 +1820,118 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4745980570699442218, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
+      propertyPath: m_Positions.Array.data[1].z
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745980570699442218, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745980570699442218, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
+      propertyPath: m_Parameters.colorGradient.ctime0
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745980570699442218, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745980570699442218, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
+      propertyPath: m_Parameters.colorGradient.atime0
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745980570699442218, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745980570699442218, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745980571529117932, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
+      propertyPath: m_Positions.Array.data[1].z
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745980571529117932, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745980571529117932, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
+      propertyPath: m_Parameters.colorGradient.ctime0
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745980571529117932, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745980571529117932, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
+      propertyPath: m_Parameters.colorGradient.atime0
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745980571529117932, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745980571529117932, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745980572182346206, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
+      propertyPath: m_Positions.Array.data[1].z
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745980572182346206, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745980572182346206, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
+      propertyPath: m_Parameters.colorGradient.ctime0
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745980572182346206, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745980572182346206, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
+      propertyPath: m_Parameters.colorGradient.atime0
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745980572182346206, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745980572182346206, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745980572348630036, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
+      propertyPath: m_Positions.Array.data[1].z
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745980572348630036, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745980572348630036, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
+      propertyPath: m_Parameters.colorGradient.ctime0
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745980572348630036, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745980572348630036, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
+      propertyPath: m_Parameters.colorGradient.atime0
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745980572348630036, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745980572348630036, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4745980572591626411, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
       propertyPath: m_Name
       value: RobotMicromouse
