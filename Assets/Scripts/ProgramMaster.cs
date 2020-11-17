@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class ProgramMaster : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class ProgramMaster : MonoBehaviour
     {
         RC = Robot.GetComponent<RobotController>();
         PC = Robot.GetComponent<PIDController>();
+        PC.enabled = false;
         overheadCamera.enabled = false;
         freeCamera.enabled = false;  
     }
@@ -48,26 +50,15 @@ public class ProgramMaster : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.P)) {
-            PC.setPlay(true);
+            turnOnController();
         }
 
         if (Input.GetKeyDown(KeyCode.R)) {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            restartSimulation();
         }
 
         if (Input.GetMouseButtonDown(0)) {
-            RaycastHit hit = new RaycastHit();
-
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit)) {
-                if (hit.transform.parent != null && hit.transform.parent.gameObject.tag == "Robot") {
-                    Debug.Log("Selected");
-                    selectedRobot = hit.transform.parent.gameObject;
-                } else {
-                    Debug.Log("Unselected robot");
-                    selectedRobot = null;
-                }
-            } 
-
+            checkForRobotSelect();
         }
 
         updateCameraPosition();
@@ -118,5 +109,29 @@ public class ProgramMaster : MonoBehaviour
         UI.setMotorLText(RC.getLeftMotorSpeedPercent());
         UI.setMotorRText(RC.getRightMotorSpeedPercent());
         UI.setSensorText(RC.getSensorReading());
+    }
+
+    public void turnOnController() {
+        PC.enabled = true;
+    }
+
+    public void restartSimulation() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    void checkForRobotSelect() {
+        RaycastHit hit = new RaycastHit();
+
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit)) {
+            if (!EventSystem.current.IsPointerOverGameObject()) {   // Check if mouse isn't over UI element
+                if (hit.transform.parent != null && hit.transform.parent.gameObject.tag == "Robot") {
+                    Debug.Log("Selected");
+                    selectedRobot = hit.transform.parent.gameObject;
+                } else {
+                    Debug.Log("Unselected robot");
+                    selectedRobot = null;
+                }
+            }
+        } 
     }
 }

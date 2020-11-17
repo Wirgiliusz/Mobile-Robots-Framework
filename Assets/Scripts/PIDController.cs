@@ -30,8 +30,6 @@ public class PIDController : MonoBehaviour
     private double distance_wanted_r;
     bool arrived_r;
 
-    bool play = false;
-
     enum Side {right, left, }
 
     enum Direction {driveStright, rotateRight, rotateLeft, stop}
@@ -58,38 +56,36 @@ public class PIDController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (play) {
-            switch(movList[movNumber]) {
-                case Direction.driveStright:
-                drive();
-                break;
+        switch(movList[movNumber]) {
+            case Direction.driveStright:
+            drive();
+            break;
 
-                case Direction.rotateLeft:
-                rotate(Side.left);
-                break;
+            case Direction.rotateLeft:
+            rotate(Side.left);
+            break;
 
-                case Direction.rotateRight:
-                rotate(Side.right);
-                break;
+            case Direction.rotateRight:
+            rotate(Side.right);
+            break;
 
-                case Direction.stop:
-                break;
+            case Direction.stop:
+            break;
 
-                default:
-                Debug.Log("Switch out of bounds!");
-                break;
+            default:
+            Debug.Log("Switch out of bounds!");
+            break;
+        }
+
+        if (movFinished) {
+            resetDrive();
+            resetRotate();
+
+            if (movNumber < movList.Length - 1) {
+                ++movNumber;
             }
 
-            if (movFinished) {
-                resetDrive();
-                resetRotate();
-
-                if (movNumber < movList.Length - 1) {
-                    ++movNumber;
-                }
-
-                movFinished = false;
-            }
+            movFinished = false;
         }
     }
 
@@ -192,7 +188,4 @@ public class PIDController : MonoBehaviour
         return sensorFront.maxHitDistance * (impulseCount/sensorFront.sensorResolution); 
     }
 
-    public void setPlay(bool state) {
-        play = state;
-    }
 }
