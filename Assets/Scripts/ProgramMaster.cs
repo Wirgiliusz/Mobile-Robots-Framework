@@ -32,8 +32,9 @@ public class ProgramMaster : MonoBehaviour
                 robot.GetComponent<PIDController>().enabled = false;
             }
         }
+        robotCamera.enabled = false;
         overheadCamera.enabled = false;
-        freeCamera.enabled = false;  
+        //freeCamera.enabled = false;  
 
         robotsList = new List<GameObject>(GameObject.FindGameObjectsWithTag("Robot"));
         motorsList = new List<GameObject>(GameObject.FindGameObjectsWithTag("Motor"));
