@@ -21,6 +21,7 @@ public class ProgramMaster : MonoBehaviour
 
     private GameObject selectedRobot = null;
 
+    public GameObject[] robotsArr;
     public GameObject Robot;
     private RobotController RC;
     private PIDController PC;
@@ -72,6 +73,7 @@ public class ProgramMaster : MonoBehaviour
 
         updateCameraPosition();
         //updateUI();
+        UI.updateUiElements(robotsArr);
     }
 
 

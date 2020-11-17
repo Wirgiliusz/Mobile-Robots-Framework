@@ -323,6 +323,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: RobotSimple
       objectReference: {fileID: 0}
+    - target: {fileID: 2185484444094169639, guid: 6155f46ad2a5ccb4f8287e80c57d1e57, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2185484444094169639, guid: 6155f46ad2a5ccb4f8287e80c57d1e57, type: 3}
+      propertyPath: m_TagString
+      value: Robot
+      objectReference: {fileID: 0}
     - target: {fileID: 2185484444094169640, guid: 6155f46ad2a5ccb4f8287e80c57d1e57, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -333,7 +341,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2185484444094169640, guid: 6155f46ad2a5ccb4f8287e80c57d1e57, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2185484444094169640, guid: 6155f46ad2a5ccb4f8287e80c57d1e57, type: 3}
       propertyPath: m_LocalRotation.x
@@ -611,7 +619,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &783492651
 AudioListener:
   m_ObjectHideFlags: 0
@@ -692,6 +700,11 @@ MonoBehaviour:
   flySpeed: 0.01
   fastMultiplier: 3
   slowMultiplier: 0.25
+--- !u!1 &904930338 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2185484444094169639, guid: 6155f46ad2a5ccb4f8287e80c57d1e57, type: 3}
+  m_PrefabInstance: {fileID: 515508292}
+  m_PrefabAsset: {fileID: 0}
 --- !u!850595691 &1026520546
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -1128,7 +1141,10 @@ MonoBehaviour:
   robotCameraPositionOffset: {x: 0, y: 0.5, z: -1.25}
   robotCameraRotationOffset: {x: 30, y: 0, z: 0}
   freeCameraOffset: {x: 0.75, y: 0.75, z: -0.75}
-  Robot: {fileID: 1693205947}
+  robotsArr:
+  - {fileID: 904930338}
+  - {fileID: 1693205947}
+  Robot: {fileID: 904930338}
 --- !u!4 &1665392041
 Transform:
   m_ObjectHideFlags: 0
@@ -1241,7 +1257,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1781745680
 Transform:
   m_ObjectHideFlags: 0
