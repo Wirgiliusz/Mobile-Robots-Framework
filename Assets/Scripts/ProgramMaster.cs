@@ -27,7 +27,10 @@ public class ProgramMaster : MonoBehaviour
     void Start()
     {
         foreach (GameObject robot in robotsArr) {
-            robot.GetComponent<PIDController>().enabled = false;
+            PIDController PC = robot.GetComponent<PIDController>();
+            if (PC != null) {
+                robot.GetComponent<PIDController>().enabled = false;
+            }
         }
         overheadCamera.enabled = false;
         freeCamera.enabled = false;  
@@ -115,7 +118,10 @@ public class ProgramMaster : MonoBehaviour
 
     public void turnOnController() {
         foreach (GameObject robot in robotsArr) {
-            robot.GetComponent<PIDController>().enabled = true;
+            PIDController PC = robot.GetComponent<PIDController>();
+            if (PC != null) {
+                robot.GetComponent<PIDController>().enabled = true;
+            }
         }
     }
 

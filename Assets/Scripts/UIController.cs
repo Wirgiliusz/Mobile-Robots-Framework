@@ -42,6 +42,19 @@ public class UIController : MonoBehaviour
             uiTextsList.Add(robotTextValue);
             textPos -= textPosSpace;
 
+            GameObject velocityTextLabel = Instantiate(textObj, this.transform);
+            velocityTextLabel.GetComponent<Text>().text = "Velocity:";
+            velocityTextLabel.GetComponent<Text>().fontStyle = FontStyle.Bold;
+            velocityTextLabel.GetComponent<RectTransform>().anchoredPosition = new Vector3(120f, textPos,  0f);
+            textPos -= textPosSpace;
+
+            GameObject velocityTextValue = Instantiate(textObj, this.transform);
+            velocityTextValue.name = robotObj.name + "VelocityTextValue";
+            velocityTextValue.GetComponent<Text>().text = robotObj.name;
+            velocityTextValue.GetComponent<RectTransform>().anchoredPosition = new Vector3(150f, textPos, 0f);
+            uiTextsList.Add(velocityTextValue);
+            textPos -= textPosSpace;
+
             GameObject motorsTextLabel = Instantiate(textObj, this.transform);
             motorsTextLabel.GetComponent<Text>().text = "Motors:";
             motorsTextLabel.GetComponent<Text>().fontStyle = FontStyle.Bold;
@@ -102,6 +115,10 @@ public class UIController : MonoBehaviour
                         if (textObj.name.Contains(sensorObj.name)) {
                             textObj.GetComponent<Text>().text = sensorObj.name + ": " + String.Format("{0:0.00}", sensorObj.getHitDistance()) + "m";
                         }
+                    }
+
+                    if (textObj.name.Contains("Velocity")) {
+                        textObj.GetComponent<Text>().text = "V: " + String.Format("{0:0.00}", robotObj.GetComponent<RobotController>().getRobotVelocity()) + "m/s";
                     }
                 }
             }
