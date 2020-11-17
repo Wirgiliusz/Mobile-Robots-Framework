@@ -21,11 +21,13 @@ public class ProgramMaster : MonoBehaviour
 
     private GameObject selectedRobot = null;
 
-    public GameObject[] robotsArr;
+    private GameObject[] robotsArr;
 
     // Start is called before the first frame update
     void Start()
     {
+        robotsArr = GameObject.FindGameObjectsWithTag("Robot");
+
         foreach (GameObject robot in robotsArr) {
             PIDController PC = robot.GetComponent<PIDController>();
             if (PC != null) {

@@ -13,7 +13,7 @@ public class UIController : MonoBehaviour
     private List<GameObject> uiTextsList;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         uiTextsList = new List<GameObject>();
     }
