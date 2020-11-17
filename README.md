@@ -26,7 +26,7 @@
         - [x] Velocity
         - [x] Sensors readings
         - [x] Travel path (trail)
-    - [ ] b. Switching between robots models
+    - [x] b. Switching between robots models
     - [ ] c. Switching between environments
     - [x] d. Camera settings:
       - [x] Follow the robot
@@ -53,6 +53,8 @@
     - [ ] rotation
   - [x] b. Better overhead camera
     - [x] zoom level change
+  - [x] c. Dynamic UI for multiple robots
+  - [x] d. Buttons for starting and restarting simulation
 
 - [ ] 2. PID controller:
   - [ ] a. Add I
