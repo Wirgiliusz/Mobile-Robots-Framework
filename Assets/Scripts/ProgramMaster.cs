@@ -22,16 +22,13 @@ public class ProgramMaster : MonoBehaviour
     private GameObject selectedRobot = null;
 
     public GameObject[] robotsArr;
-    public GameObject Robot;
-    private RobotController RC;
-    private PIDController PC;
 
     // Start is called before the first frame update
     void Start()
     {
-        RC = Robot.GetComponent<RobotController>();
-        PC = Robot.GetComponent<PIDController>();
-        PC.enabled = false;
+        foreach (GameObject robot in robotsArr) {
+            robot.GetComponent<PIDController>().enabled = false;
+        }
         overheadCamera.enabled = false;
         freeCamera.enabled = false;  
 
@@ -56,7 +53,9 @@ public class ProgramMaster : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.T)) {
-            RC.togglePath();
+            foreach (GameObject robot in robotsArr) {
+                robot.GetComponent<RobotController>().togglePath();
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.P)) {
@@ -115,7 +114,9 @@ public class ProgramMaster : MonoBehaviour
     }
 
     public void turnOnController() {
-        PC.enabled = true;
+        foreach (GameObject robot in robotsArr) {
+            robot.GetComponent<PIDController>().enabled = true;
+        }
     }
 
     public void restartSimulation() {
