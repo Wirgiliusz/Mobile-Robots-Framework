@@ -72,7 +72,6 @@ public class ProgramMaster : MonoBehaviour
         }
 
         updateCameraPosition();
-        //updateUI();
         UI.updateUiElements(robotsArr);
     }
 
@@ -113,13 +112,6 @@ public class ProgramMaster : MonoBehaviour
 
             freeCamera.transform.position = robotPos + freeCameraOffset;
         }
-    }
-
-    void updateUI() {
-        //UI.setVelocityText(RC.getRobotVelocity());
-        //UI.setMotorLText(RC.getLeftMotorSpeedPercent());
-        //UI.setMotorRText(RC.getRightMotorSpeedPercent());
-        //UI.setSensorText(RC.getSensorReading());
     }
 
     public void turnOnController() {

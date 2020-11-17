@@ -96,8 +96,6 @@ public class UIController : MonoBehaviour
                             textObj.GetComponent<Text>().text = sensorObj.name + ": " + String.Format("{0:0.00}", sensorObj.getHitDistance()) + "m";
                         }
                     }
-
-
                 }
             }
         }
