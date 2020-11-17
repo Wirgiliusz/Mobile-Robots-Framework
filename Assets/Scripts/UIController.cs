@@ -8,6 +8,7 @@ public class UIController : MonoBehaviour
 {
     public float textPosSpace;
     public GameObject textObj;
+    public GameObject imageBg;
 
     private List<GameObject> uiTextsList;
 
@@ -76,6 +77,12 @@ public class UIController : MonoBehaviour
             }
             textPos -= textPosSpace;
         }
+
+        GameObject imageBackground = Instantiate(imageBg, this.transform);
+        imageBackground.transform.SetAsFirstSibling();
+        imageBackground.GetComponent<RectTransform>().anchoredPosition = new Vector3(150f, textPos/2,  0f);
+        imageBackground.GetComponent<RectTransform>().sizeDelta = new Vector2(275f, -(textPos + 40f));
+
     }
 
     public void updateUiElements(GameObject[] robotsArr) {
