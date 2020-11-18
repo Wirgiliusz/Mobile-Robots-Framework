@@ -130,6 +130,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1472924890765986856, guid: 15dd005288cb6e047a48584827562912, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1665392040}
+    - target: {fileID: 1472924890765986856, guid: 15dd005288cb6e047a48584827562912, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: toggleSensorsRays
+      objectReference: {fileID: 0}
     - target: {fileID: 2158350347297429421, guid: 15dd005288cb6e047a48584827562912, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -217,6 +225,30 @@ PrefabInstance:
     - target: {fileID: 2158350347297429425, guid: 15dd005288cb6e047a48584827562912, type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2158350348017563890, guid: 15dd005288cb6e047a48584827562912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1665392040}
+    - target: {fileID: 2158350348017563890, guid: 15dd005288cb6e047a48584827562912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: restartSimulation
+      objectReference: {fileID: 0}
+    - target: {fileID: 2158350348538908819, guid: 15dd005288cb6e047a48584827562912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1665392040}
+    - target: {fileID: 2158350348538908819, guid: 15dd005288cb6e047a48584827562912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: turnOnController
+      objectReference: {fileID: 0}
+    - target: {fileID: 2985146768369561854, guid: 15dd005288cb6e047a48584827562912, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1665392040}
+    - target: {fileID: 2985146768369561854, guid: 15dd005288cb6e047a48584827562912, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: togglePaths
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15dd005288cb6e047a48584827562912, type: 3}
@@ -508,6 +540,17 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 3692050687462496724, guid: 624ad6314b44d0b43b5d44e2a1f39111, type: 3}
   m_PrefabInstance: {fileID: 3692050686012251855}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1665392040 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1095024679321065606, guid: 86039e23b3792a442862b138982b558b, type: 3}
+  m_PrefabInstance: {fileID: 1095024677664064814}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720955d960ac8bd438394933f6a3f1e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!20 &1781745683 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 502770211682695477, guid: 662f396c43d6cde4aad2a88d79c257d7, type: 3}
