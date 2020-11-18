@@ -380,6 +380,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RobotSimple
       objectReference: {fileID: 0}
+    - target: {fileID: 2185484444094169639, guid: 6155f46ad2a5ccb4f8287e80c57d1e57, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2185484444094169640, guid: 6155f46ad2a5ccb4f8287e80c57d1e57, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.4
@@ -985,9 +989,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4745980572190524709, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4745980572591626411, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
       propertyPath: m_Name
       value: RobotMicromouse
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745980572591626413, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
+      propertyPath: pathPoint
+      value: 
+      objectReference: {fileID: 4370492181124114253, guid: 89cc354c5e8216344aba5ee91195f60b, type: 3}
+    - target: {fileID: 4745980572591626413, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
+      propertyPath: pathPointSpawnTime
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4745980572591626414, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
       propertyPath: m_LocalPosition.x
