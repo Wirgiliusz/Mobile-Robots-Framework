@@ -36,7 +36,7 @@ public class ProgramMaster : MonoBehaviour
         }
         robotCamera.enabled = false;
         overheadCamera.enabled = false;
-        //freeCamera.enabled = false;  
+        freeCamera.enabled = true;  
 
         robotsList = new List<GameObject>(GameObject.FindGameObjectsWithTag("Robot"));
         motorsList = new List<GameObject>(GameObject.FindGameObjectsWithTag("Motor"));

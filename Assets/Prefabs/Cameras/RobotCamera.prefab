@@ -25,8 +25,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3692050687462496727}
-  m_LocalRotation: {x: 0.25435913, y: -0, z: -0, w: 0.96710986}
-  m_LocalPosition: {x: 0.125, y: 1, z: -0.7}
+  m_LocalRotation: {x: 0.25881904, y: 0.00023611904, z: -0.000063254105, w: 0.9659258}
+  m_LocalPosition: {x: -0.40040708, y: 1.1580132, z: -0.83248025}
   m_LocalScale: {x: 0.6666667, y: 0.13812259, z: 0.22475697}
   m_Children: []
   m_Father: {fileID: 0}
@@ -39,7 +39,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3692050687462496727}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
