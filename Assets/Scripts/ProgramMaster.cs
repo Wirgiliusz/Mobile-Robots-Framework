@@ -134,6 +134,10 @@ public class ProgramMaster : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    public void changeScene() {
+        UI.changeScene();
+    }
+
     public void togglePaths() {
         foreach (GameObject robot in robotsArr) {
             robot.GetComponent<RobotController>().togglePath();

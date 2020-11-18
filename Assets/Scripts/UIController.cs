@@ -139,4 +139,8 @@ public class UIController : MonoBehaviour
 
         simulationTimeText.text = String.Format("{0:0.00}", simulationTime) + "s";
     }
+
+    public void changeScene() {
+        SceneManager.LoadScene(scenesDropdown.options[scenesDropdown.value].text);
+    }
 }

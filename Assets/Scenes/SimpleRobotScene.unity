@@ -206,6 +206,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1472924890765986856, guid: 15dd005288cb6e047a48584827562912, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 662053702}
+    - target: {fileID: 1472924890765986856, guid: 15dd005288cb6e047a48584827562912, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: toggleSensorsRays
+      objectReference: {fileID: 0}
     - target: {fileID: 2158350347297429421, guid: 15dd005288cb6e047a48584827562912, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -302,6 +310,42 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 662053702}
+    - target: {fileID: 2985146768369561854, guid: 15dd005288cb6e047a48584827562912, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 662053702}
+    - target: {fileID: 2985146768369561854, guid: 15dd005288cb6e047a48584827562912, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: togglePaths
+      objectReference: {fileID: 0}
+    - target: {fileID: 7320584482349493998, guid: 15dd005288cb6e047a48584827562912, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7320584482349493998, guid: 15dd005288cb6e047a48584827562912, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7320584482349493998, guid: 15dd005288cb6e047a48584827562912, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7320584482349493998, guid: 15dd005288cb6e047a48584827562912, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 662053702}
+    - target: {fileID: 7320584482349493998, guid: 15dd005288cb6e047a48584827562912, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ProgramMaster, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7320584482349493998, guid: 15dd005288cb6e047a48584827562912, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: changeScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 7320584482349493998, guid: 15dd005288cb6e047a48584827562912, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15dd005288cb6e047a48584827562912, type: 3}
 --- !u!114 &662053702 stripped
