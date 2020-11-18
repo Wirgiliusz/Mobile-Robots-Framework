@@ -11,7 +11,7 @@ public class ProgramMaster : MonoBehaviour
     private List<GameObject> motorsList;
     private List<GameObject> sensorsList;
 
-    private int cameraIterator = 0; // Index of currently used camera
+    private int cameraIterator = 2; // Index of currently used camera
     public Camera robotCamera;
     public Camera overheadCamera;
     public Camera freeCamera;
