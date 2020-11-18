@@ -59,9 +59,7 @@ public class ProgramMaster : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.T)) {
-            foreach (GameObject robot in robotsArr) {
-                robot.GetComponent<RobotController>().togglePath();
-            }
+            togglePaths();
         }
 
         if (Input.GetKeyDown(KeyCode.P)) {
@@ -130,6 +128,18 @@ public class ProgramMaster : MonoBehaviour
 
     public void restartSimulation() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void togglePaths() {
+        foreach (GameObject robot in robotsArr) {
+            robot.GetComponent<RobotController>().togglePath();
+        }
+    }
+
+    public void toggleSensorsRays() {
+        foreach (GameObject sensor in sensorsList) {
+            sensor.GetComponent<SensorController>().toggleSensorRay();
+        }
     }
 
     void checkForRobotSelect() {

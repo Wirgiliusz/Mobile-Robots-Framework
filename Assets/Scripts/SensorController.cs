@@ -50,4 +50,12 @@ public class SensorController : MonoBehaviour
     public bool getSensorReady() {
         return sensorReady;
     }
+
+    public void toggleSensorRay() {
+        if (sensorLine.enabled == true) {
+            sensorLine.enabled = false;
+        } else if (sensorLine.enabled == false) {
+            sensorLine.enabled = true;
+        }
+    }
 }
