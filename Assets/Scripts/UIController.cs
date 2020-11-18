@@ -103,8 +103,12 @@ public class UIController : MonoBehaviour
         imageBackground.GetComponent<RectTransform>().anchoredPosition = new Vector3(150f, textPos/2,  0f);
         imageBackground.GetComponent<RectTransform>().sizeDelta = new Vector2(280f, -(textPos + 40f));
 
+        dropdownOptions.Add(SceneManager.GetActiveScene().name);
         for (int i=0; i<UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings; ++i) {
-            dropdownOptions.Add(System.IO.Path.GetFileNameWithoutExtension(UnityEngine.SceneManagement.SceneUtility.GetScenePathByBuildIndex(i)));
+            string sceneName = System.IO.Path.GetFileNameWithoutExtension(UnityEngine.SceneManagement.SceneUtility.GetScenePathByBuildIndex(i));
+            if (!dropdownOptions.Contains(sceneName)) {
+                dropdownOptions.Add(sceneName);
+            }
 
         }
         scenesDropdown.ClearOptions();
