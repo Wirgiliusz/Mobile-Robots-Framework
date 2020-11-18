@@ -10,6 +10,7 @@ public class RobotController : MonoBehaviour
     public SensorController SC;
 
     public TrailRenderer travelPath;
+    bool isTravelPathHidden = false;
 
     public float speed_change;
     public float speedR_change;
@@ -24,14 +25,13 @@ public class RobotController : MonoBehaviour
 
     private Rigidbody robotRb;
 
+    private bool drawPath = false;
     public GameObject pathPoint;
     private float pathPointTimer;
     public float pathPointSpawnTime;
-    private int maxPathPointCount = 3000;
+    public int maxPathPointCount;
     private List<GameObject> pathPointsList;
-    private float maxRobotVelocity;
-    //private Color colorRed = new Color(255, 0, 0);
-    //private Color colorOrange = new Color(255, 0, 0);
+    public float maxVelocityForPath;
 
     // Start is called before the first frame update
     void Start()
@@ -39,33 +39,22 @@ public class RobotController : MonoBehaviour
         robotRb = this.GetComponentInChildren<Rigidbody>();
         pathPointsList = new List<GameObject>();
         pathPointTimer = 0f;
-        maxRobotVelocity = MC_R.maxSpeed/15f;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         pathPointTimer += Time.deltaTime;
         
         checkForKeyPresses();
         readInputs();
 
-        if (pathPointTimer >= pathPointSpawnTime) {
-            GameObject newPoint = Instantiate(pathPoint, this.transform.GetChild(0).position, this.transform.GetChild(0).rotation, this.transform);
-
-            float colorHue = 0.33f - (robotVelocity/maxRobotVelocity)*0.33f;
-            if (colorHue < 0f) {
-                colorHue = 0f;
-            }
-            newPoint.GetComponent<Renderer>().material.SetColor("_Color", Color.HSVToRGB(colorHue, 1f, 1f));  
-
-            pathPointsList.Add(newPoint);
-
-            if (pathPointsList.Count > maxPathPointCount) {
-                Destroy(pathPointsList[0]);
-                pathPointsList.RemoveAt(0);
-            }
+        if (drawPath) {
+            drawVelocityPath();
+        } else {
+            deleteVelocityPath();
         }
+        
     }
 
     void checkForKeyPresses() {
@@ -113,6 +102,35 @@ public class RobotController : MonoBehaviour
         sensorReading = SC.getHitDistance();
     }
 
+    void drawVelocityPath() {
+        if (pathPointTimer >= pathPointSpawnTime) {
+            GameObject newPoint = Instantiate(pathPoint, this.transform.GetChild(0).position, this.transform.GetChild(0).rotation, this.transform);
+
+            float colorHue = 0.33f - (robotVelocity/maxVelocityForPath)*0.33f;
+            if (colorHue < 0f) {
+                colorHue = 0f;
+            }
+            newPoint.GetComponent<Renderer>().material.SetColor("_Color", Color.HSVToRGB(colorHue, 1f, 1f));  
+
+            pathPointsList.Add(newPoint);
+
+            if (pathPointsList.Count > maxPathPointCount) {
+                Destroy(pathPointsList[0]);
+                pathPointsList.RemoveAt(0);
+            }
+            pathPointTimer = 0f;
+        }
+    }
+
+    void deleteVelocityPath() {
+        if (pathPointsList.Count > 0) {
+            foreach (GameObject point in pathPointsList) {
+                Destroy(point);
+            }
+            pathPointsList.Clear();
+        }
+    }
+
     public float getLeftMotorSpeed() {
         return leftMotorSpeed;
     }
@@ -133,10 +151,23 @@ public class RobotController : MonoBehaviour
     }
 
     public void togglePath() {
-        if (travelPath.enabled == true) {
-            travelPath.enabled = false;
-        } else if (travelPath.enabled == false) {
-            travelPath.enabled = true;
+        if (isTravelPathHidden) {
+            travelPath.startColor = new Color(255,255,255,1f);
+            travelPath.endColor = new Color(255,255,255,1f);
+            isTravelPathHidden = false;
+        } else if (!isTravelPathHidden) {
+            travelPath.startColor = new Color(0,0,0,0f);
+            travelPath.endColor = new Color(0,0,0,0f);
+            isTravelPathHidden = true;
         }
     }
+
+    public void toggleVelocityPath() {
+        if (drawPath == true) {
+            drawPath = false;
+        } else {
+            drawPath = true;
+        }
+    }
+
 }

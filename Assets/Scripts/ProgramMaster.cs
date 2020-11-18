@@ -144,6 +144,12 @@ public class ProgramMaster : MonoBehaviour
         }
     }
 
+    public void toggleVelocityPaths() {
+        foreach (GameObject robot in robotsArr) {
+            robot.GetComponent<RobotController>().toggleVelocityPath();
+        }
+    }
+
     public void toggleSensorsRays() {
         foreach (GameObject sensor in sensorsList) {
             sensor.GetComponent<SensorController>().toggleSensorRay();
