@@ -20,12 +20,15 @@ public class ProgramMaster : MonoBehaviour
     public Vector3 freeCameraOffset;
 
     private GameObject selectedRobot = null;
-
     private GameObject[] robotsArr;
+
+    private double simulationTime;
 
     // Start is called before the first frame update
     void Start()
     {
+        simulationTime = 0;
+
         robotsArr = GameObject.FindGameObjectsWithTag("Robot");
 
         foreach (GameObject robot in robotsArr) {
@@ -48,6 +51,7 @@ public class ProgramMaster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        simulationTime = Time.timeSinceLevelLoad;
         /* Global program keybinds
         * C:    Switch camera       [C]
         * T:    Toggle travel path  [T]
@@ -75,7 +79,7 @@ public class ProgramMaster : MonoBehaviour
         }
 
         updateCameraPosition();
-        UI.updateUiElements(robotsArr);
+        UI.updateUiElements(robotsArr, simulationTime);
     }
 
 

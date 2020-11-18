@@ -33,6 +33,9 @@
       - [x] Overhead
       - [x] Free view
       - [x] Possibility to toggle robot following by clicking
+    - [ ] e. Toggles:
+      - [x] Robots paths
+      - [x] Sensors rays
 - [x] 9. Program structure:
   - [x] a. Main robot script that controls smaller components:
     - Sensors scripts

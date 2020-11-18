@@ -12,6 +12,8 @@ public class UIController : MonoBehaviour
 
     private List<GameObject> uiTextsList;
 
+    public Text simulationTimeText;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -94,11 +96,11 @@ public class UIController : MonoBehaviour
         GameObject imageBackground = Instantiate(imageBg, this.transform);
         imageBackground.transform.SetAsFirstSibling();
         imageBackground.GetComponent<RectTransform>().anchoredPosition = new Vector3(150f, textPos/2,  0f);
-        imageBackground.GetComponent<RectTransform>().sizeDelta = new Vector2(275f, -(textPos + 40f));
+        imageBackground.GetComponent<RectTransform>().sizeDelta = new Vector2(280f, -(textPos + 40f));
 
     }
 
-    public void updateUiElements(GameObject[] robotsArr) {
+    public void updateUiElements(GameObject[] robotsArr, double simulationTime) {
         foreach (GameObject robotObj in robotsArr) { // Choose robot
             MotorsController[] motorsArr = robotObj.GetComponentsInChildren<MotorsController>();
             SensorController[] sensorsArr = robotObj.GetComponentsInChildren<SensorController>();
@@ -123,5 +125,7 @@ public class UIController : MonoBehaviour
                 }
             }
         }
+
+        simulationTimeText.text = String.Format("{0:0.00}", simulationTime) + "s";
     }
 }
