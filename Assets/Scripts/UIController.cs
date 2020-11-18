@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System;
 
 public class UIController : MonoBehaviour
@@ -14,10 +15,14 @@ public class UIController : MonoBehaviour
 
     public Text simulationTimeText;
 
+    public Dropdown scenesDropdown;
+    private List<String> dropdownOptions;
+
     // Start is called before the first frame update
     void Awake()
     {
         uiTextsList = new List<GameObject>();
+        dropdownOptions = new List<string>();
     }
 
     // Update is called once per frame
@@ -98,6 +103,12 @@ public class UIController : MonoBehaviour
         imageBackground.GetComponent<RectTransform>().anchoredPosition = new Vector3(150f, textPos/2,  0f);
         imageBackground.GetComponent<RectTransform>().sizeDelta = new Vector2(280f, -(textPos + 40f));
 
+        for (int i=0; i<UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings; ++i) {
+            dropdownOptions.Add(System.IO.Path.GetFileNameWithoutExtension(UnityEngine.SceneManagement.SceneUtility.GetScenePathByBuildIndex(i)));
+
+        }
+        scenesDropdown.ClearOptions();
+        scenesDropdown.AddOptions(dropdownOptions);
     }
 
     public void updateUiElements(GameObject[] robotsArr, double simulationTime) {

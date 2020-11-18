@@ -444,7 +444,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -709,6 +709,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1095024679321065606, guid: 86039e23b3792a442862b138982b558b, type: 3}
+      propertyPath: scenesArr.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1095024679321065606, guid: 86039e23b3792a442862b138982b558b, type: 3}
       propertyPath: UI
       value: 
