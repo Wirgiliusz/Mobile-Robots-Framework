@@ -6,8 +6,8 @@ public class PIDController : MonoBehaviour
 {
     private RobotController robotController;
 
-    public MotorController motorRight;
-    public MotorController motorLeft;
+    private MotorController motorRight;
+    private MotorController motorLeft;
     private SensorController sensorFront;
 
     [Header("PD variables for driving stright")]
@@ -45,6 +45,8 @@ public class PIDController : MonoBehaviour
     {
         robotController = GetComponent<RobotController>();
         sensorFront = robotController.getSensorsControllers()[1];
+        motorLeft = robotController.getMotorsControllers()[0];
+        motorRight = robotController.getMotorsControllers()[1];
 
         u = 0;
         e = 0;
