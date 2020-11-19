@@ -1046,6 +1046,10 @@ MonoBehaviour:
   speed_change: 0.5
   speedR_change: 0.1
   speedL_change: 0.1
+  pathPoint: {fileID: 0}
+  pathPointSpawnTime: 0
+  maxPathPointCount: 0
+  maxVelocityForPath: 0
 --- !u!1 &2185484444182142731
 GameObject:
   m_ObjectHideFlags: 0
