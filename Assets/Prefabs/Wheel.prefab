@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 1065848509504988156}
   - component: {fileID: 1065848509504988155}
   m_Layer: 0
-  m_Name: WheelLmodel
+  m_Name: WheelModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 1698474504033164528}
   - component: {fileID: 2036047808543960242}
   m_Layer: 0
-  m_Name: WheelL
+  m_Name: Wheel
   m_TagString: Motor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

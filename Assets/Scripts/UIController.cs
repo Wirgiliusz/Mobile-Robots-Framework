@@ -71,8 +71,8 @@ public class UIController : MonoBehaviour
                 if (motorObj.transform.parent.parent.parent.parent.name == robotObj.name) { // Kinda bad but not exactly, forces specific hierarchy in robot model which is expected
                     // Create UI element for motor readings for current robot
                     GameObject motorTextValue = Instantiate(textObj, this.transform);
-                    motorTextValue.name = robotObj.name + motorObj.name + "TextValue";
-                    motorTextValue.GetComponent<Text>().text = motorObj.name;
+                    motorTextValue.name = robotObj.name + motorObj.transform.parent.name + "TextValue";
+                    motorTextValue.GetComponent<Text>().text = motorObj.transform.parent.name;
                     motorTextValue.GetComponent<RectTransform>().anchoredPosition = new Vector3(150f, textPos, 0f);
                     uiTextsList.Add(motorTextValue);
                     textPos -= textPosSpace;
@@ -123,8 +123,8 @@ public class UIController : MonoBehaviour
             foreach (GameObject textObj in uiTextsList) { // For every ui text object that should be updated
                 if (textObj.name.Contains(robotObj.name)) { // Check if ui text objects has name that contains choosen robot name 
                     foreach (MotorController motorObj in motorsArr) {
-                        if (textObj.name.Contains(motorObj.name)) {
-                            textObj.GetComponent<Text>().text = motorObj.name + ": " + String.Format("{0:0.00}", motorObj.getSpeedPercent()) + "%";
+                        if (textObj.name.Contains(motorObj.transform.parent.name)) {
+                            textObj.GetComponent<Text>().text = motorObj.transform.parent.name + ": " + String.Format("{0:0.00}", motorObj.getSpeedPercent()) + "%";
                         }
                     }
 
