@@ -7,7 +7,7 @@ public class RobotController : MonoBehaviour
 {
     public MotorsController MC_R;
     public MotorsController MC_L;
-    public SensorController SC;
+    private SensorController[] sensorsControllers;
 
     public TrailRenderer travelPath;
     bool isTravelPathHidden = false;
@@ -21,7 +21,7 @@ public class RobotController : MonoBehaviour
     private float rightMotorSpeed = 0;
     private float rightMotorSpeedPercent = 0;
     private float robotVelocity = 0;
-    private float sensorReading = 0;
+    private float[] sensorsReadings;
 
     private Rigidbody robotRb;
 
@@ -34,10 +34,16 @@ public class RobotController : MonoBehaviour
     public float maxVelocityForPath;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Awake() {
+        sensorsControllers = GetComponentsInChildren<SensorController>();
+        sensorsReadings = new float[sensorsControllers.Length];
+
         robotRb = this.GetComponentInChildren<Rigidbody>();
         pathPointsList = new List<GameObject>();
+    }
+
+    void Start()
+    {
         pathPointTimer = 0f;
     }
 
@@ -101,7 +107,9 @@ public class RobotController : MonoBehaviour
         rightMotorSpeed = MC_R.getSpeed();
         rightMotorSpeedPercent = MC_R.getSpeedPercent();
         robotVelocity = robotRb.velocity.magnitude;
-        sensorReading = SC.getHitDistance();
+        for (int i=0; i<sensorsControllers.Length; ++i) {
+            sensorsReadings[i] = sensorsControllers[i].getHitDistance();
+        }
     }
 
     void drawVelocityPath() {
@@ -133,6 +141,10 @@ public class RobotController : MonoBehaviour
         }
     }
 
+    public SensorController[] getSensorsControllers() {
+        return sensorsControllers;
+    }
+
     public float getLeftMotorSpeed() {
         return leftMotorSpeed;
     }
@@ -147,9 +159,6 @@ public class RobotController : MonoBehaviour
     }
     public float getRobotVelocity() {
         return robotVelocity;
-    }
-    public float getSensorReading() {
-        return sensorReading;
     }
 
     public void togglePath() {

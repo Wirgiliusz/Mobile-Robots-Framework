@@ -15,7 +15,7 @@ public class SensorController : MonoBehaviour
     void Start()
     {
         sensorLine = this.GetComponent<LineRenderer>();
-        sensorLine.SetPosition(1, Vector3.forward * maxHitDistance * 66.666f);
+        sensorLine.SetPosition(1, Vector3.forward * maxHitDistance * 50f);
         sensorReady = false;
         hitDistance = 0;
     }
