@@ -834,6 +834,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4745980572190524712, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4745980572591626411, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
       propertyPath: m_Name
       value: RobotMicromouse
@@ -841,6 +845,10 @@ PrefabInstance:
     - target: {fileID: 4745980572591626411, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745980572591626412, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
+      propertyPath: rotation_wanted
+      value: 92
       objectReference: {fileID: 0}
     - target: {fileID: 4745980572591626414, guid: 4ad42756455d8e5449856cbde4167e52, type: 3}
       propertyPath: m_LocalPosition.x
