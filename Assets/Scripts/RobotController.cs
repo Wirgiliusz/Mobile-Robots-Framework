@@ -8,27 +8,31 @@ public class RobotController : MonoBehaviour
     private MotorController[] motorsControllers;
     private SensorController[] sensorsControllers;
 
-    public TrailRenderer travelPath;
-    bool isTravelPathHidden = false;
-
-    private float robotVelocity = 0;
+    private TrailRenderer travelPath;
+    private bool isTravelPathHidden = false;
 
     private Rigidbody robotRb;
+    private float robotVelocity = 0;
+
+
 
     private bool drawPath = false;
-    public GameObject pathPoint;
     private float pathPointTimer;
-    public float pathPointSpawnTime;
-    public int maxPathPointCount;
     private List<GameObject> pathPointsList;
     public float maxVelocityForPath;
+    public float pathPointSpawnTime;
+    public int maxPathPointCount;
+    public GameObject pathPoint;
 
     // Start is called before the first frame update
     void Awake() {
         sensorsControllers = GetComponentsInChildren<SensorController>();
         motorsControllers = GetComponentsInChildren<MotorController>();
 
+        travelPath = GetComponentInChildren<TrailRenderer>();
+
         robotRb = this.GetComponentInChildren<Rigidbody>();
+
         pathPointsList = new List<GameObject>();
     }
 
