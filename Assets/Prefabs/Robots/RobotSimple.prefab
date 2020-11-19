@@ -110,7 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WC: {fileID: 2185484443335060497}
   WheelModel: {fileID: 2185484444393066050}
-  maxSpeed: 30
+  maxSpeed: 10
   encoderResolution: 3600
 --- !u!1 &2185484443413724619
 GameObject:
@@ -283,7 +283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WC: {fileID: 2185484443548437156}
   WheelModel: {fileID: 2185484444182142731}
-  maxSpeed: 30
+  maxSpeed: 10
   encoderResolution: 3600
 --- !u!1 &2185484443608930620
 GameObject:
@@ -451,7 +451,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.015880257
+        value: 0.0050083697
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -463,8 +463,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0, b: 0, a: 1}
-      key1: {r: 1, g: 0, b: 0, a: 1}
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -794,6 +794,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2185484444094169640}
   - component: {fileID: 2185484444094169641}
+  - component: {fileID: 1986760851491162302}
   m_Layer: 0
   m_Name: RobotSimple
   m_TagString: Robot
@@ -829,16 +830,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64d056592a7764442b4b363d8147855f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MC_R: {fileID: 2185484443548437155}
-  MC_L: {fileID: 2185484443335060496}
   travelPath: {fileID: 2185484443608930562}
-  speed_change: 0.5
-  speedR_change: 0.1
-  speedL_change: 0.1
-  pathPoint: {fileID: 0}
-  pathPointSpawnTime: 0
-  maxPathPointCount: 0
-  maxVelocityForPath: 0
+  pathPoint: {fileID: 4370492181124114253, guid: 89cc354c5e8216344aba5ee91195f60b, type: 3}
+  pathPointSpawnTime: 0.02
+  maxPathPointCount: 300
+  maxVelocityForPath: 2
+--- !u!114 &1986760851491162302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2185484444094169639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6f3154c4d346ae4fb5fa79f61556a2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed_change: 0.25
+  speedR_change: 0.25
+  speedL_change: 0.25
 --- !u!1 &2185484444182142731
 GameObject:
   m_ObjectHideFlags: 0

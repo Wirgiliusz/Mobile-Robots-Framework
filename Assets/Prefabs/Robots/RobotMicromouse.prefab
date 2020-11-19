@@ -1189,7 +1189,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.015880257
+        value: 0.0050083697
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -1201,8 +1201,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0, b: 0, a: 1}
-      key1: {r: 1, g: 0, b: 0, a: 1}
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -1248,13 +1248,14 @@ GameObject:
   - component: {fileID: 4745980572591626414}
   - component: {fileID: 4745980572591626413}
   - component: {fileID: 4745980572591626412}
+  - component: {fileID: 145901920}
   m_Layer: 0
   m_Name: RobotMicromouse
   m_TagString: Robot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4745980572591626414
 Transform:
   m_ObjectHideFlags: 0
@@ -1283,16 +1284,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64d056592a7764442b4b363d8147855f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MC_R: {fileID: 4745980572027927845}
-  MC_L: {fileID: 4745980570508321515}
   travelPath: {fileID: 4745980572190524709}
-  speed_change: 1
-  speedR_change: 0.5
-  speedL_change: 0.5
-  pathPoint: {fileID: 0}
-  pathPointSpawnTime: 0
-  maxPathPointCount: 0
-  maxVelocityForPath: 0
+  pathPoint: {fileID: 4370492181124114253, guid: 89cc354c5e8216344aba5ee91195f60b, type: 3}
+  pathPointSpawnTime: 0.02
+  maxPathPointCount: 300
+  maxVelocityForPath: 2
 --- !u!114 &4745980572591626412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1313,6 +1309,21 @@ MonoBehaviour:
   Kp_r: 300
   Kd_r: 1500
   rotation_wanted: 92
+--- !u!114 &145901920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4745980572591626411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6f3154c4d346ae4fb5fa79f61556a2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed_change: 1
+  speedR_change: 1
+  speedL_change: 1
 --- !u!1001 &1014085905754437720
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1375,6 +1386,14 @@ PrefabInstance:
     - target: {fileID: 362431018518734805, guid: 0451f3b8cb476ce44845d368b4d70806, type: 3}
       propertyPath: m_Name
       value: SensorL
+      objectReference: {fileID: 0}
+    - target: {fileID: 362431018518734807, guid: 0451f3b8cb476ce44845d368b4d70806, type: 3}
+      propertyPath: maxHitDistance
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 362431018518734807, guid: 0451f3b8cb476ce44845d368b4d70806, type: 3}
+      propertyPath: sensorResolution
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0451f3b8cb476ce44845d368b4d70806, type: 3}
@@ -1446,6 +1465,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SensorR
       objectReference: {fileID: 0}
+    - target: {fileID: 362431018518734807, guid: 0451f3b8cb476ce44845d368b4d70806, type: 3}
+      propertyPath: maxHitDistance
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 362431018518734807, guid: 0451f3b8cb476ce44845d368b4d70806, type: 3}
+      propertyPath: sensorResolution
+      value: 1000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0451f3b8cb476ce44845d368b4d70806, type: 3}
 --- !u!4 &2379175429059621420 stripped
@@ -1516,6 +1543,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SensorFL
       objectReference: {fileID: 0}
+    - target: {fileID: 362431018518734807, guid: 0451f3b8cb476ce44845d368b4d70806, type: 3}
+      propertyPath: maxHitDistance
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 362431018518734807, guid: 0451f3b8cb476ce44845d368b4d70806, type: 3}
+      propertyPath: sensorResolution
+      value: 1000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0451f3b8cb476ce44845d368b4d70806, type: 3}
 --- !u!4 &4945376183051482598 stripped
@@ -1585,6 +1620,14 @@ PrefabInstance:
     - target: {fileID: 362431018518734805, guid: 0451f3b8cb476ce44845d368b4d70806, type: 3}
       propertyPath: m_Name
       value: SensorFR
+      objectReference: {fileID: 0}
+    - target: {fileID: 362431018518734807, guid: 0451f3b8cb476ce44845d368b4d70806, type: 3}
+      propertyPath: maxHitDistance
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 362431018518734807, guid: 0451f3b8cb476ce44845d368b4d70806, type: 3}
+      propertyPath: sensorResolution
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0451f3b8cb476ce44845d368b4d70806, type: 3}
