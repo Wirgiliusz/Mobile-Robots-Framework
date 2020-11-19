@@ -12,28 +12,28 @@
     - [x] b. Using sensors measurments to control velocity
     - [x] c. Wheels encoders
 - [x] 3. Obstacles
-- [ ] 4. Robot model based on implemented features
-- [ ] 5. PID controller:
+- [x] 4. Robot model based on implemented features
+- [x] 5. PID controller:
     - [x] a. Automatic acceleration and deceleration before obstacle
 - [x] 6. Second robot model (Micromouse)
   - [x] a. Add model
   - [x] b. Write driver
 - [ ] 7. Environments:
     - [ ] a. Different obstacles
-- [ ] 8. UI:
+- [x] 8. UI:
     - [x] a. Informations about robot:
         - [x] Wheel speed
         - [x] Velocity
         - [x] Sensors readings
         - [x] Travel path (trail)
     - [x] b. Switching between robots models
-    - [ ] c. Switching between environments
+    - [x] c. Switching between environments
     - [x] d. Camera settings:
       - [x] Follow the robot
       - [x] Overhead
       - [x] Free view
       - [x] Possibility to toggle robot following by clicking
-    - [ ] e. Toggles:
+    - [x] e. Toggles:
       - [x] Robots paths
       - [x] Sensors rays
 - [x] 9. Program structure:
