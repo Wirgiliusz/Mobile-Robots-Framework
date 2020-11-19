@@ -5,23 +5,13 @@ using System;
 
 public class RobotController : MonoBehaviour
 {
-    public MotorController MC_R;
-    public MotorController MC_L;
+    private MotorController[] motorsControllers;
     private SensorController[] sensorsControllers;
 
     public TrailRenderer travelPath;
     bool isTravelPathHidden = false;
 
-    public float speed_change;
-    public float speedR_change;
-    public float speedL_change;
-
-    private float leftMotorSpeed = 0;
-    private float leftMotorSpeedPercent = 0;
-    private float rightMotorSpeed = 0;
-    private float rightMotorSpeedPercent = 0;
     private float robotVelocity = 0;
-    private float[] sensorsReadings;
 
     private Rigidbody robotRb;
 
@@ -36,7 +26,7 @@ public class RobotController : MonoBehaviour
     // Start is called before the first frame update
     void Awake() {
         sensorsControllers = GetComponentsInChildren<SensorController>();
-        sensorsReadings = new float[sensorsControllers.Length];
+        motorsControllers = GetComponentsInChildren<MotorController>();
 
         robotRb = this.GetComponentInChildren<Rigidbody>();
         pathPointsList = new List<GameObject>();
@@ -50,9 +40,6 @@ public class RobotController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        checkForKeyPresses();
-        readInputs();   
     }
 
     void FixedUpdate() {
@@ -65,52 +52,7 @@ public class RobotController : MonoBehaviour
         }
     }
 
-    void checkForKeyPresses() {
-        /*  Robot control keybinds
-        *   Up arrow:               + speed_change for both wheels  [/\]
-        *   Down arrow:             - speed_change for both wheels  [\/]
-        *   Left arrow:             + speedL_change for left wheel  [<-]
-        *   Shift + Left arrow:     - speedL_change for left wheel  [S + <-]
-        *   Right arrow:            + speedR_change for right wheel [->]
-        *   Shift + Right arrow:    - speedR_change for right wheel [S + ->]
-        *   Space:                  Reset all speeds to 0 and brake [_]
-        */
-        if (Input.GetKeyDown(KeyCode.UpArrow)) {
-            MC_R.addSpeed(speed_change);
-            MC_L.addSpeed(speed_change);
-        } else if (Input.GetKeyDown(KeyCode.DownArrow)) {
-            MC_R.addSpeed(-speed_change);
-            MC_L.addSpeed(-speed_change); 
-        } else if (Input.GetKeyDown(KeyCode.Space)) {
-            MC_R.setSpeed(0);
-            MC_L.setSpeed(0);
-            MC_R.setBrake(true);
-            MC_L.setBrake(true);
-        } else if (Input.GetKeyDown(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftShift)) {
-            MC_R.addSpeed(speedR_change);
-        } else if (Input.GetKeyDown(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.LeftShift)) {
-            MC_L.addSpeed(speedL_change);
-        } else if (Input.GetKeyDown(KeyCode.RightArrow) && Input.GetKey(KeyCode.LeftShift)) {
-            MC_R.addSpeed(-speedR_change);
-        } else if (Input.GetKeyDown(KeyCode.LeftArrow) && Input.GetKey(KeyCode.LeftShift)) {
-            MC_L.addSpeed(-speedL_change);
-        }
-        if (!Input.GetKey(KeyCode.Space)) {
-            MC_R.setBrake(false);
-            MC_L.setBrake(false);
-        }
-    }
-
-    void readInputs() {
-        leftMotorSpeed = MC_L.getSpeed();
-        leftMotorSpeedPercent = MC_L.getSpeedPercent();
-        rightMotorSpeed = MC_R.getSpeed();
-        rightMotorSpeedPercent = MC_R.getSpeedPercent();
-        robotVelocity = robotRb.velocity.magnitude;
-        for (int i=0; i<sensorsControllers.Length; ++i) {
-            sensorsReadings[i] = sensorsControllers[i].getHitDistance();
-        }
-    }
+    
 
     void drawVelocityPath() {
         if (pathPointTimer >= pathPointSpawnTime && robotVelocity > 0.01f) {
@@ -145,18 +87,10 @@ public class RobotController : MonoBehaviour
         return sensorsControllers;
     }
 
-    public float getLeftMotorSpeed() {
-        return leftMotorSpeed;
+    public MotorController[] getMotorsControllers() {
+        return motorsControllers;
     }
-    public float getLeftMotorSpeedPercent() {
-        return leftMotorSpeedPercent;
-    }
-    public float getRightMotorSpeed() {
-        return rightMotorSpeed;
-    }
-    public float getRightMotorSpeedPercent() {
-        return rightMotorSpeedPercent;
-    }
+
     public float getRobotVelocity() {
         return robotVelocity;
     }
