@@ -55,7 +55,7 @@ Transform:
   m_GameObject: {fileID: 1307927633368531218}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 13.313333}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1307927634258615317}
   m_RootOrder: 2
@@ -219,7 +219,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1307927634387009951}
   - component: {fileID: 1307927634387009948}
-  - component: {fileID: 1307927634387009949}
   - component: {fileID: 6051621218753630289}
   m_Layer: 0
   m_Name: RobotPrototype
@@ -259,24 +258,6 @@ MonoBehaviour:
   pathPointSpawnTime: 0.02
   maxPathPointCount: 300
   pathPoint: {fileID: 4370492181124114253, guid: 89cc354c5e8216344aba5ee91195f60b, type: 3}
---- !u!114 &1307927634387009949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1307927634387009946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a56a6c6bfaae0c84db158ddc082e9ec7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Kp: 400
-  Kd: 400
-  distance_wanted: 0.09
-  Kp_r: 300
-  Kd_r: 1500
-  rotation_wanted: 92
 --- !u!114 &6051621218753630289
 MonoBehaviour:
   m_ObjectHideFlags: 0
