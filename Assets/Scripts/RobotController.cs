@@ -37,11 +37,6 @@ public class RobotController : MonoBehaviour
         pathPointTimer = 0f;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     void FixedUpdate() {
         pathPointTimer += Time.deltaTime;
 
@@ -52,7 +47,10 @@ public class RobotController : MonoBehaviour
         }
     }
 
-    
+    void Update() {
+        robotVelocity = robotRb.velocity.magnitude;
+    }
+
 
     void drawVelocityPath() {
         if (pathPointTimer >= pathPointSpawnTime && robotVelocity > 0.01f) {
