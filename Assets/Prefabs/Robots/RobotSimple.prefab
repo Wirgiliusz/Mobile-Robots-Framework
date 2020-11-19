@@ -105,13 +105,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2185484443335060495}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d09386ec354e114ca4292437c590398, type: 3}
+  m_Script: {fileID: 11500000, guid: 385a75890fd0c7148b9daefba38b6801, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WC: {fileID: 0}
+  WC: {fileID: 2185484443335060497}
   WheelModel: {fileID: 2185484444393066050}
-  maxSpeed: 10
-  encoderResolution: 360
+  maxSpeed: 30
+  encoderResolution: 3600
 --- !u!1 &2185484443413724619
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,13 +278,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2185484443548437154}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d09386ec354e114ca4292437c590398, type: 3}
+  m_Script: {fileID: 11500000, guid: 385a75890fd0c7148b9daefba38b6801, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WC: {fileID: 0}
+  WC: {fileID: 2185484443548437156}
   WheelModel: {fileID: 2185484444182142731}
-  maxSpeed: 10
-  encoderResolution: 360
+  maxSpeed: 30
+  encoderResolution: 3600
 --- !u!1 &2185484443608930620
 GameObject:
   m_ObjectHideFlags: 0
@@ -831,7 +831,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MC_R: {fileID: 2185484443548437155}
   MC_L: {fileID: 2185484443335060496}
-  SC: {fileID: 2185484442855211106}
   travelPath: {fileID: 2185484443608930562}
   speed_change: 0.5
   speedR_change: 0.1
@@ -1163,14 +1162,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 362431018518734804, guid: 0451f3b8cb476ce44845d368b4d70806, type: 3}
   m_PrefabInstance: {fileID: 1969194070146508725}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2185484442855211106 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 362431018518734807, guid: 0451f3b8cb476ce44845d368b4d70806, type: 3}
-  m_PrefabInstance: {fileID: 1969194070146508725}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63a8dc5b64aaf784eaf42c7705c41c35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

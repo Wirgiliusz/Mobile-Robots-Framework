@@ -6,8 +6,8 @@ public class PIDController : MonoBehaviour
 {
     private RobotController robotController;
 
-    public MotorsController motorRight;
-    public MotorsController motorLeft;
+    public MotorController motorRight;
+    public MotorController motorLeft;
     private SensorController sensorFront;
 
     [Header("PD variables for driving stright")]

@@ -5,8 +5,8 @@ using System;
 
 public class RobotController : MonoBehaviour
 {
-    public MotorsController MC_R;
-    public MotorsController MC_L;
+    public MotorController MC_R;
+    public MotorController MC_L;
     private SensorController[] sensorsControllers;
 
     public TrailRenderer travelPath;

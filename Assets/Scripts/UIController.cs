@@ -117,12 +117,12 @@ public class UIController : MonoBehaviour
 
     public void updateUiElements(GameObject[] robotsArr, double simulationTime) {
         foreach (GameObject robotObj in robotsArr) { // Choose robot
-            MotorsController[] motorsArr = robotObj.GetComponentsInChildren<MotorsController>();
+            MotorController[] motorsArr = robotObj.GetComponentsInChildren<MotorController>();
             SensorController[] sensorsArr = robotObj.GetComponentsInChildren<SensorController>();
 
             foreach (GameObject textObj in uiTextsList) { // For every ui text object that should be updated
                 if (textObj.name.Contains(robotObj.name)) { // Check if ui text objects has name that contains choosen robot name 
-                    foreach (MotorsController motorObj in motorsArr) {
+                    foreach (MotorController motorObj in motorsArr) {
                         if (textObj.name.Contains(motorObj.name)) {
                             textObj.GetComponent<Text>().text = motorObj.name + ": " + String.Format("{0:0.00}", motorObj.getSpeedPercent()) + "%";
                         }

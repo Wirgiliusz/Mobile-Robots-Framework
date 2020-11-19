@@ -71,7 +71,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4745980570508321512}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d09386ec354e114ca4292437c590398, type: 3}
+  m_Script: {fileID: 11500000, guid: 385a75890fd0c7148b9daefba38b6801, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   WC: {fileID: 4745980570508321514}
@@ -1014,7 +1014,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4745980572027927842}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d09386ec354e114ca4292437c590398, type: 3}
+  m_Script: {fileID: 11500000, guid: 385a75890fd0c7148b9daefba38b6801, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   WC: {fileID: 4745980572027927844}
@@ -1285,7 +1285,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MC_R: {fileID: 4745980572027927845}
   MC_L: {fileID: 4745980570508321515}
-  SC: {fileID: 0}
   travelPath: {fileID: 4745980572190524709}
   speed_change: 1
   speedR_change: 0.5
@@ -1308,7 +1307,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   motorRight: {fileID: 4745980572027927845}
   motorLeft: {fileID: 4745980570508321515}
-  sensorFront: {fileID: 0}
   Kp: 400
   Kd: 400
   distance_wanted: 0.09
