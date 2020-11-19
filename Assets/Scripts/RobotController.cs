@@ -42,19 +42,21 @@ public class RobotController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        pathPointTimer += Time.deltaTime;
         
         checkForKeyPresses();
-        readInputs();
+        readInputs();   
+    }
+
+    void FixedUpdate() {
+        pathPointTimer += Time.deltaTime;
 
         if (drawPath) {
             drawVelocityPath();
         } else {
             deleteVelocityPath();
         }
-        
     }
 
     void checkForKeyPresses() {
@@ -103,7 +105,7 @@ public class RobotController : MonoBehaviour
     }
 
     void drawVelocityPath() {
-        if (pathPointTimer >= pathPointSpawnTime) {
+        if (pathPointTimer >= pathPointSpawnTime && robotVelocity > 0.01f) {
             GameObject newPoint = Instantiate(pathPoint, this.transform.GetChild(0).position, this.transform.GetChild(0).rotation, this.transform);
 
             float colorHue = 0.33f - (robotVelocity/maxVelocityForPath)*0.33f;
