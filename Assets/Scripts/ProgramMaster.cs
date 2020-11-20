@@ -161,9 +161,9 @@ public class ProgramMaster : MonoBehaviour
 
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit)) {
             if (!EventSystem.current.IsPointerOverGameObject()) {   // Check if mouse isn't over UI element
-                if (hit.transform.parent != null && hit.transform.parent.gameObject.tag == "Robot") {
+                if (hit.transform.root.gameObject.tag == "Robot") {
                     Debug.Log("Selected");
-                    selectedRobot = hit.transform.parent.gameObject;
+                    selectedRobot = hit.transform.root.gameObject;
                 } else {
                     Debug.Log("Unselected robot");
                     selectedRobot = null;
