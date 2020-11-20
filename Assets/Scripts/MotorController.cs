@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MotorsController : MonoBehaviour
+public class MotorController : MonoBehaviour
 {
     public WheelCollider WC;        // Collider of the wheel
     public GameObject WheelModel;   // Visual model of the wheel

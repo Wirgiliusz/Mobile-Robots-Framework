@@ -7,8 +7,11 @@ using UnityEngine.EventSystems;
 public class ProgramMaster : MonoBehaviour
 {
     public UIController UI;
+    private List<GameObject> robotsList;
+    private List<GameObject> motorsList;
+    private List<GameObject> sensorsList;
 
-    private int cameraIterator = 0; // Index of currently used camera
+    private int cameraIterator = 2; // Index of currently used camera
     public Camera robotCamera;
     public Camera overheadCamera;
     public Camera freeCamera;
@@ -17,24 +20,38 @@ public class ProgramMaster : MonoBehaviour
     public Vector3 freeCameraOffset;
 
     private GameObject selectedRobot = null;
+    private GameObject[] robotsArr;
 
-    public GameObject Robot;
-    private RobotController RC;
-    private PIDController PC;
+    private double simulationTime;
 
     // Start is called before the first frame update
     void Start()
     {
-        RC = Robot.GetComponent<RobotController>();
-        PC = Robot.GetComponent<PIDController>();
-        PC.enabled = false;
+        simulationTime = 0;
+
+        robotsArr = GameObject.FindGameObjectsWithTag("Robot");
+
+        foreach (GameObject robot in robotsArr) {
+            PIDController PC = robot.GetComponent<PIDController>();
+            if (PC != null) {
+                robot.GetComponent<PIDController>().enabled = false;
+            }
+        }
+        robotCamera.enabled = false;
         overheadCamera.enabled = false;
-        freeCamera.enabled = false;  
+        freeCamera.enabled = true;  
+
+        robotsList = new List<GameObject>(GameObject.FindGameObjectsWithTag("Robot"));
+        motorsList = new List<GameObject>(GameObject.FindGameObjectsWithTag("Motor"));
+        sensorsList = new List<GameObject>(GameObject.FindGameObjectsWithTag("Sensor"));
+
+        UI.createUiElements(robotsList, motorsList, sensorsList);
     }
 
     // Update is called once per frame
     void Update()
     {
+        simulationTime = Time.timeSinceLevelLoad;
         /* Global program keybinds
         * C:    Switch camera       [C]
         * T:    Toggle travel path  [T]
@@ -46,7 +63,7 @@ public class ProgramMaster : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.T)) {
-            RC.togglePath();
+            togglePaths();
         }
 
         if (Input.GetKeyDown(KeyCode.P)) {
@@ -62,7 +79,7 @@ public class ProgramMaster : MonoBehaviour
         }
 
         updateCameraPosition();
-        updateUI();
+        UI.updateUiElements(robotsArr, simulationTime);
     }
 
 
@@ -104,19 +121,39 @@ public class ProgramMaster : MonoBehaviour
         }
     }
 
-    void updateUI() {
-        UI.setVelocityText(RC.getRobotVelocity());
-        UI.setMotorLText(RC.getLeftMotorSpeedPercent());
-        UI.setMotorRText(RC.getRightMotorSpeedPercent());
-        UI.setSensorText(RC.getSensorReading());
-    }
-
     public void turnOnController() {
-        PC.enabled = true;
+        foreach (GameObject robot in robotsArr) {
+            PIDController PC = robot.GetComponent<PIDController>();
+            if (PC != null) {
+                robot.GetComponent<PIDController>().enabled = true;
+            }
+        }
     }
 
     public void restartSimulation() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void changeScene() {
+        UI.changeScene();
+    }
+
+    public void togglePaths() {
+        foreach (GameObject robot in robotsArr) {
+            robot.GetComponent<RobotController>().togglePath();
+        }
+    }
+
+    public void toggleVelocityPaths() {
+        foreach (GameObject robot in robotsArr) {
+            robot.GetComponent<RobotController>().toggleVelocityPath();
+        }
+    }
+
+    public void toggleSensorsRays() {
+        foreach (GameObject sensor in sensorsList) {
+            sensor.GetComponent<SensorController>().toggleSensorRay();
+        }
     }
 
     void checkForRobotSelect() {
@@ -124,9 +161,9 @@ public class ProgramMaster : MonoBehaviour
 
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit)) {
             if (!EventSystem.current.IsPointerOverGameObject()) {   // Check if mouse isn't over UI element
-                if (hit.transform.parent != null && hit.transform.parent.gameObject.tag == "Robot") {
+                if (hit.transform.root.gameObject.tag == "Robot") {
                     Debug.Log("Selected");
-                    selectedRobot = hit.transform.parent.gameObject;
+                    selectedRobot = hit.transform.root.gameObject;
                 } else {
                     Debug.Log("Unselected robot");
                     selectedRobot = null;
@@ -134,4 +171,5 @@ public class ProgramMaster : MonoBehaviour
             }
         } 
     }
+
 }

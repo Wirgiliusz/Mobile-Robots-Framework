@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PIDController : MonoBehaviour
 {
-    public MotorsController motorRight;
-    public MotorsController motorLeft;
-    public SensorController sensorFront;
+    private RobotController robotController;
+
+    private MotorController motorRight;
+    private MotorController motorLeft;
+    private SensorController sensorFront;
 
     [Header("PD variables for driving stright")]
     public double Kp;
@@ -41,6 +43,11 @@ public class PIDController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        robotController = GetComponent<RobotController>();
+        sensorFront = robotController.getSensorsControllers()[1];
+        motorLeft = robotController.getMotorsControllers()[0];
+        motorRight = robotController.getMotorsControllers()[1];
+
         u = 0;
         e = 0;
         e_prev = 0;

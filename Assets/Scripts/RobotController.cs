@@ -5,107 +5,116 @@ using System;
 
 public class RobotController : MonoBehaviour
 {
-    public MotorsController MC_R;
-    public MotorsController MC_L;
-    public SensorController SC;
+    private MotorController[] motorsControllers;
+    private SensorController[] sensorsControllers;
 
-    public TrailRenderer travelPath;
-
-    public float speed_change;
-    public float speedR_change;
-    public float speedL_change;
-
-    private float leftMotorSpeed = 0;
-    private float leftMotorSpeedPercent = 0;
-    private float rightMotorSpeed = 0;
-    private float rightMotorSpeedPercent = 0;
-    private float robotVelocity = 0;
-    private float sensorReading = 0;
+    private TrailRenderer travelPath;
+    private bool isTravelPathHidden = false;
 
     private Rigidbody robotRb;
+    private float robotVelocity = 0;
+
+
+
+    private bool drawPath = false;
+    private float pathPointTimer;
+    private List<GameObject> pathPointsList;
+    public float maxVelocityForPath;
+    public float pathPointSpawnTime;
+    public int maxPathPointCount;
+    public GameObject pathPoint;
 
     // Start is called before the first frame update
+    void Awake() {
+        sensorsControllers = GetComponentsInChildren<SensorController>();
+        motorsControllers = GetComponentsInChildren<MotorController>();
+
+        travelPath = GetComponentInChildren<TrailRenderer>();
+
+        robotRb = this.GetComponentInChildren<Rigidbody>();
+
+        pathPointsList = new List<GameObject>();
+    }
+
     void Start()
     {
-        robotRb = this.GetComponentInChildren<Rigidbody>();
+        pathPointTimer = 0f;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        checkForKeyPresses();
-        readInputs();
-    }
+    void FixedUpdate() {
+        pathPointTimer += Time.deltaTime;
 
-    void checkForKeyPresses() {
-        /*  Robot control keybinds
-        *   Up arrow:               + speed_change for both wheels  [/\]
-        *   Down arrow:             - speed_change for both wheels  [\/]
-        *   Left arrow:             + speedL_change for left wheel  [<-]
-        *   Shift + Left arrow:     - speedL_change for left wheel  [S + <-]
-        *   Right arrow:            + speedR_change for right wheel [->]
-        *   Shift + Right arrow:    - speedR_change for right wheel [S + ->]
-        *   Space:                  Reset all speeds to 0 and brake [_]
-        */
-        if (Input.GetKeyDown(KeyCode.UpArrow)) {
-            MC_R.addSpeed(speed_change);
-            MC_L.addSpeed(speed_change);
-        } else if (Input.GetKeyDown(KeyCode.DownArrow)) {
-            MC_R.addSpeed(-speed_change);
-            MC_L.addSpeed(-speed_change); 
-        } else if (Input.GetKeyDown(KeyCode.Space)) {
-            MC_R.setSpeed(0);
-            MC_L.setSpeed(0);
-            MC_R.setBrake(true);
-            MC_L.setBrake(true);
-        } else if (Input.GetKeyDown(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftShift)) {
-            MC_R.addSpeed(speedR_change);
-        } else if (Input.GetKeyDown(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.LeftShift)) {
-            MC_L.addSpeed(speedL_change);
-        } else if (Input.GetKeyDown(KeyCode.RightArrow) && Input.GetKey(KeyCode.LeftShift)) {
-            MC_R.addSpeed(-speedR_change);
-        } else if (Input.GetKeyDown(KeyCode.LeftArrow) && Input.GetKey(KeyCode.LeftShift)) {
-            MC_L.addSpeed(-speedL_change);
-        }
-        if (!Input.GetKey(KeyCode.Space)) {
-            MC_R.setBrake(false);
-            MC_L.setBrake(false);
+        if (drawPath) {
+            drawVelocityPath();
+        } else {
+            deleteVelocityPath();
         }
     }
 
-    void readInputs() {
-        leftMotorSpeed = MC_L.getSpeed();
-        leftMotorSpeedPercent = MC_L.getSpeedPercent();
-        rightMotorSpeed = MC_R.getSpeed();
-        rightMotorSpeedPercent = MC_R.getSpeedPercent();
+    void Update() {
         robotVelocity = robotRb.velocity.magnitude;
-        sensorReading = SC.getHitDistance();
     }
 
-    public float getLeftMotorSpeed() {
-        return leftMotorSpeed;
+
+    void drawVelocityPath() {
+        if (pathPointTimer >= pathPointSpawnTime && robotVelocity > 0.01f) {
+            GameObject newPoint = Instantiate(pathPoint, this.transform.GetChild(0).position, this.transform.GetChild(0).rotation, this.transform);
+
+            float colorHue = 0.33f - (robotVelocity/maxVelocityForPath)*0.33f;
+            if (colorHue < 0f) {
+                colorHue = 0f;
+            }
+            newPoint.GetComponent<Renderer>().material.SetColor("_Color", Color.HSVToRGB(colorHue, 1f, 1f));  
+
+            pathPointsList.Add(newPoint);
+
+            if (pathPointsList.Count > maxPathPointCount) {
+                Destroy(pathPointsList[0]);
+                pathPointsList.RemoveAt(0);
+            }
+            pathPointTimer = 0f;
+        }
     }
-    public float getLeftMotorSpeedPercent() {
-        return leftMotorSpeedPercent;
+
+    void deleteVelocityPath() {
+        if (pathPointsList.Count > 0) {
+            foreach (GameObject point in pathPointsList) {
+                Destroy(point);
+            }
+            pathPointsList.Clear();
+        }
     }
-    public float getRightMotorSpeed() {
-        return rightMotorSpeed;
+
+    public SensorController[] getSensorsControllers() {
+        return sensorsControllers;
     }
-    public float getRightMotorSpeedPercent() {
-        return rightMotorSpeedPercent;
+
+    public MotorController[] getMotorsControllers() {
+        return motorsControllers;
     }
+
     public float getRobotVelocity() {
         return robotVelocity;
     }
-    public float getSensorReading() {
-        return sensorReading;
-    }
 
     public void togglePath() {
-        if (travelPath.enabled == true) {
-            travelPath.enabled = false;
-        } else if (travelPath.enabled == false) {
-            travelPath.enabled = true;
+        if (isTravelPathHidden) {
+            travelPath.startColor = new Color(255,255,255,1f);
+            travelPath.endColor = new Color(255,255,255,1f);
+            isTravelPathHidden = false;
+        } else if (!isTravelPathHidden) {
+            travelPath.startColor = new Color(0,0,0,0f);
+            travelPath.endColor = new Color(0,0,0,0f);
+            isTravelPathHidden = true;
         }
     }
+
+    public void toggleVelocityPath() {
+        if (drawPath == true) {
+            drawPath = false;
+        } else {
+            drawPath = true;
+        }
+    }
+
 }
