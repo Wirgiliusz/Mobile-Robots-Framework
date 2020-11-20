@@ -68,7 +68,7 @@ public class UIController : MonoBehaviour
             motorsTextLabel.GetComponent<RectTransform>().anchoredPosition = new Vector3(120f, textPos,  0f);
             textPos -= textPosSpace;
             foreach (GameObject motorObj in motorsList) {
-                if (motorObj.transform.parent.parent.parent.parent.name == robotObj.name) { // Kinda bad but not exactly, forces specific hierarchy in robot model which is expected
+                if (motorObj.transform.root.gameObject.name == robotObj.name) {
                     // Create UI element for motor readings for current robot
                     GameObject motorTextValue = Instantiate(textObj, this.transform);
                     motorTextValue.name = robotObj.name + motorObj.transform.parent.name + "TextValue";
@@ -85,7 +85,7 @@ public class UIController : MonoBehaviour
             sensorsTextLabel.GetComponent<RectTransform>().anchoredPosition = new Vector3(120f, textPos,  0f);
             textPos -= textPosSpace;
             foreach (GameObject sensorObj in sensorsList) {
-                if (sensorObj.transform.parent.parent.parent.name == robotObj.name) {  // Kinda bad but not exactly, forces specific hierarchy in robot model which is expected
+                if (sensorObj.transform.root.gameObject.name == robotObj.name) {
                     // Create UI element for sensor readings for current robot
                     GameObject sensorTextValue = Instantiate(textObj, this.transform);
                     sensorTextValue.name = robotObj.name + sensorObj.name + "TextValue";
