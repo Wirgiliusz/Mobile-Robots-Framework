@@ -13,6 +13,7 @@ public class PIDController : MonoBehaviour
     [Header("PD variables for driving stright")]
     public double Kp;
     public double Kd;
+    public double e_expected;
     private double u;
     private double e;
     private double e_prev;
@@ -21,8 +22,10 @@ public class PIDController : MonoBehaviour
     bool arrived;
 
     [Header("PD variables for rotating")]
+    public float halfDistanceBetweenWheels;
     public double Kp_r;
     public double Kd_r;
+    public double e_r_expected;
     private double u_r;
     private double e_r;
     private double e_prev_r;
@@ -40,11 +43,24 @@ public class PIDController : MonoBehaviour
     int movNumber = 0;
     bool movFinished = false;
 
+    public bool onlyStright;
+    public bool onlyRotate;
+
     // Start is called before the first frame update
     void Start()
     {
+        if (onlyStright) {
+            movList = new Direction[] {Direction.driveStright, Direction.stop, };
+        }
+        if (onlyRotate) {
+            movList = new Direction[] {Direction.rotateLeft, Direction.stop, };
+        }
+        if (onlyStright && onlyRotate) {
+            movList = new Direction[] {Direction.stop, };
+        }
+
         robotController = GetComponent<RobotController>();
-        sensorFront = robotController.getSensorsControllers()[1];
+        sensorFront = robotController.getSensorsControllers()[0];
         motorLeft = robotController.getMotorsControllers()[0];
         motorRight = robotController.getMotorsControllers()[1];
 
@@ -56,7 +72,7 @@ public class PIDController : MonoBehaviour
         e_r = 0;
         e_prev_r = 0;
         distance_r = 0;
-        distance_wanted_r = (float)(2f * (rotation_wanted/360f) * Mathf.PI * 0.0525f);
+        distance_wanted_r = (float)(2f * (rotation_wanted/360f) * Mathf.PI * halfDistanceBetweenWheels);
         arrived_r = false;
     }
 
@@ -108,7 +124,7 @@ public class PIDController : MonoBehaviour
                 movFinished = true;
             }
             
-            if (e <= 0.001d && e >= -0.001d) {
+            if (e <= e_expected && e >= -e_expected) {
                 arrived = true;
             }
 
@@ -146,7 +162,7 @@ public class PIDController : MonoBehaviour
             movFinished = true;
         }
 
-        if (e_r <= 0.00001d && e_r >= -0.00001d) {
+        if (e_r <= e_r_expected && e_r >= -e_r_expected) {
             arrived_r = true;
         }
 
@@ -167,7 +183,7 @@ public class PIDController : MonoBehaviour
             motorRight.setSpeedPercent((float)u_r);
         }
    
-        e_prev = e;   
+        e_prev_r = e_r;   
     }
 
     void resetDrive() {

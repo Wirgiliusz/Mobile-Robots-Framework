@@ -852,10 +852,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Kp: 400
   Kd: 400
+  e_expected: 0.001
   distance_wanted: 0.09
-  Kp_r: 300
-  Kd_r: 1500
+  halfDistanceBetweenWheels: 0.0525
+  Kp_r: 1000
+  Kd_r: 100
+  e_r_expected: 0.00001
   rotation_wanted: 92
+  onlyStright: 0
+  onlyRotate: 0
 --- !u!114 &145901920
 MonoBehaviour:
   m_ObjectHideFlags: 0
