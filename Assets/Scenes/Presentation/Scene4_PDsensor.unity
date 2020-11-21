@@ -691,6 +691,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1223354561678340697, guid: 4e327c5db0e34ce488f4758fe2ba6e02, type: 3}
+      propertyPath: m_ForwardFriction.m_ExtremumValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223354561678340697, guid: 4e327c5db0e34ce488f4758fe2ba6e02, type: 3}
+      propertyPath: m_ForwardFriction.m_AsymptoteValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223354562834271884, guid: 4e327c5db0e34ce488f4758fe2ba6e02, type: 3}
+      propertyPath: m_ForwardFriction.m_ExtremumValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223354562834271884, guid: 4e327c5db0e34ce488f4758fe2ba6e02, type: 3}
+      propertyPath: m_ForwardFriction.m_AsymptoteValue
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1535369782931859497, guid: 4e327c5db0e34ce488f4758fe2ba6e02, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -829,15 +845,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Kp: 400
   Kd: 400
-  e_expected: 0
-  distance_wanted: 0.3
+  e_expected: 0.0001
+  distance_wanted: 0.75
   halfDistanceBetweenWheels: 0.06
-  Kp_r: 50
-  Kd_r: 250
+  Kp_r: 1000
+  Kd_r: 100
   e_r_expected: 0.0001
-  rotation_wanted: 90
-  onlyStright: 0
-  onlyRotate: 1
+  rotation_wanted: 94
+  onlyStright: 1
+  onlyRotate: 0
 --- !u!1001 &2062568024
 PrefabInstance:
   m_ObjectHideFlags: 0
