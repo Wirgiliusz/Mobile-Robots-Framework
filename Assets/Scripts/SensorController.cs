@@ -5,6 +5,7 @@ using UnityEngine;
 public class SensorController : MonoBehaviour
 {
     public float maxHitDistance;
+    public float minHitDistance;
     private LineRenderer sensorLine;
     private float hitDistance;  
     bool sensorReady;
@@ -27,9 +28,15 @@ public class SensorController : MonoBehaviour
         Ray downRay = new Ray(transform.position, transform.forward);
 
         if (Physics.Raycast(downRay, out hit) && hit.distance <= maxHitDistance) {
-            hitDistance = hit.distance;
-            sensorLine.startColor = Color.red;
-            sensorLine.endColor = Color.red;
+            if (hit.distance >= minHitDistance) {
+                hitDistance = hit.distance;
+                sensorLine.startColor = Color.red;
+                sensorLine.endColor = Color.red;
+            } else {
+                hitDistance = minHitDistance;
+                sensorLine.startColor = Color.yellow;
+                sensorLine.endColor = Color.yellow;
+            }
         } else {
             hitDistance = maxHitDistance;
             sensorLine.startColor = Color.yellow;

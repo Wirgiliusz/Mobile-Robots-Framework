@@ -519,7 +519,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1535369781678631075}
   m_Layer: 0
-  m_Name: Sensors
+  m_Name: SensorsComponents
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -763,7 +763,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2679766315000198802}
   m_Layer: 0
-  m_Name: Wheels
+  m_Name: MotorComponents
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -795,7 +795,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3087716162796677965}
   m_Layer: 0
-  m_Name: BodyColliders
+  m_Name: BodyComponents
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1127,6 +1127,10 @@ PrefabInstance:
     - target: {fileID: 362431018518734807, guid: 0451f3b8cb476ce44845d368b4d70806, type: 3}
       propertyPath: sensorResolution
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 362431018518734807, guid: 0451f3b8cb476ce44845d368b4d70806, type: 3}
+      propertyPath: minHitDistance
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0451f3b8cb476ce44845d368b4d70806, type: 3}

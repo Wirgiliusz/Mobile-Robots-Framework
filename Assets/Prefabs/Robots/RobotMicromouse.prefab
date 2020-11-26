@@ -234,7 +234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4745980571336693796}
   m_Layer: 0
-  m_Name: Sensors
+  m_Name: SensorsComponents
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -886,7 +886,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8188625776855991829}
   m_Layer: 0
-  m_Name: Wheels
+  m_Name: MotorsComponents
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -918,7 +918,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9100195931709856714}
   m_Layer: 0
-  m_Name: BodyColliders
+  m_Name: BodyComponents
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

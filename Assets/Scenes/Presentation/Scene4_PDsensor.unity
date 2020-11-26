@@ -846,12 +846,12 @@ MonoBehaviour:
   Kp: 400
   Kd: 400
   e_expected: 0.0001
-  distance_wanted: 0.75
+  distance_wanted: 0.33
   halfDistanceBetweenWheels: 0.06
   Kp_r: 1000
   Kd_r: 100
   e_r_expected: 0.0001
-  rotation_wanted: 94
+  rotation_wanted: 184
   onlyStright: 1
   onlyRotate: 0
 --- !u!1001 &2062568024

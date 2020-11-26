@@ -476,6 +476,10 @@ PrefabInstance:
       propertyPath: maxHitDistance
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 175524907112238660, guid: 4e327c5db0e34ce488f4758fe2ba6e02, type: 3}
+      propertyPath: minHitDistance
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 1535369782931859497, guid: 4e327c5db0e34ce488f4758fe2ba6e02, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.5879

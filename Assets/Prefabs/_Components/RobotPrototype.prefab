@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2474862882172395300}
   m_Layer: 0
-  m_Name: Wheels
+  m_Name: MotorsComponents
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1307927633368531221}
   m_Layer: 0
-  m_Name: Sensors
+  m_Name: SensorsComponents
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -283,7 +283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3292639936086393595}
   m_Layer: 0
-  m_Name: BodyColliders
+  m_Name: BodyComponents
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
