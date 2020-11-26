@@ -194,4 +194,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHitDistance: 10
+  minHitDistance: 0
   sensorResolution: 0

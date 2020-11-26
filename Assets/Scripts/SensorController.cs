@@ -51,7 +51,7 @@ public class SensorController : MonoBehaviour
     }
 
     public int getHitTicks() {
-        return (int)((hitDistance/maxHitDistance) * sensorResolution);
+        return (int)(((hitDistance-minHitDistance)/(maxHitDistance-minHitDistance)) * sensorResolution);
     }
 
     public bool getSensorReady() {
