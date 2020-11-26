@@ -208,7 +208,7 @@ public class PIDController : MonoBehaviour
     }
 
     double sensorImpulseToDistance(int impulseCount) {
-        return sensorFront.maxHitDistance * (impulseCount/sensorFront.sensorResolution); 
+        return sensorFront.minHitDistance + ((sensorFront.maxHitDistance-sensorFront.minHitDistance) * (impulseCount/sensorFront.sensorResolution)); 
     }
 
 }
