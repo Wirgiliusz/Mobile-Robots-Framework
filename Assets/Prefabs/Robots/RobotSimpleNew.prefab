@@ -888,6 +888,10 @@ PrefabInstance:
       propertyPath: maxSpeed
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 2036047808543960242, guid: 642e8c0beda0ef94ab81780b4aee6d7f, type: 3}
+      propertyPath: maxTorque
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 2130132146412853812, guid: 642e8c0beda0ef94ab81780b4aee6d7f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.06
@@ -1008,6 +1012,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2036047808543960242, guid: 642e8c0beda0ef94ab81780b4aee6d7f, type: 3}
       propertyPath: maxSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2036047808543960242, guid: 642e8c0beda0ef94ab81780b4aee6d7f, type: 3}
+      propertyPath: maxTorque
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2130132146412853812, guid: 642e8c0beda0ef94ab81780b4aee6d7f, type: 3}

@@ -7,7 +7,7 @@ public class MotorController : MonoBehaviour
     public WheelCollider WC;        // Collider of the wheel
     public GameObject WheelModel;   // Visual model of the wheel
 
-    public float maxSpeed;          // Maximum speed allowed for motor
+    public float maxTorque;          // Maximum torque allowed for motor
     private float speed = 0;        // Motor speed
 
     private float wheelCircumference;   // Wheel circumference in meters
@@ -32,11 +32,11 @@ public class MotorController : MonoBehaviour
 
     public void addSpeed(float newSpeed) {
         speed += newSpeed;
-        if (speed > maxSpeed) {
-            speed = maxSpeed;
+        if (speed > maxTorque) {
+            speed = maxTorque;
         }
-        if (speed < -maxSpeed) {
-            speed = -maxSpeed;
+        if (speed < -maxTorque) {
+            speed = -maxTorque;
         }
 
         WC.motorTorque = speed;
@@ -44,11 +44,11 @@ public class MotorController : MonoBehaviour
 
     public void setSpeed(float newSpeed) {
         speed = newSpeed;
-        if (speed > maxSpeed) {
-            speed = maxSpeed;
+        if (speed > maxTorque) {
+            speed = maxTorque;
         }
-        if (speed < -maxSpeed) {
-            speed = -maxSpeed;
+        if (speed < -maxTorque) {
+            speed = -maxTorque;
         }
 
         WC.motorTorque = speed;
@@ -63,12 +63,12 @@ public class MotorController : MonoBehaviour
         }
 
         speedPercent /= 100;
-        speed = maxSpeed * speedPercent;
-        if (speed > maxSpeed) {
-            speed = maxSpeed;
+        speed = maxTorque * speedPercent;
+        if (speed > maxTorque) {
+            speed = maxTorque;
         }
-        if (speed < -maxSpeed) {
-            speed = -maxSpeed;
+        if (speed < -maxTorque) {
+            speed = -maxTorque;
         }
 
         WC.motorTorque = speed;
@@ -87,7 +87,7 @@ public class MotorController : MonoBehaviour
     }
 
     public float getSpeedPercent() {
-        return (speed/maxSpeed) * 100f;
+        return (speed/maxTorque) * 100f;
     }
 
     // Returns number of encoder ticks based on rotation and resolution
