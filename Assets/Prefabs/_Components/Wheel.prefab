@@ -189,5 +189,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WC: {fileID: 1698474504033164528}
   WheelModel: {fileID: 1065848509504988154}
-  maxSpeed: 30
+  maxTorque: 30
+  maxRPM: 0
   encoderResolution: 3600
