@@ -12,12 +12,12 @@ public class ProgramMaster : MonoBehaviour
     private List<GameObject> sensorsList;
 
     private int cameraIterator = 2; // Index of currently used camera
-    public Camera robotCamera;
-    public Camera overheadCamera;
-    public Camera freeCamera;
-    public Vector3 robotCameraPositionOffset;
-    public Vector3 robotCameraRotationOffset;
-    public Vector3 freeCameraOffset;
+    public Camera backCamera;
+    public Camera topCamera;
+    public Camera angleCamera;
+    public Vector3 backCameraPositionOffset;
+    public Vector3 backCameraRotationOffset;
+    public Vector3 angleCameraOffset;
 
     private GameObject selectedRobot = null;
     private GameObject[] robotsArr;
@@ -37,9 +37,9 @@ public class ProgramMaster : MonoBehaviour
                 robot.GetComponent<PIDController>().enabled = false;
             }
         }
-        robotCamera.enabled = false;
-        overheadCamera.enabled = false;
-        freeCamera.enabled = true;  
+        backCamera.enabled = false;
+        topCamera.enabled = false;
+        angleCamera.enabled = true;  
 
         robotsList = new List<GameObject>(GameObject.FindGameObjectsWithTag("Robot"));
         motorsList = new List<GameObject>(GameObject.FindGameObjectsWithTag("Motor"));
@@ -88,19 +88,19 @@ public class ProgramMaster : MonoBehaviour
 
         switch(cameraIterator) {
             case 0:
-                robotCamera.enabled = true; 
-                overheadCamera.enabled = false;
-                freeCamera.enabled = false;
+                backCamera.enabled = true; 
+                topCamera.enabled = false;
+                angleCamera.enabled = false;
                 break;
             case 1:
-                overheadCamera.enabled = true;
-                robotCamera.enabled = false; 
-                freeCamera.enabled = false;
+                topCamera.enabled = true;
+                backCamera.enabled = false; 
+                angleCamera.enabled = false;
                 break;
             case 2:
-                freeCamera.enabled = true;
-                overheadCamera.enabled = true;
-                robotCamera.enabled = false; 
+                angleCamera.enabled = true;
+                topCamera.enabled = true;
+                backCamera.enabled = false; 
                 break;
         }
     }
@@ -110,14 +110,14 @@ public class ProgramMaster : MonoBehaviour
             Vector3 robotPos = selectedRobot.transform.GetChild(0).transform.position;
             Vector3 robotRot = selectedRobot.transform.GetChild(0).transform.rotation.eulerAngles;
             
-            Vector3 rot = robotRot + robotCameraRotationOffset;
-            robotCamera.transform.position = selectedRobot.transform.GetChild(0).transform.position + Quaternion.Euler(rot)*robotCameraPositionOffset;
-            robotCamera.transform.rotation = Quaternion.Euler(rot);
+            Vector3 rot = robotRot + backCameraRotationOffset;
+            backCamera.transform.position = selectedRobot.transform.GetChild(0).transform.position + Quaternion.Euler(rot)*backCameraPositionOffset;
+            backCamera.transform.rotation = Quaternion.Euler(rot);
         
-            overheadCamera.transform.position = robotPos + new Vector3(0,10,0);
-            overheadCamera.transform.rotation = Quaternion.Euler(robotRot + new Vector3(90,0,0));
+            topCamera.transform.position = robotPos + new Vector3(0,10,0);
+            topCamera.transform.rotation = Quaternion.Euler(robotRot + new Vector3(90,0,0));
 
-            freeCamera.transform.position = robotPos + freeCameraOffset;
+            angleCamera.transform.position = robotPos + angleCameraOffset;
         }
     }
 

@@ -43,10 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 720955d960ac8bd438394933f6a3f1e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI: {fileID: 2158350347297429424, guid: 15dd005288cb6e047a48584827562912, type: 3}
-  robotCamera: {fileID: 3692050687462496724, guid: 624ad6314b44d0b43b5d44e2a1f39111, type: 3}
-  overheadCamera: {fileID: 502770211682695477, guid: 662f396c43d6cde4aad2a88d79c257d7, type: 3}
-  freeCamera: {fileID: 1589590684920614236, guid: 85ee753db13656b4d993cfb400cea480, type: 3}
-  robotCameraPositionOffset: {x: 0, y: 0.5, z: -1.25}
-  robotCameraRotationOffset: {x: 30, y: 0, z: 0}
-  freeCameraOffset: {x: 0.75, y: 0.75, z: -0.75}
+  UI: {fileID: 0}
+  backCamera: {fileID: 0}
+  topCamera: {fileID: 0}
+  angleCamera: {fileID: 0}
+  backCameraPositionOffset: {x: 0, y: 0.5, z: -1.25}
+  backCameraRotationOffset: {x: 30, y: 0, z: 0}
+  angleCameraOffset: {x: 0.75, y: 0.75, z: -0.75}
