@@ -49,4 +49,4 @@ MonoBehaviour:
   angleCamera: {fileID: 0}
   backCameraPositionOffset: {x: 0, y: 0.5, z: -1.25}
   backCameraRotationOffset: {x: 30, y: 0, z: 0}
-  angleCameraOffset: {x: 0.75, y: 0.75, z: -0.75}
+  angleCameraPositionOffset: {x: 0.75, y: 0.75, z: -0.75}

@@ -17,7 +17,9 @@ public class ProgramMaster : MonoBehaviour
     public Camera angleCamera;
     public Vector3 backCameraPositionOffset;
     public Vector3 backCameraRotationOffset;
-    public Vector3 angleCameraOffset;
+    public Vector3 angleCameraPositionOffset;
+    public Vector3 angleCameraRotationOffset;
+    private Vector3 angleCameraDefaultRotation;
 
     private GameObject selectedRobot = null;
     private GameObject[] robotsArr;
@@ -40,6 +42,7 @@ public class ProgramMaster : MonoBehaviour
         backCamera.enabled = false;
         topCamera.enabled = false;
         angleCamera.enabled = true;  
+        angleCameraDefaultRotation = angleCamera.transform.rotation.eulerAngles;
 
         robotsList = new List<GameObject>(GameObject.FindGameObjectsWithTag("Robot"));
         motorsList = new List<GameObject>(GameObject.FindGameObjectsWithTag("Motor"));
@@ -117,7 +120,8 @@ public class ProgramMaster : MonoBehaviour
             topCamera.transform.position = robotPos + new Vector3(0,10,0);
             topCamera.transform.rotation = Quaternion.Euler(robotRot + new Vector3(90,0,0));
 
-            angleCamera.transform.position = robotPos + angleCameraOffset;
+            angleCamera.transform.position = robotPos + angleCameraPositionOffset;
+            angleCamera.transform.rotation = Quaternion.Euler(angleCameraDefaultRotation + angleCameraRotationOffset);
         }
     }
 
