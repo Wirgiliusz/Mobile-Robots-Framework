@@ -30,7 +30,7 @@ public class PIDController : MonoBehaviour
     private double e_r;
     private double e_prev_r;
     private double distance_r;
-    [Range(0, 360)]
+    [Range(-360, 360)]
     public double rotation_wanted;
     private double distance_wanted_r;
     bool arrived_r;
@@ -53,7 +53,12 @@ public class PIDController : MonoBehaviour
             movList = new Direction[] {Direction.driveStright, Direction.stop, };
         }
         if (onlyRotate) {
-            movList = new Direction[] {Direction.rotateLeft, Direction.stop, };
+            if (rotation_wanted < 0) {
+                movList = new Direction[] {Direction.rotateLeft, Direction.stop, };
+                rotation_wanted *= -1;
+            } else {
+                movList = new Direction[] {Direction.rotateRight, Direction.stop, };
+            }
         }
         if (onlyStright && onlyRotate) {
             movList = new Direction[] {Direction.stop, };
