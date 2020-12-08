@@ -819,7 +819,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1535369782931859500, guid: 4e327c5db0e34ce488f4758fe2ba6e02, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e327c5db0e34ce488f4758fe2ba6e02, type: 3}
@@ -862,6 +862,14 @@ PrefabInstance:
       propertyPath: topCamera
       value: 
       objectReference: {fileID: 1824777455}
+    - target: {fileID: 1095024679321065606, guid: 86039e23b3792a442862b138982b558b, type: 3}
+      propertyPath: angleCameraRotationOffset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1095024679321065606, guid: 86039e23b3792a442862b138982b558b, type: 3}
+      propertyPath: angleCameraRotationOffset.x
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 1095024679321065607, guid: 86039e23b3792a442862b138982b558b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.8323848
