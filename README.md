@@ -1,6 +1,39 @@
 # Mobile-Robots-Framework
 Engineering project created as a part of Engineering thesis titled **"Design of a framework for modelling mobile robots behaviour using a Unity framework"**.
  
+---
+
+# Project description
+Main goal of the project was to show that Unity framework, which main purpose is providing a environment for creating video games, can be used to create a simulation sofware for mobile robots. Contrary to appearances the fields of game development and robotics are very close to each other, which made this project possible.
+
+---
+
+# Results
+Implemented features:
+- Basic robots components modeled in accordance to real parts:
+  - motors,
+  - wheels,
+  - motors,
+- Scene with 3 different controllable cameras, every with 2 modes - free movement and following the robot model:
+  - view from the top,
+  - view from the back of the model,
+  - view at an angle,
+- User interface with informations about all the robots in the simulation:
+  - robot names,
+  - velocities,
+  - motors power,
+  - sensors readings,
+  - simulation time,
+- User interface with buttons for simulation control:
+  - start and restart button,
+  - list with saved scenes,
+  - toggle buttons for visual effects (robot trajectories, sensors rays)
+- Possibility to implement unique robot drivers - two drivers based on PD controller implemented as an example:
+  - rotating by given angle,
+  - driving untill given distance from obstacle,
+
+---
+ 
 <details>
   <summary>Finished tasks</summary>
  
