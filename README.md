@@ -1,4 +1,8 @@
 # Mobile-Robots-Framework
+Engineering project created as a part of Engineering thesis titled **"Design of a framework for modelling mobile robots behaviour using a Unity framework"**.
+ 
+<details>
+  <summary>Finished tasks</summary>
  
 ## To-Do
 ### New
@@ -59,8 +63,9 @@
   - [x] c. Dynamic UI for multiple robots
   - [x] d. Buttons for starting and restarting simulation
 
-- [ ] 2. PID controller:
-  - [ ] a. Add I
-  - [x] b. Decide what to do with negative 'u':
+- [x] 2. PID controller:
+  - [x] a. Decide what to do with negative 'u':
     - using 'arrived' bool makes robot stop before destination
-    - not using 'arrived' makes it do weird moves close to destination 
+    - not using 'arrived' makes it do weird moves close to destination
+
+</details>
