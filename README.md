@@ -9,11 +9,13 @@ Main goal of the project was to show that Unity framework, which main purpose is
 ---
 
 # Results
-Implemented features:
+<img src="docs/imgs/preview.png" width="1000">
+
+### Implemented features:
 - Basic robots components modeled in accordance to real parts:
   - motors,
   - wheels,
-  - motors,
+  - sensors,
 - Scene with 3 different controllable cameras, every with 2 modes - free movement and following the robot model:
   - view from the top,
   - view from the back of the model,
@@ -27,10 +29,14 @@ Implemented features:
 - User interface with buttons for simulation control:
   - start and restart button,
   - list with saved scenes,
-  - toggle buttons for visual effects (robot trajectories, sensors rays)
+  - toggle buttons for visual effects - robot trajectories and sensors rays
 - Possibility to implement unique robot drivers - two drivers based on PD controller implemented as an example:
   - rotating by given angle,
   - driving untill given distance from obstacle,
+
+### Sample robots models
+Both robots models were created using implemented components and functions of the simulator
+<img src="docs/imgs/model-basic.png" width="300"> <img src="docs/imgs/model-micromouse.png" width="300">
 
 ---
  
