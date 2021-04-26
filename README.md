@@ -1,4 +1,4 @@
-# Mobile-Robots-Framework
+# Mobile Robots Framework
 Engineering project created as a part of Engineering thesis titled **"Design of a framework for modelling mobile robots behaviour using a Unity framework"**.
  
 ---
